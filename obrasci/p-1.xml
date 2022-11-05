@@ -1,0 +1,108 @@
+<zahtev>
+    <naslov>ЗАХТЕВ ЗА ПРИЗНАЊЕ ПАТЕНТА</naslov>
+    <forma_za_zavod>
+        <broj_prijave></broj_prijave>
+        <datum_prijema></datum_prijema>
+        <datum_podnosenja></datum_podnosenja>
+        <pecat_i_potpis></pecat_i_potpis>
+    </forma_za_zavod>
+    <podaci_o_zavodu>
+        <institucija>Завод за интелектуалну својину</institucija>
+        <adresa>
+            <drzava>Република Србија</drzava>
+            <mesto>Београд</mesto>
+            <postanski_broj>11000</postanski_broj>
+            <ulica>Кнегиње Љубице</ulica>
+            <broj>5</broj>
+        </adresa>
+    </podaci_o_zavodu>
+
+    <forma_za_podnosioca>
+        <polje broj="1">
+            <naziv_pronalaska>
+                <srpski>
+                </srpski>
+                <engleski>
+                </engleski>
+            </naziv_pronalaska>
+        </polje>
+        
+        <polje broj="2">
+            <podnosilac_prijave je_i_pronalazac="false">
+                <ime></ime>
+                <adresa></adresa>
+                <telefon></telefon>
+                <faks></faks>
+                <email></email>
+                <drzavljanstvo></drzavljanstvo>
+            </podnosilac_prijave>
+            <ostali_podnosioci></ostali_podnosioci>
+        </polje>
+
+        <polje broj="3">
+            <pronalazac>
+                <ime></ime>
+                <adresa></adresa>
+                <telefon></telefon>
+                <faks></faks>
+                <email></email>
+            </pronalazac>
+            <ostali_pronalazaci></ostali_pronalazaci>
+        </polje>
+
+        <polje broj="4">
+            <punomocnik_za_zastupanje value="false"></punomocnik_za_zastupanje>
+            <punomocnik_za_prijem_pismena value="false"></punomocnik_za_prijem_pismena>
+            <zajednicki_predstavnik value="false"></zajednicki_predstavnik>
+            <ime></ime>
+            <adresa></adresa>
+            <telefon></telefon>
+            <email></email>
+        </polje>
+
+        <polje broj="5">
+            <adresa_za_dostavljanje>
+                <adresa></adresa>
+            </adresa_za_dostavljanje>
+        </polje>
+
+        <polje broj="6">
+            <nacin_dostavljanja>
+                <option1></option1>
+                <option2></option2>
+            </nacin_dostavljanja>
+        </polje>
+
+        <polje broj="7">
+            <dopunska_prijava value="false"></dopunska_prijava>
+            <izdvojena_prijava value="false"></izdvojena_prijava>
+            <broj_prvobitne_prijave>
+                <broj_prijave></broj_prijave>
+            </broj_prvobitne_prijave>
+            <datum_podnosenja_prvobitne_prijave>
+                <datum></datum>
+            </datum_podnosenja_prvobitne_prijave>
+        </polje>
+        
+        <polje broj="8">
+            <prijave>
+                <ranija_prijava_1>
+                    <datum></datum>
+                    <broj_prijave></broj_prijave>
+                    <drzava_ili_organizacija></drzava_ili_organizacija>
+                </ranija_prijava_1>
+                <ranija_prijava_2>
+                    <datum></datum>
+                    <broj_prijave></broj_prijave>
+                    <drzava_ili_organizacija></drzava_ili_organizacija>
+                </ranija_prijava_2>
+            </prijave>
+            
+            <podaci_o_ostalim_pravima_na_listu_2 value="false"></podaci_o_ostalim_pravima_na_listu_2>
+        </polje>
+
+        <dodatni_list_2>
+            
+        </dodatni_list_2>
+    </forma_za_podnosioca>
+</zahtev>
