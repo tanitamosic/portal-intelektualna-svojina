@@ -1,0 +1,85 @@
+<zahtev>
+<!-- -->
+    <podnosilac_zahteva broj="1">
+        <fizicko_lice>
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <grad></grad>
+                <postanski_broj></postanski_broj>
+            </adresa>
+            <drzazvljanstvo></drzazvljanstvo>
+        </fizicko_lice>
+
+        <!-- ili -->
+
+        <pravno_lice>
+            <ime></ime> <!-- ??????? -->
+            <sediste></sediste> <!-- ???????? -->
+        </pravno_lice>
+
+        <telefon></telefon>
+
+        <email></email>
+
+    </podnosilac_zahteva>
+
+    <pseudonim_podnosioca broj="2"></pseudonim_podnosioca>
+
+    <punomocnik broj="3">
+        <ime></ime>
+        <prezime></prezime>
+        <adresa>
+            <ulica></ulica>
+            <broj></broj>
+            <drzava></drzava>
+            <grad></grad>
+            <postanski_broj></postanski_broj>
+        </adresa>
+    </punomocnik>
+
+    <naslov_dela broj="4"></naslov_dela>
+
+    <podaci_o_naslovu_dela broj="5">
+        <!-- Paragraf? -->
+    </podaci_o_naslovu_dela>
+
+    <vrsta_dela broj="6"></vrsta_dela>
+
+    <forma_dela broj="7"></forma_dela>
+
+    <podaci_o_autoru broj="8">
+
+        <autor><!-- ako nema ni jedan autor -> anonimno -->
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <grad></grad>
+                <postanski_broj></postanski_broj>
+            </adresa>
+            <drzazvljanstvo></drzazvljanstvo>
+
+            <godina_smrti></godina_smrti> <!-- opciono -->
+        </autor>
+        
+    </podaci_o_autoru>
+
+    <delo_stvoreno_u_radnom_odnosu broj="9"> <!-- ???? -->
+    </delo_stvoreno_u_radnom_odnosu>
+
+    <nacin_koriscenja_dela broj="10"></nacin_koriscenja_dela>
+
+    <prilozi_uz_zahtev broj="12">
+        <opis_dela></opis_dela>
+        <format_primera></format_primera>
+    </prilozi_uz_zahtev>
+
+    <datum_podnosenja_zahteva></datum_podnosenja_zahteva>
+
+</zahtev>
