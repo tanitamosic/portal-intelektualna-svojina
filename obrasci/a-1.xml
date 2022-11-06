@@ -1,43 +1,45 @@
 <zahtev>
     <podnosilac_zahteva redni_broj="1">
+        <lice vrsta="pravno|fizicko"> <!-- nasledjuje base lice -->
+            <ime></ime>
 
-        <ime></ime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <mesto></mesto>
+                <postanski_broj></postanski_broj>
+            </adresa>
 
-        <adresa>
-            <ulica></ulica>
-            <broj></broj>
-            <drzava></drzava>
-            <mesto></mesto>
-            <postanski_broj></postanski_broj>
-        </adresa>
+            <drzazvljanstvo></drzazvljanstvo>
 
-        <drzazvljanstvo></drzazvljanstvo>
+            <telefon></telefon>
 
-        <telefon></telefon>
-
-        <email></email>
-
+            <email></email>
+        </lice>
     </podnosilac_zahteva>
 
     <pseudonim_podnosioca redni_broj="2"></pseudonim_podnosioca>
 
     <punomocnik redni_broj="3">
-        <ime></ime>
-        <prezime></prezime>
-        <adresa>
-            <ulica></ulica>
-            <broj></broj>
-            <drzava></drzava>
-            <grad></grad>
-            <postanski_broj></postanski_broj>
-        </adresa>
+        <lice>
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <grad></grad>
+                <postanski_broj></postanski_broj>
+            </adresa>
+        </lice>
     </punomocnik>
 
     <naslov_dela redni_broj="4"></naslov_dela>
 
     <podaci_o_naslovu_izvornog_dela redni_broj="5">
         <naslov></naslov>
-        <autor>
+        <autor> <!-- nasledjuje base lice -->
             <ime></ime>
             <prezime></prezime>
             <adresa>
@@ -59,7 +61,7 @@
 
     <podaci_o_autoru redni_broj="8">
 
-        <autor><!-- ako nema ni jedan autor -> anonimno -->
+        <autor><!-- ako nema ni jedan autor -> anonimno --> <!-- nasledjuje base lice -->
             <ime></ime>
             <prezime></prezime>
             <adresa>
