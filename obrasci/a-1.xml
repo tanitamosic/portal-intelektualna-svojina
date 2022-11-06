@@ -1,5 +1,5 @@
 <zahtev>
-    <podnosilac_zahteva broj="1">
+    <podnosilac_zahteva redni_broj="1">
 
         <ime></ime>
 
@@ -19,9 +19,9 @@
 
     </podnosilac_zahteva>
 
-    <pseudonim_podnosioca broj="2"></pseudonim_podnosioca>
+    <pseudonim_podnosioca redni_broj="2"></pseudonim_podnosioca>
 
-    <punomocnik broj="3">
+    <punomocnik redni_broj="3">
         <ime></ime>
         <prezime></prezime>
         <adresa>
@@ -33,9 +33,9 @@
         </adresa>
     </punomocnik>
 
-    <naslov_dela broj="4"></naslov_dela>
+    <naslov_dela redni_broj="4"></naslov_dela>
 
-    <podaci_o_naslovu_izvornog_dela broj="5">
+    <podaci_o_naslovu_izvornog_dela redni_broj="5">
         <naslov></naslov>
         <autor>
             <ime></ime>
@@ -53,11 +53,11 @@
         </autor>
     </podaci_o_naslovu_izvornog_dela>
 
-    <vrsta_dela broj="6"></vrsta_dela>
+    <vrsta_dela redni_broj="6"></vrsta_dela>
 
-    <forma_dela broj="7"></forma_dela>
+    <forma_dela redni_broj="7"></forma_dela>
 
-    <podaci_o_autoru broj="8">
+    <podaci_o_autoru redni_broj="8">
 
         <autor><!-- ako nema ni jedan autor -> anonimno -->
             <ime></ime>
@@ -76,16 +76,20 @@
         
     </podaci_o_autoru>
 
-    <delo_stvoreno_u_radnom_odnosu broj="9"><!-- true ili false -->
+    <delo_stvoreno_u_radnom_odnosu redni_broj="9"><!-- true ili false -->
     </delo_stvoreno_u_radnom_odnosu>
 
-    <nacin_koriscenja_dela broj="10"></nacin_koriscenja_dela>
+    <nacin_koriscenja_dela redni_broj="10"></nacin_koriscenja_dela>
 
-    <prilozi_uz_zahtev broj="12">
+    <prilozi_uz_zahtev redni_broj="12">
         <opis_dela></opis_dela>
         <format_primera></format_primera>
     </prilozi_uz_zahtev>
 
-    <datum_podnosenja_zahteva></datum_podnosenja_zahteva>
+    <datum_podnosenja_zahteva>
+        <dan></dan>
+        <mesec></mesec>
+        <godina></godina>
+    </datum_podnosenja_zahteva>
 
 </zahtev>
