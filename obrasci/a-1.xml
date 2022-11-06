@@ -7,7 +7,7 @@
             <ulica></ulica>
             <broj></broj>
             <drzava></drzava>
-            <grad></grad>
+            <mesto></mesto>
             <postanski_broj></postanski_broj>
         </adresa>
 
