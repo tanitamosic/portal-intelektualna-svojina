@@ -1,25 +1,17 @@
 <zahtev>
-<!-- -->
     <podnosilac_zahteva broj="1">
-        <fizicko_lice>
-            <ime></ime>
-            <prezime></prezime>
-            <adresa>
-                <ulica></ulica>
-                <broj></broj>
-                <drzava></drzava>
-                <grad></grad>
-                <postanski_broj></postanski_broj>
-            </adresa>
-            <drzazvljanstvo></drzazvljanstvo>
-        </fizicko_lice>
 
-        <!-- ili -->
+        <ime></ime>
 
-        <pravno_lice>
-            <ime></ime> <!-- ??????? -->
-            <sediste></sediste> <!-- ???????? -->
-        </pravno_lice>
+        <adresa>
+            <ulica></ulica>
+            <broj></broj>
+            <drzava></drzava>
+            <grad></grad>
+            <postanski_broj></postanski_broj>
+        </adresa>
+
+        <drzazvljanstvo></drzazvljanstvo>
 
         <telefon></telefon>
 
@@ -43,9 +35,23 @@
 
     <naslov_dela broj="4"></naslov_dela>
 
-    <podaci_o_naslovu_dela broj="5">
-        <!-- Paragraf? -->
-    </podaci_o_naslovu_dela>
+    <podaci_o_naslovu_izvornog_dela broj="5">
+        <naslov></naslov>
+        <autor>
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <grad></grad>
+                <postanski_broj></postanski_broj>
+            </adresa>
+            <drzazvljanstvo></drzazvljanstvo>
+
+            <godina_smrti></godina_smrti> <!-- opciono -->
+        </autor>
+    </podaci_o_naslovu_izvornog_dela>
 
     <vrsta_dela broj="6"></vrsta_dela>
 
@@ -70,7 +76,7 @@
         
     </podaci_o_autoru>
 
-    <delo_stvoreno_u_radnom_odnosu broj="9"> <!-- ???? -->
+    <delo_stvoreno_u_radnom_odnosu broj="9"><!-- true ili false -->
     </delo_stvoreno_u_radnom_odnosu>
 
     <nacin_koriscenja_dela broj="10"></nacin_koriscenja_dela>
