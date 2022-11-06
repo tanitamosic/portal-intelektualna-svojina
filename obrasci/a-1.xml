@@ -1,0 +1,97 @@
+<zahtev>
+    <podnosilac_zahteva redni_broj="1">
+        <lice vrsta="pravno|fizicko"> <!-- nasledjuje base lice -->
+            <ime></ime>
+
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <mesto></mesto>
+                <postanski_broj></postanski_broj>
+            </adresa>
+
+            <drzazvljanstvo></drzazvljanstvo>
+
+            <telefon></telefon>
+
+            <email></email>
+        </lice>
+    </podnosilac_zahteva>
+
+    <pseudonim_podnosioca redni_broj="2"></pseudonim_podnosioca>
+
+    <punomocnik redni_broj="3">
+        <lice>
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <grad></grad>
+                <postanski_broj></postanski_broj>
+            </adresa>
+        </lice>
+    </punomocnik>
+
+    <naslov_dela redni_broj="4"></naslov_dela>
+
+    <podaci_o_naslovu_izvornog_dela redni_broj="5">
+        <naslov></naslov>
+        <autor> <!-- nasledjuje base lice -->
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <grad></grad>
+                <postanski_broj></postanski_broj>
+            </adresa>
+            <drzazvljanstvo></drzazvljanstvo>
+
+            <godina_smrti></godina_smrti> <!-- opciono -->
+        </autor>
+    </podaci_o_naslovu_izvornog_dela>
+
+    <vrsta_dela redni_broj="6"></vrsta_dela>
+
+    <forma_dela redni_broj="7"></forma_dela>
+
+    <podaci_o_autoru redni_broj="8">
+
+        <autor><!-- ako nema ni jedan autor -> anonimno --> <!-- nasledjuje base lice -->
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <drzava></drzava>
+                <grad></grad>
+                <postanski_broj></postanski_broj>
+            </adresa>
+            <drzazvljanstvo></drzazvljanstvo>
+
+            <godina_smrti></godina_smrti> <!-- opciono -->
+        </autor>
+        
+    </podaci_o_autoru>
+
+    <delo_stvoreno_u_radnom_odnosu redni_broj="9"><!-- true ili false -->
+    </delo_stvoreno_u_radnom_odnosu>
+
+    <nacin_koriscenja_dela redni_broj="10"></nacin_koriscenja_dela>
+
+    <prilozi_uz_zahtev redni_broj="12">
+        <opis_dela></opis_dela>
+        <format_primera></format_primera>
+    </prilozi_uz_zahtev>
+
+    <datum_podnosenja_zahteva>
+        <dan></dan>
+        <mesec></mesec>
+        <godina></godina>
+    </datum_podnosenja_zahteva>
+
+</zahtev>

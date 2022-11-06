@@ -1,60 +1,56 @@
 <zahtev izdavac="Zavod za intelektualnu svojinu" oznaka="z-1">
     <podnosilac redni_broj="1">
-        <ime></ime>
-        <adresa>
-            <ulica></ulica>
-            <broj></broj>
-            <mesto></mesto>
-            <zip></zip>
-            <drzava></drzava>
-        </adresa>
-        <telefon></telefon>
-        <email></email>
-        <faks></faks>
+        <lice vrsta="fizicko"> <!-- vrsta: pravno/fizicko-->
+            <ime></ime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <mesto></mesto>
+                <postanski_broj></postanski_broj>
+                <drzava></drzava>
+            </adresa>
+            <telefon></telefon>
+            <email></email>
+            <faks></faks> <!-- opciono -->
+        </lice>
     </podnosilac>
 
     <punomocnik redni_broj="2">
-        <ime></ime>
-        <adresa>
-            <ulica></ulica>
-            <broj></broj>
-            <mesto></mesto>
-            <zip></zip>
-            <drzava></drzava>
-        </adresa>
-        <telefon></telefon>
-        <email></email>
-        <faks></faks>
+        <lice vrsta="fizicko">
+            <ime></ime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <mesto></mesto>
+                <postanski_broj></postanski_broj>
+                <drzava></drzava>
+            </adresa>
+            <telefon></telefon>
+            <email></email>
+            <faks></faks>
+        </lice>
     </punomocnik>
 
     <zajednicki_predstavink redni_broj="3">
-        <ime></ime>
-        <adresa>
-            <ulica></ulica>
-            <broj></broj>
-            <mesto></mesto>
-            <zip></zip>
-            <drzava></drzava>
-        </adresa>
-        <telefon></telefon>
-        <email></email>
-        <faks></faks>
+        <lice vrsta="fizicko"> 
+            <ime></ime>
+            <adresa>
+                <ulica></ulica>
+                <broj></broj>
+                <mesto></mesto>
+                <postanski_broj></postanski_broj>
+                <drzava></drzava>
+            </adresa>
+            <telefon></telefon>
+            <email></email>
+            <faks></faks>
+        </lice>
     </zajednicki_predstavink>
 
     <predmet_prijave redni_broj="4">
-        <vrsta_ziga oznaka="a">
-            <individualni value="false"/>
-            <kolektivni value="false"/>
-            <garancijski value="false"/>
-        </vrsta_ziga>
-        <format_znaka oznaka="b">
-            <verbalni value="false"/>
-            <graficki value="false"/>
-            <kombinovani value="false"/>
-            <trodimenzionalni value="false"/>
-            <drugo value="false"></drugo>
-        </format_znaka>
-        <izgled_znaka oznaka="v"/>
+        <vrsta_ziga oznaka="a"></vrsta_ziga> <!-- opcije iz forme -->
+        <format_znaka oznaka="b"></format_znaka> <!-- opcije iz forme -->
+        <izgled_znaka oznaka="v"></izgled_znaka> <!-- link do slike (?)-->
     </predmet_prijave>
 
     <boje redni_broj="5">
@@ -71,82 +67,38 @@
     <opis redni_broj="8"></opis>
 
     <klase redni_broj="9">
-        <klasa broj="1" value="false"/>
-        <klasa broj="2" value="false"/>
-        <klasa broj="3" value="false"/>
-        <klasa broj="4" value="false"/>
-        <klasa broj="5" value="false"/>
-        <klasa broj="6" value="false"/>
-        <klasa broj="7" value="false"/>
-        <klasa broj="8" value="false"/>
-        <klasa broj="9" value="false"/>
-        <klasa broj="10" value="false"/>
-        <klasa broj="11" value="false"/>
-        <klasa broj="12" value="false"/>
-        <klasa broj="13" value="false"/>
-        <klasa broj="14" value="false"/>
-        <klasa broj="15" value="false"/>
-        <klasa broj="16" value="false"/>
-        <klasa broj="17" value="false"/>
-        <klasa broj="18" value="false"/>
-        <klasa broj="19" value="false"/>
-        <klasa broj="20" value="false"/>
-        <klasa broj="21" value="false"/>
-        <klasa broj="22" value="false"/>
-        <klasa broj="23" value="false"/>
-        <klasa broj="24" value="false"/>
-        <klasa broj="25" value="false"/>
-        <klasa broj="26" value="false"/>
-        <klasa broj="27" value="false"/>
-        <klasa broj="28" value="false"/>
-        <klasa broj="29" value="false"/>
-        <klasa broj="30" value="false"/>
-        <klasa broj="31" value="false"/>
-        <klasa broj="32" value="false"/>
-        <klasa broj="33" value="false"/>
-        <klasa broj="34" value="false"/>
-        <klasa broj="35" value="false"/>
-        <klasa broj="36" value="false"/>
-        <klasa broj="37" value="false"/>
-        <klasa broj="38" value="false"/>
-        <klasa broj="39" value="false"/>
-        <klasa broj="40" value="false"/>
-        <klasa broj="41" value="false"/>
-        <klasa broj="42" value="false"/>
-        <klasa broj="43" value="false"/>
-        <klasa broj="44" value="false"/>
-        <klasa broj="45" value="false"/>
+        <cekirana_klasa></cekirana_klasa> <!-- broj cekirane klase (kardinalitet "+")-->
     </klase>
 
     <pravo_prvenstva redni_broj="10"></pravo_prvenstva>
 
     <placene_takse redni_broj="11">
         <osnovna_taksa oznaka="a"></osnovna_taksa>
-        <za_klase broj_klasa=""></za_klase>
+        <za_klase></za_klase> <!-- broj klasa -->
         <za_graficko_resenje></za_graficko_resenje>
         <ukupno></ukupno>
-        <potpis_podnosioca></potpis_podnosioca>
     </placene_takse>
 
     <zavod>
         <prilozi>
-            <primerak_znaka value="false"/>
-            <spisak_robe_i_usluga value="false"/>
-            <punomocje value="false"/>
-            <punomocje_ranije_prilozeno value="false"/>
-            <punomocje_naknadno value="false"/>
-            <opsti_akt value="false"/>
-            <dokaz_o_pravu_prvenstva value="false"/>
-            <dokaz_o_uplati_takse value="false"/>
+            <primerak_znaka></primerak_znaka> <!-- true/false -->
+            <spisak_robe_i_usluga></spisak_robe_i_usluga> <!-- true/false -->
+            <punomocje></punomocje> <!-- true/false -->
+            <punomocje_ranije_prilozeno></punomocje_ranije_prilozeno> <!-- true/false -->
+            <punomocje_naknadno></punomocje_naknadno> <!-- true/false -->
+            <opsti_akt></opsti_akt> <!-- true/false -->
+            <dokaz_o_pravu_prvenstva></dokaz_o_pravu_prvenstva> <!-- true/false -->
+            <dokaz_o_uplati_takse></dokaz_o_uplati_takse> <!-- true/false -->
         </prilozi>
-        <broj_prijave>
-            <deo1></deo1>
-            <deo2></deo2>
-        </broj_prijave>
+
+        <broj_prijave></broj_prijave> <!-- regex: [0-9]{4}/[0-9]{2} -->
+
         <datum_podnosenja>
-            <dan></dan>
-            <mesec></mesec>
-            <godina></godina>
+            <datum>
+                <dan></dan>
+                <mesec></mesec>
+                <godina></godina>
+            </datum>
         </datum_podnosenja>
     </zavod>
 </zahtev>

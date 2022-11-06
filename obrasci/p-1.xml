@@ -1,0 +1,140 @@
+<zahtev>
+    <naslov>ЗАХТЕВ ЗА ПРИЗНАЊЕ ПАТЕНТА</naslov>
+    <forma_za_zavod>
+        <broj_prijave></broj_prijave>
+        <datum_prijema></datum_prijema>
+        <datum_podnosenja></datum_podnosenja>
+        <pecat_i_potpis></pecat_i_potpis>
+    </forma_za_zavod>
+    <podaci_o_zavodu>
+        <institucija>Завод за интелектуалну својину</institucija>
+        <adresa>
+            <drzava>Република Србија</drzava>
+            <mesto>Београд</mesto>
+            <postanski_broj>11000</postanski_broj>
+            <ulica>Кнегиње Љубице</ulica>
+            <broj>5</broj>
+        </adresa>
+    </podaci_o_zavodu>
+
+    <forma_za_podnosioca>
+        <naziv_pronalaska redni_broj="1">
+            <srpski>
+            </srpski>
+            <engleski>
+            </engleski>
+        </naziv_pronalaska>
+        
+        <podnosilac_prijave redni_broj="2">
+            <je_pronalazac></je_pronalazac><!-- je_i_pronalazac="true/false" -->
+            <lice>
+                <ime></ime>
+                <adresa>
+                    <drzava></drzava>
+                    <mesto></mesto>
+                    <postanski_broj></postanski_broj>
+                    <ulica></ulica>
+                    <broj></broj>
+                </adresa>
+                <telefon></telefon>
+                <email></email>
+                <faks></faks>
+            </lice>
+            
+            
+            <drzavljanstvo></drzavljanstvo>
+
+            <ostali_podnosioci></ostali_podnosioci> <!-- true/false -->
+        </podnosilac_prijave>
+
+        <pronalazac redni_broj="3">
+            <lice>
+                <ime></ime>
+                <adresa>
+                    <drzava></drzava>
+                    <mesto></mesto>
+                    <postanski_broj></postanski_broj>
+                    <ulica></ulica>
+                    <broj></broj>
+                </adresa>
+                <telefon></telefon>
+                <email></email>
+                <faks></faks>
+            </lice>
+            <ostali_pronalazaci></ostali_pronalazaci>
+        </pronalazac>
+        
+
+        <posrednik redni_broj="4"> 
+            <vrsta></vrsta> <!-- vrsta="punomocnik_za_zastupanje/punomocnik_za_prijem_pismena/zajednicki_predstavnik" -->
+            <lice>
+                <ime></ime>
+                <adresa>
+                    <drzava></drzava>
+                    <mesto></mesto>
+                    <postanski_broj></postanski_broj>
+                    <ulica></ulica>
+                    <broj></broj>
+                </adresa>
+                <telefon></telefon>
+                <email></email>
+            </lice>
+        </posrednik>
+
+        <adresa_za_dostavljanje redni_broj="5">
+            <adresa>
+                <drzava></drzava>
+                <mesto></mesto>
+                <postanski_broj></postanski_broj>
+                <ulica></ulica>
+                <broj></broj>
+            </adresa>
+        </adresa_za_dostavljanje>
+
+        <nacin_dostavljanja redni_broj="6">
+        </nacin_dostavljanja> <!-- value="искључиво електронским путем у форми електронског документа/у папирној форми" -->
+
+        <prijava redni_broj="7" >
+            <vrsta></vrsta> <!-- dopunska_prijava/izdvojena_prijava-->
+            <broj_prvobitne_prijave>
+                <broj_prijave></broj_prijave>
+            </broj_prvobitne_prijave>
+            <datum_podnosenja_prvobitne_prijave>
+                <datum>
+                    <dan></dan>
+                    <mesec></mesec>
+                    <godina></godina>
+                </datum>
+            </datum_podnosenja_prvobitne_prijave>
+        </prijava>
+        
+        <zahtev_za_priznanje_prava redni_broj="8"> <!-- iz prethodnih prijava -->
+            <prijave>
+                <ranija_prijava_1>
+                    <datum>
+                        <dan></dan>
+                        <mesec></mesec>
+                        <godina></godina>
+                    </datum>
+                    <broj_prijave></broj_prijave>
+                    <drzava_ili_organizacija></drzava_ili_organizacija>
+                </ranija_prijava_1>
+                <ranija_prijava_2>
+                    <datum>
+                        <dan></dan>
+                        <mesec></mesec>
+                        <godina></godina>
+                    </datum>
+                    <broj_prijave></broj_prijave>
+                    <drzava_ili_organizacija></drzava_ili_organizacija>
+                </ranija_prijava_2>
+            </prijave>
+            
+            <podaci_o_ostalim_pravima_na_listu_2></podaci_o_ostalim_pravima_na_listu_2> <!-- true/false -->
+        </zahtev_za_priznanje_prava>
+
+        <dodatni_list_2>
+            
+        </dodatni_list_2>
+    </forma_za_podnosioca>
+</zahtev>
