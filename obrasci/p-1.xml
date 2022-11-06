@@ -18,88 +18,120 @@
     </podaci_o_zavodu>
 
     <forma_za_podnosioca>
-        <polje broj="1">
-            <naziv_pronalaska>
-                <srpski>
-                </srpski>
-                <engleski>
-                </engleski>
-            </naziv_pronalaska>
-        </polje>
+        <naziv_pronalaska redni_broj="1">
+            <srpski>
+            </srpski>
+            <engleski>
+            </engleski>
+        </naziv_pronalaska>
         
-        <polje broj="2">
-            <podnosilac_prijave je_i_pronalazac="false">
+        <podnosilac_prijave redni_broj="2">
+            <je_pronalazac></je_pronalazac><!-- je_i_pronalazac="true/false" -->
+            <lice>
                 <ime></ime>
-                <adresa></adresa>
+                <adresa>
+                    <drzava></drzava>
+                    <mesto></mesto>
+                    <postanski_broj></postanski_broj>
+                    <ulica></ulica>
+                    <broj></broj>
+                </adresa>
                 <telefon></telefon>
-                <faks></faks>
                 <email></email>
-                <drzavljanstvo></drzavljanstvo>
-            </podnosilac_prijave>
-            <ostali_podnosioci></ostali_podnosioci>
-        </polje>
+                <faks></faks>
+            </lice>
+            
+            
+            <drzavljanstvo></drzavljanstvo>
 
-        <polje broj="3">
-            <pronalazac>
+            <ostali_podnosioci></ostali_podnosioci> <!-- true/false -->
+        </podnosilac_prijave>
+
+        <pronalazac redni_broj="3">
+            <lice>
                 <ime></ime>
-                <adresa></adresa>
+                <adresa>
+                    <drzava></drzava>
+                    <mesto></mesto>
+                    <postanski_broj></postanski_broj>
+                    <ulica></ulica>
+                    <broj></broj>
+                </adresa>
                 <telefon></telefon>
-                <faks></faks>
                 <email></email>
-            </pronalazac>
+                <faks></faks>
+            </lice>
             <ostali_pronalazaci></ostali_pronalazaci>
-        </polje>
+        </pronalazac>
+        
 
-        <polje broj="4">
-            <punomocnik_za_zastupanje value="false"></punomocnik_za_zastupanje>
-            <punomocnik_za_prijem_pismena value="false"></punomocnik_za_prijem_pismena>
-            <zajednicki_predstavnik value="false"></zajednicki_predstavnik>
-            <ime></ime>
-            <adresa></adresa>
-            <telefon></telefon>
-            <email></email>
-        </polje>
+        <posrednik redni_broj="4"> 
+            <vrsta></vrsta> <!-- vrsta="punomocnik_za_zastupanje/punomocnik_za_prijem_pismena/zajednicki_predstavnik" -->
+            <lice>
+                <ime></ime>
+                <adresa>
+                    <drzava></drzava>
+                    <mesto></mesto>
+                    <postanski_broj></postanski_broj>
+                    <ulica></ulica>
+                    <broj></broj>
+                </adresa>
+                <telefon></telefon>
+                <email></email>
+            </lice>
+        </posrednik>
 
-        <polje broj="5">
-            <adresa_za_dostavljanje>
-                <adresa></adresa>
-            </adresa_za_dostavljanje>
-        </polje>
+        <adresa_za_dostavljanje redni_broj="5">
+            <adresa>
+                <drzava></drzava>
+                <mesto></mesto>
+                <postanski_broj></postanski_broj>
+                <ulica></ulica>
+                <broj></broj>
+            </adresa>
+        </adresa_za_dostavljanje>
 
-        <polje broj="6">
-            <nacin_dostavljanja>
-                <option1></option1>
-                <option2></option2>
-            </nacin_dostavljanja>
-        </polje>
+        <nacin_dostavljanja redni_broj="6">
+        </nacin_dostavljanja> <!-- value="искључиво електронским путем у форми електронског документа/у папирној форми" -->
 
-        <polje broj="7">
-            <dopunska_prijava value="false"></dopunska_prijava>
-            <izdvojena_prijava value="false"></izdvojena_prijava>
+        <prijava redni_broj="7" >
+            <vrsta></vrsta> <!-- dopunska_prijava/izdvojena_prijava-->
             <broj_prvobitne_prijave>
                 <broj_prijave></broj_prijave>
             </broj_prvobitne_prijave>
             <datum_podnosenja_prvobitne_prijave>
-                <datum></datum>
+                <datum>
+                    <dan></dan>
+                    <mesec></mesec>
+                    <godina></godina>
+                </datum>
             </datum_podnosenja_prvobitne_prijave>
-        </polje>
+        </prijava>
         
-        <polje broj="8">
+        <zahtev_za_priznanje_prava redni_broj="8"> <!-- iz prethodnih prijava -->
             <prijave>
                 <ranija_prijava_1>
-                    <datum></datum>
+                    <datum>
+                        <dan></dan>
+                        <mesec></mesec>
+                        <godina></godina>
+                    </datum>
                     <broj_prijave></broj_prijave>
                     <drzava_ili_organizacija></drzava_ili_organizacija>
                 </ranija_prijava_1>
                 <ranija_prijava_2>
-                    <datum></datum>
+                    <datum>
+                        <dan></dan>
+                        <mesec></mesec>
+                        <godina></godina>
+                    </datum>
                     <broj_prijave></broj_prijave>
                     <drzava_ili_organizacija></drzava_ili_organizacija>
                 </ranija_prijava_2>
             </prijave>
             
-            <podaci_o_ostalim_pravima_na_listu_2 value="false"></podaci_o_ostalim_pravima_na_listu_2>
-        </polje>
+            <podaci_o_ostalim_pravima_na_listu_2></podaci_o_ostalim_pravima_na_listu_2> <!-- true/false -->
+        </zahtev_za_priznanje_prava>
 
         <dodatni_list_2>
             
