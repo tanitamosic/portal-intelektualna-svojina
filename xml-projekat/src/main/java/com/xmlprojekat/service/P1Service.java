@@ -15,7 +15,7 @@ import java.util.Random;
 
 @Service
 public class P1Service extends XMLService {
-
+    private Integer id;
     private final DOMParser domParser;
 
     public P1Service(DOMParser domParser) {
@@ -38,7 +38,7 @@ public class P1Service extends XMLService {
     @Override
     protected String generateApplicationId() {
         Random r = new Random();
-        String id = String.valueOf(r.nextInt(80000) + 10000);
-        return "П " + id;
+        String year = String.valueOf(r.nextInt(30) + 1990);
+        return "П-" + year + "/" + id;
     }
 }
