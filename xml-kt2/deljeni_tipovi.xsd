@@ -62,13 +62,13 @@
     </xs:complexType>
     <xs:simpleType name="TEmail">
         <xs:restriction base="xs:string">
-            <xs:pattern value="[a-zA-Z1-9]{3,40}@[a-z]{2,20}\.[a-z]{2,10}"/>
+            <xs:pattern value="[a-zA-Z1-9\._]{3,40}@[a-z]{2,20}\.[a-z]{2,10}"/>
             <xs:pattern value=""/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="TTelefon">
         <xs:restriction base="xs:string">
-            <xs:pattern value="(\+,)"/>
+            <xs:pattern value="\+381[0-9]{9}"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="TDatum">
