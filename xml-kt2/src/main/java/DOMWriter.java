@@ -69,7 +69,7 @@ public class DOMWriter {
 
 		Element zahtev = document.createElementNS(Z1_NAMESPACE, "zahtev");
 		document.appendChild(zahtev);
-		zahtev.setAttributeNS(XSI_NAMESPACE, "xsi:schemaLocation", "http://localhost:3030/z1 ./z1.xsd");
+		zahtev.setAttributeNS(XSI_NAMESPACE, "xsi:schemaLocation", "http://localhost:3030/z1 ./z-1.xsd");
 
 		// PODNOSILAC
 		Element podnosilac = document.createElementNS(Z1_NAMESPACE, "podnosilac");

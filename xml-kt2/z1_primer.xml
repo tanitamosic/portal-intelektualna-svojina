@@ -2,7 +2,7 @@
 <z1:zahtev xmlns:proj="http://localhost:3030/tipovi"
            xmlns:z1="http://localhost:3030/z1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://localhost:3030/z1 file:/D:/Downloads/a.%20faks/XMLiVS/Projekat/XML-projekat/sheme/z-1.xsd">
+           xsi:schemaLocation="http://localhost:3030/z1 z-1.xsd">
     <z1:podnosilac xsi:type="proj:TFizickoLice">
         <proj:adresa>
             <proj:mesto>mesto0</proj:mesto>
