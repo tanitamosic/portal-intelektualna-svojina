@@ -45,10 +45,10 @@
         <z1:za_graficko_resenje>7450.02</z1:za_graficko_resenje>
     </z1:takse>
     <z1:zavod>
-        <z1:prilozi>
-            <z1:prilog>Primerak znaka</z1:prilog>
-            <z1:prilog>Spisak robe i usluga</z1:prilog>
-        </z1:prilozi>
+
+        <z1:prilog>Primerak znaka</z1:prilog>
+        <z1:prilog>Spisak robe i usluga</z1:prilog>
+
         <z1:broj_prijave>Ж 2009/0001</z1:broj_prijave>
         <z1:datum_podnosenja>12.12.2019.</z1:datum_podnosenja>
     </z1:zavod>
