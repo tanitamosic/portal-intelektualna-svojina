@@ -19,7 +19,8 @@ public class Main {
         while (!choice.equals("-1")){
             System.out.print("Za čitanje podrazumevanog XML dokumenta unesite 0\n" +
                     "Za čitanje određenog XML dokumenta unesite 1\n" +
-                    "Za pisanje XML dokumenta unesite 2\n" +
+                    "Za pisanje z1 XML dokumenta unesite 2\n" +
+                    "Za pisanje p1 XML dokumenta unesite 3\n" +
                     "Za izlazak iz aplikacije unesite -1\n" +
                     ">> ");
             choice = scanner.next();
@@ -34,6 +35,9 @@ public class Main {
                     break;
                 case "2":
                     document = writer.generateZ1();
+                    break;
+                case "3":
+                    document = writer.generateP1();
                     break;
                 case "-1":
                     System.exit(0);

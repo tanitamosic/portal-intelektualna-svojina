@@ -5,106 +5,84 @@
  xsi:noNamespaceSchemaLocation="file:/home/mihajlo/XML-projekat/sheme/p-1.xsd">
     <zavod>
         <formaZaZavod>
-            <brojPrijave>П-2014\0010</brojPrijave>
-            <datumPrijema>
-                <proj:dan>16</proj:dan>
-                <proj:mesec>6</proj:mesec>
-                <proj:godina>2014</proj:godina>
-            </datumPrijema>
-            <datumPodnosenja>
-                <proj:dan>16</proj:dan>
-                <proj:mesec>6</proj:mesec>
-                <proj:godina>2014</proj:godina>
-            </datumPodnosenja>
+            <brojPrijave>П-0000\0000</brojPrijave>
+            <datumPrijema>1.1.0000.</datumPrijema>
+            <datumPodnosenja>1.1.0000.</datumPodnosenja>
         </formaZaZavod>
         <podaciOZavodu>
-            <institucija>Zavod za intelektualnu svojinu</institucija>
+            <institucija>institucija0</institucija>
             <proj:adresa>
-                <proj:mesto>Beograd</proj:mesto>
-                <proj:postanski_broj>11000</proj:postanski_broj>
-                <proj:ulica>Knjeginje Ljubice</proj:ulica>
-                <proj:broj>5</proj:broj>
+                <proj:mesto>mesto0</proj:mesto>
+                <proj:postanski_broj>25500</proj:postanski_broj>
+                <proj:ulica>ulica0</proj:ulica>
+                <proj:broj>broj0</proj:broj>
             </proj:adresa>
         </podaciOZavodu>
     </zavod>
     <formaPodnosioca>
         <nazivPronalaska>
-            <srpski>Turbo brz dron</srpski>
-            <engleski>Turbo fast drone</engleski>
+            <srpski>srpski0</srpski>
+            <engleski>engleski0</engleski>
         </nazivPronalaska>
         <podnosilacPrijave>
             <proj:adresa>
-                <proj:mesto>Pozarevac</proj:mesto>
-                <proj:postanski_broj>12000</proj:postanski_broj>
-                <proj:ulica>Radovana Dragovica</proj:ulica>
-                <proj:broj>15</proj:broj>
+                <proj:mesto>mesto1</proj:mesto>
+                <proj:postanski_broj>25500</proj:postanski_broj>
+                <proj:ulica>ulica1</proj:ulica>
+                <proj:broj>broj1</proj:broj>
             </proj:adresa>
             <proj:kontakt>
-                <proj:email>tempmail@email.com</proj:email>
             </proj:kontakt>
             <jePronalazac>false</jePronalazac>
         </podnosilacPrijave>
         <pronalazac xsi:type="proj:TFizickoLice">
             <proj:adresa>
-                <proj:mesto>Kragujevac</proj:mesto>
-                <proj:postanski_broj>34000</proj:postanski_broj>
-                <proj:ulica>Mose Pijade</proj:ulica>
-                <proj:broj>3</proj:broj>
+                <proj:mesto>mesto2</proj:mesto>
+                <proj:postanski_broj>25500</proj:postanski_broj>
+                <proj:ulica>ulica2</proj:ulica>
+                <proj:broj>broj2</proj:broj>
             </proj:adresa>
             <proj:kontakt>
             </proj:kontakt>
-            <proj:ime>Pera</proj:ime>
-            <proj:prezime>Peric</proj:prezime>
+            <proj:ime>ime0</proj:ime>
+            <proj:prezime>prezime0</proj:prezime>
         </pronalazac>
         <posrednik>
             <proj:adresa>
-                <proj:mesto>Novi Sad</proj:mesto>
-                <proj:postanski_broj>21000</proj:postanski_broj>
-                <proj:ulica>Bulevar Evrope</proj:ulica>
-                <proj:broj>12</proj:broj>
+                <proj:mesto>mesto3</proj:mesto>
+                <proj:postanski_broj>25500</proj:postanski_broj>
+                <proj:ulica>ulica3</proj:ulica>
+                <proj:broj>broj3</proj:broj>
             </proj:adresa>
             <proj:kontakt>
-                <proj:email>tempmail2@email.com</proj:email>
             </proj:kontakt>
             <vrstaPosrednika>Punomocnik za zastupanje</vrstaPosrednika>
         </posrednik>
         <adresaZaDostavljanje>
             <proj:adresa>
-                <proj:mesto>Zrenjanin</proj:mesto>
-                <proj:postanski_broj>25000</proj:postanski_broj>
-                <proj:ulica>Zmaj Jovina</proj:ulica>
-                <proj:broj>2</proj:broj>
+                <proj:mesto>mesto4</proj:mesto>
+                <proj:postanski_broj>25500</proj:postanski_broj>
+                <proj:ulica>ulica4</proj:ulica>
+                <proj:broj>broj4</proj:broj>
             </proj:adresa>
         </adresaZaDostavljanje>
         <nacinDostavljanja>Iskljucivo elektronskim putem u formi elektronskog dokumenta</nacinDostavljanja>
         <prijava>
             <vrstaPrijave>Dopunska prijava</vrstaPrijave>
             <brojPrvobitnePrijave>П-0000\0000</brojPrvobitnePrijave>
-            <datumPodnosenjaPrvobitnePrijave>
-                <proj:dan>16</proj:dan>
-                <proj:mesec>6</proj:mesec>
-                <proj:godina>2014</proj:godina>
-            </datumPodnosenjaPrvobitnePrijave>
+            <datumPodnosenjaPrvobitnePrijave>1.1.0000.</datumPodnosenjaPrvobitnePrijave>
         </prijava>
         <zahtevZaPriznanjePrava>
             <prijave>
                 <ranijaPrijava1>
-                    <datum>
-                        <proj:dan>16</proj:dan>
-                        <proj:mesec>6</proj:mesec>
-                        <proj:godina>2012</proj:godina>
-                    </datum>
-                    <brojPrijave>П-2012\0000</brojPrijave>
-                    <drzavaIliOrganizacija>Belgija</drzavaIliOrganizacija>
+                    <datum>1.1.0000.</datum>
+                    <brojPrijave>П-0000\0000</brojPrijave>
+                    <drzavaIliOrganizacija>drzavaIliOrganizacija0</drzavaIliOrganizacija>
                 </ranijaPrijava1>
                 <ranijaPrijava2>
-                    <datum>
-                        <proj:dan>16</proj:dan>
-                        <proj:mesec>6</proj:mesec>
-                        <proj:godina>2013</proj:godina>
-                    </datum>
-                    <brojPrijave>П-2013\0000</brojPrijave>
-                    <drzavaIliOrganizacija>Norveska</drzavaIliOrganizacija>
+                    <datum>1.1.0000.</datum>
+                    <brojPrijave>П-0000\0000</brojPrijave>
+                    <drzavaIliOrganizacija>drzavaIliOrganizacija1</drzavaIliOrganizacija>
                 </ranijaPrijava2>
             </prijave>
             <podaciOOstalimPravimaNaListu2>false</podaciOOstalimPravimaNaListu2>
