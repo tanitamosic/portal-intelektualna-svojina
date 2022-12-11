@@ -3,7 +3,7 @@
     targetNamespace="http://localhost:3030/z1" xmlns:proj="http://localhost:3030/tipovi"
     xmlns:z1="http://localhost:3030/z1">
     <xs:import namespace="http://localhost:3030/tipovi"
-        schemaLocation="../Projekat/XML-projekat/sheme/deljeni_tipovi.xsd"/>
+        schemaLocation="deljeni_tipovi.xsd"/>
     <xs:element name="zahtev">
         <xs:complexType>
             <xs:sequence>
