@@ -84,15 +84,15 @@ public class DOMWriter {
 
 		Element postanskiBroj = document.createElementNS(IMPORT_NAMESPACE,"postanski_broj");
 		adresa.appendChild(postanskiBroj);
-		mesto.appendChild(document.createTextNode("21000"));
+		postanskiBroj.appendChild(document.createTextNode("21000"));
 
 		Element ulica = document.createElementNS(IMPORT_NAMESPACE,"ulica");
 		adresa.appendChild(ulica);
-		mesto.appendChild(document.createTextNode("Sime Milosevica"));
+		ulica.appendChild(document.createTextNode("Sime Milosevica"));
 
 		Element broj = document.createElementNS(IMPORT_NAMESPACE,"broj");
 		adresa.appendChild(broj);
-		mesto.appendChild(document.createTextNode("9a"));
+		broj.appendChild(document.createTextNode("9a"));
 
 		Element kontakt = document.createElementNS(IMPORT_NAMESPACE, "kontakt");
 		podnosilac.appendChild(kontakt);
@@ -123,15 +123,15 @@ public class DOMWriter {
 
 		Element postanskiBroj1 = document.createElementNS(Z1_NAMESPACE,"postanski_broj");
 		adresa.appendChild(postanskiBroj1);
-		mesto.appendChild(document.createTextNode("11000"));
+		postanskiBroj1.appendChild(document.createTextNode("11000"));
 
 		Element ulica1 = document.createElementNS(Z1_NAMESPACE,"ulica");
 		adresa.appendChild(ulica1);
-		mesto.appendChild(document.createTextNode("Suvoborska"));
+		ulica1.appendChild(document.createTextNode("Suvoborska"));
 
 		Element broj1 = document.createElementNS(Z1_NAMESPACE,"broj");
 		adresa.appendChild(broj1);
-		mesto.appendChild(document.createTextNode("115"));
+		broj1.appendChild(document.createTextNode("115"));
 
 		Element kontakt1 = document.createElementNS(IMPORT_NAMESPACE, "kontakt");
 		punomocnik.appendChild(kontakt1);
