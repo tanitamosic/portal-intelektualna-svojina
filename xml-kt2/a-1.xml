@@ -18,7 +18,7 @@
             <proj:pib>999999999</proj:pib>
         </lice>
     </podnosilac_zahteva>
-    <pseudonim_podnosioca redni_broj="2">Cabbage Corp</pseudonim_podnosioca>
+    <pseudonim_podnosioca redni_broj="2">21 Cabbage</pseudonim_podnosioca>
     <punomocnik redni_broj="3">
         <lice xsi:type="proj:TFizickoLice">
             <proj:adresa>
