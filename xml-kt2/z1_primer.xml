@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<z1:zahtev xmlns:proj="http://localhost:3030/tipovi"
+           xmlns:z1="http://localhost:3030/z1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://localhost:3030/z1 file:/D:/Downloads/a.%20faks/XMLiVS/Projekat/XML-projekat/sheme/z-1.xsd">
+    <z1:podnosilac xsi:type="proj:TFizickoLice">
+        <proj:adresa>
+            <proj:mesto>mesto0</proj:mesto>
+            <proj:postanski_broj>25500</proj:postanski_broj>
+            <proj:ulica>ulica0</proj:ulica>
+            <proj:broj>broj0</proj:broj>
+        </proj:adresa>
+        <proj:kontakt>
+            <proj:email>mikimikic@mock.com</proj:email>
+        </proj:kontakt>
+        <proj:ime>Miki</proj:ime>
+        <proj:prezime>Mikic</proj:prezime>
+    </z1:podnosilac>
+    <z1:punomocnik xsi:type = "proj:TPravnoLice">
+        <proj:adresa>
+            <proj:mesto>mesto1</proj:mesto>
+            <proj:postanski_broj>25500</proj:postanski_broj>
+            <proj:ulica>ulica1</proj:ulica>
+            <proj:broj>broj1</proj:broj>
+        </proj:adresa>
+        <proj:kontakt>
+            <proj:email>kontakt@mikijevaagencija.com</proj:email>
+        </proj:kontakt>
+        <proj:naziv_preduzeca>Mikijeva agencija</proj:naziv_preduzeca>
+        <proj:pib>741852963</proj:pib>
+    </z1:punomocnik>
+    <z1:podaci_o_zigu>
+        <z1:vrsta_ziga>Individualni</z1:vrsta_ziga>
+        <z1:format_ziga>Grafički</z1:format_ziga>
+        <z1:izgled_ziga>[link do slike]</z1:izgled_ziga>
+        <z1:boja>boja0</z1:boja>
+        <z1:opis>opis0</z1:opis>
+        <z1:klasa>21</z1:klasa>
+        <z1:klasa>23</z1:klasa>
+        <z1:pravo_prvenstva/>
+    </z1:podaci_o_zigu>
+    <z1:takse>
+        <z1:osnovna_taksa>1152.63</z1:osnovna_taksa>
+        <z1:za_klase>741.96</z1:za_klase>
+        <z1:za_graficko_resenje>7450.02</z1:za_graficko_resenje>
+    </z1:takse>
+    <z1:zavod>
+        <z1:prilozi>
+            <z1:prilog>Primerak znaka</z1:prilog>
+            <z1:prilog>Spisak robe i usluga</z1:prilog>
+        </z1:prilozi>
+        <z1:broj_prijave>Ж 2009/0001</z1:broj_prijave>
+        <z1:datum_podnosenja>12.12.2019.</z1:datum_podnosenja>
+    </z1:zavod>
+</z1:zahtev>
