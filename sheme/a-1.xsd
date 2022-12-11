@@ -65,7 +65,7 @@
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
-                                <xs:attribute fixed="6" ref="redni_broj" use="required"/>
+                                <xs:attribute fixed="6" name="redni_broj" type="xs:int"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
