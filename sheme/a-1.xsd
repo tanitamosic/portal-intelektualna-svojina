@@ -111,8 +111,9 @@
                 <xs:element minOccurs="0" name="prilozi_uz_zahtev">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="opis_dela" type="xs:string"/>
-                            <xs:element name="format_primera" type="xs:string"/>
+                            <xs:element name="opis_dela" type="xs:string" minOccurs="0"/>
+                            <xs:element name="format_primera" type="xs:string" minOccurs="0"/>
+                            <xs:element minOccurs="0" name="naziv_fajla" type="xs:string"/>
                         </xs:sequence>
                         <xs:attribute fixed="12" name="redni_broj" type="xs:int" use="required"/>
                     </xs:complexType>
