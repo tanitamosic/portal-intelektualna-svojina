@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zahtev xmlns:proj="http://localhost:3030/tipovi"
+ xmlns:a-1="https://localhost:3030/a-1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="file:./a-1.xsd" sifra="A-0001">
+    <podnosilac_zahteva redni_broj="1">
+        <lice xsi:type="proj:TPravnoLice">
+            <proj:adresa>
+                <proj:mesto>Jupiter</proj:mesto>
+                <proj:postanski_broj>24000</proj:postanski_broj>
+                <proj:ulica>Great Red Spot</proj:ulica>
+                <proj:broj>42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:email>contact@cabbage.corp</proj:email>
+            </proj:kontakt>
+            <proj:naziv_preduzeca>Cabbage Corp Ltd.</proj:naziv_preduzeca>
+            <proj:pib>999999999</proj:pib>
+        </lice>
+    </podnosilac_zahteva>
+    <pseudonim_podnosioca redni_broj="2">21 Cabbage</pseudonim_podnosioca>
+    <punomocnik redni_broj="3">
+        <lice xsi:type="proj:TFizickoLice">
+            <proj:adresa>
+                <proj:mesto>Novi Sad</proj:mesto>
+                <proj:postanski_broj>21000</proj:postanski_broj>
+                <proj:ulica>Kraljevica Marka</proj:ulica>
+                <proj:broj>12/42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:telefon>+381656524299</proj:telefon>
+                <proj:email>petar.kupusarevic@gmail.com</proj:email>
+            </proj:kontakt>
+            <proj:ime>Petar</proj:ime>
+            <proj:prezime>Kupusarevic</proj:prezime>
+        </lice>
+    </punomocnik>
+    <naslov_dela redni_broj="4">How to scam people</naslov_dela>
+    <vrsta_dela redni_broj="6">Informaciono</vrsta_dela>
+    <forma_dela redni_broj="7">Knjiga</forma_dela>
+    <podaci_o_autoru redni_broj="8">
+        <autor>
+            <proj:adresa>
+                <proj:mesto>Novi Sad</proj:mesto>
+                <proj:postanski_broj>21000</proj:postanski_broj>
+                <proj:ulica>Kraljevica Marka</proj:ulica>
+                <proj:broj>12/42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:telefon>+381656524299</proj:telefon>
+                <proj:email>petar.kupusarevic@gmail.com</proj:email>
+            </proj:kontakt>
+            <proj:ime>Petar</proj:ime>
+            <proj:prezime>Kupusarevic</proj:prezime>
+        </autor>
+        <autor>
+            <proj:adresa>
+                <proj:mesto>Novi Sad</proj:mesto>
+                <proj:postanski_broj>21000</proj:postanski_broj>
+                <proj:ulica>Kraljevica Marka</proj:ulica>
+                <proj:broj>12/42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:email>petrov_drug_pauk@gmail.com</proj:email>
+            </proj:kontakt>
+            <proj:ime>Pauk</proj:ime>
+            <proj:prezime>Kupusarevic</proj:prezime>
+            <godina_smrti>2022</godina_smrti>
+        </autor>
+    </podaci_o_autoru>
+    <nacin_koriscenja_dela redni_broj="10">Citati.... naravno..</nacin_koriscenja_dela>
+    <datum_podnosenja_zahteva>11.12.2022.</datum_podnosenja_zahteva>
+</zahtev>

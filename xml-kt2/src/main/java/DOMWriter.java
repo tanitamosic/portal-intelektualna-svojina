@@ -70,7 +70,7 @@ public class DOMWriter {
 
 		Element zahtev = document.createElementNS(Z1_NAMESPACE, "zahtev");
 		document.appendChild(zahtev);
-		zahtev.setAttributeNS(XSI_NAMESPACE, "xsi:schemaLocation", "http://localhost:3030/z1 ./z1.xsd");
+		zahtev.setAttributeNS(XSI_NAMESPACE, "xsi:schemaLocation", "http://localhost:3030/z1 ./z-1.xsd");
 
 		// PODNOSILAC
 		Element podnosilac = document.createElementNS(Z1_NAMESPACE, "podnosilac");
@@ -85,15 +85,15 @@ public class DOMWriter {
 
 		Element postanskiBroj = document.createElementNS(IMPORT_NAMESPACE,"postanski_broj");
 		adresa.appendChild(postanskiBroj);
-		mesto.appendChild(document.createTextNode("21000"));
+		postanskiBroj.appendChild(document.createTextNode("21000"));
 
 		Element ulica = document.createElementNS(IMPORT_NAMESPACE,"ulica");
 		adresa.appendChild(ulica);
-		mesto.appendChild(document.createTextNode("Sime Milosevica"));
+		ulica.appendChild(document.createTextNode("Sime Milosevica"));
 
 		Element broj = document.createElementNS(IMPORT_NAMESPACE,"broj");
 		adresa.appendChild(broj);
-		mesto.appendChild(document.createTextNode("9a"));
+		broj.appendChild(document.createTextNode("9a"));
 
 		Element kontakt = document.createElementNS(IMPORT_NAMESPACE, "kontakt");
 		podnosilac.appendChild(kontakt);
@@ -124,15 +124,15 @@ public class DOMWriter {
 
 		Element postanskiBroj1 = document.createElementNS(Z1_NAMESPACE,"postanski_broj");
 		adresa.appendChild(postanskiBroj1);
-		mesto.appendChild(document.createTextNode("11000"));
+		postanskiBroj1.appendChild(document.createTextNode("11000"));
 
 		Element ulica1 = document.createElementNS(Z1_NAMESPACE,"ulica");
 		adresa.appendChild(ulica1);
-		mesto.appendChild(document.createTextNode("Suvoborska"));
+		ulica1.appendChild(document.createTextNode("Suvoborska"));
 
 		Element broj1 = document.createElementNS(Z1_NAMESPACE,"broj");
 		adresa.appendChild(broj1);
-		mesto.appendChild(document.createTextNode("115"));
+		broj1.appendChild(document.createTextNode("115"));
 
 		Element kontakt1 = document.createElementNS(IMPORT_NAMESPACE, "kontakt");
 		punomocnik.appendChild(kontakt1);
@@ -395,6 +395,185 @@ public class DOMWriter {
 		Element podaciOOstalimPravimaNaListu2 = document.createElementNS(P1_NAMESPACE, "podaciOOstalimPravimaNaListu2");
 		podaciOOstalimPravimaNaListu2.appendChild(document.createTextNode("false"));
 		zahtevZaPriznanjePrava.appendChild(podaciOOstalimPravimaNaListu2);
+		return document;
+	}
+
+	public Document generateA1(){
+		createDocument();
+
+		Element zahtev = document.createElement("zahtev");
+
+		zahtev.setAttribute("xmlns:proj","http://localhost:3030/tipovi");
+		zahtev.setAttribute("xmlns:a-1","http://localhost:3030/a-1");
+		zahtev.setAttribute("xmlns:xsi","http://www.w3.org/2001/XMLSchema-instance");
+		zahtev.setAttribute("xsi:noNamespaceSchemaLocation","file:./a-1.xsd");
+		zahtev.setAttribute("sifra","A-0001");
+
+		document.appendChild(zahtev);
+
+		Element podnosilac_zahteva = document.createElement("podnosilac_zahteva");
+		podnosilac_zahteva.setAttribute("redni_broj","1");
+		Element podnosilac_zahteva_lice = document.createElement("lice");
+		podnosilac_zahteva_lice.setAttribute("xsi:type","proj:TPravnoLice");
+		Element podnosilac_zahteva_lice_adresa = document.createElement("proj:adresa");
+		Element podnosilac_zahteva_lice_adresa_mesto = document.createElement("proj:mesto");
+		podnosilac_zahteva_lice_adresa_mesto.setTextContent("Jupiter");
+		Element podnosilac_zahteva_lice_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		podnosilac_zahteva_lice_adresa_postanski_broj.setTextContent("24000");
+		Element podnosilac_zahteva_lice_adresa_ulica = document.createElement("proj:ulica");
+		podnosilac_zahteva_lice_adresa_ulica.setTextContent("Great Red Spot");
+		Element podnosilac_zahteva_lice_adresa_broj = document.createElement("proj:broj");
+		podnosilac_zahteva_lice_adresa_broj.setTextContent("42");
+		podnosilac_zahteva_lice_adresa.appendChild(podnosilac_zahteva_lice_adresa_mesto);
+		podnosilac_zahteva_lice_adresa.appendChild(podnosilac_zahteva_lice_adresa_postanski_broj);
+		podnosilac_zahteva_lice_adresa.appendChild(podnosilac_zahteva_lice_adresa_ulica);
+		podnosilac_zahteva_lice_adresa.appendChild(podnosilac_zahteva_lice_adresa_broj);
+		Element podnosilac_zahteva_lice_kontakt = document.createElement("proj:kontakt");
+		Element podnosilac_zahteva_lice_kontakt_email = document.createElement("proj:email");
+		podnosilac_zahteva_lice_kontakt_email.setTextContent("contact@cabbage.corp");
+		podnosilac_zahteva_lice_kontakt.appendChild(podnosilac_zahteva_lice_kontakt_email);
+		Element podnosilac_zahteva_lice_naziv_preduzeca = document.createElement("proj:naziv_preduzeca");
+		podnosilac_zahteva_lice_naziv_preduzeca.setTextContent("Cabbage Corp Ltd.");
+		Element podnosilac_zahteva_lice_pib = document.createElement("proj:pib");
+		podnosilac_zahteva_lice_pib.setTextContent("999999999");
+		podnosilac_zahteva_lice.appendChild(podnosilac_zahteva_lice_adresa);
+		podnosilac_zahteva_lice.appendChild(podnosilac_zahteva_lice_kontakt);
+		podnosilac_zahteva_lice.appendChild(podnosilac_zahteva_lice_naziv_preduzeca);
+		podnosilac_zahteva_lice.appendChild(podnosilac_zahteva_lice_pib);
+		podnosilac_zahteva.appendChild(podnosilac_zahteva_lice);
+
+
+
+		Element pseudonim_podnosioca = document.createElement("pseudonim_podnosioca");
+		pseudonim_podnosioca.setAttribute("redni_broj","2");
+		pseudonim_podnosioca.setTextContent("21 Cabbage");
+
+
+		Element punomocnik = document.createElement("punomocnik");
+		punomocnik.setAttribute("redni_broj","3");
+		Element punomocnik_lice = document.createElement("lice");
+		punomocnik_lice.setAttribute("xsi:type","proj:TFizickoLice");
+		Element punomocnik_lice_adresa = document.createElement("proj:adresa");
+		Element punomocnik_lice_adresa_mesto = document.createElement("proj:mesto");
+		punomocnik_lice_adresa_mesto.setTextContent("Novi Sad");
+		Element punomocnik_lice_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		punomocnik_lice_adresa_postanski_broj.setTextContent("21000");
+		Element punomocnik_lice_adresa_ulica = document.createElement("proj:ulica");
+		punomocnik_lice_adresa_ulica.setTextContent("Kraljevica Marka");
+		Element punomocnik_lice_adresa_broj = document.createElement("proj:broj");
+		punomocnik_lice_adresa_broj.setTextContent("12/42");
+		punomocnik_lice_adresa.appendChild(punomocnik_lice_adresa_mesto);
+		punomocnik_lice_adresa.appendChild(punomocnik_lice_adresa_postanski_broj);
+		punomocnik_lice_adresa.appendChild(punomocnik_lice_adresa_ulica);
+		punomocnik_lice_adresa.appendChild(punomocnik_lice_adresa_broj);
+		Element punomocnik_lice_kontakt = document.createElement("proj:kontakt");
+		Element punomocnik_lice_kontakt_telefon = document.createElement("proj:telefon");
+		punomocnik_lice_kontakt_telefon.setTextContent("+381656524299");
+		Element punomocnik_lice_kontakt_email = document.createElement("proj:email");
+		punomocnik_lice_kontakt_email.setTextContent("petar.kupusarevic@gmail.com");
+		punomocnik_lice_kontakt.appendChild(punomocnik_lice_kontakt_telefon);
+		punomocnik_lice_kontakt.appendChild(punomocnik_lice_kontakt_email);
+		Element punomocnik_lice_ime = document.createElement("proj:ime");
+		punomocnik_lice_ime.setTextContent("Petar");
+		Element punomocnik_lice_prezime = document.createElement("proj:prezime");
+		punomocnik_lice_prezime.setTextContent("Kupusarevic");
+		punomocnik_lice.appendChild(punomocnik_lice_adresa);
+		punomocnik_lice.appendChild(punomocnik_lice_kontakt);
+		punomocnik_lice.appendChild(punomocnik_lice_ime);
+		punomocnik_lice.appendChild(punomocnik_lice_prezime);
+		punomocnik.appendChild(punomocnik_lice);
+
+
+		Element naslov_dela = document.createElement("naslov_dela");
+		naslov_dela.setAttribute("redni_broj","4");
+		naslov_dela.setTextContent("How to scam people");
+
+		Element vrsta_dela = document.createElement("vrsta_dela");
+		vrsta_dela.setAttribute("redni_broj","6");
+		vrsta_dela.setTextContent("Informaciono");
+
+		Element forma_dela = document.createElement("forma_dela");
+		forma_dela.setAttribute("redni_broj","7");
+		forma_dela.setTextContent("Knjiga");
+
+		Element podaci_o_autoru = document.createElement("podaci_o_autoru");
+		podaci_o_autoru.setAttribute("redni_broj","8");
+		Element podaci_o_autoru_autor1 = document.createElement("autor");
+		Element podaci_o_autoru_autor1_adresa = document.createElement("proj:adresa");
+		Element podaci_o_autoru_autor1_adresa_mesto = document.createElement("proj:mesto");
+		podaci_o_autoru_autor1_adresa_mesto.setTextContent("Novi Sad");
+		Element podaci_o_autoru_autor1_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		podaci_o_autoru_autor1_adresa_postanski_broj.setTextContent("21000");
+		Element podaci_o_autoru_autor1_adresa_ulica = document.createElement("proj:ulica");
+		podaci_o_autoru_autor1_adresa_ulica.setTextContent("Kraljevica Marka");
+		Element podaci_o_autoru_autor1_adresa_broj = document.createElement("proj:broj");
+		podaci_o_autoru_autor1_adresa_broj.setTextContent("12/42");
+		podaci_o_autoru_autor1_adresa.appendChild(podaci_o_autoru_autor1_adresa_mesto);
+		podaci_o_autoru_autor1_adresa.appendChild(podaci_o_autoru_autor1_adresa_postanski_broj);
+		podaci_o_autoru_autor1_adresa.appendChild(podaci_o_autoru_autor1_adresa_ulica);
+		podaci_o_autoru_autor1_adresa.appendChild(podaci_o_autoru_autor1_adresa_broj);
+		Element podaci_o_autoru_autor1_kontakt = document.createElement("proj:kontakt");
+		Element podaci_o_autoru_autor1_kontakt_telefon = document.createElement("proj:telefon");
+		podaci_o_autoru_autor1_kontakt_telefon.setTextContent("+381656524299");
+		Element podaci_o_autoru_autor1_kontakt_email = document.createElement("proj:email");
+		podaci_o_autoru_autor1_kontakt_email.setTextContent("petar.kupusarevic@gmail.com");
+		podaci_o_autoru_autor1_kontakt.appendChild(podaci_o_autoru_autor1_kontakt_telefon);
+		podaci_o_autoru_autor1_kontakt.appendChild(podaci_o_autoru_autor1_kontakt_email);
+		Element podaci_o_autoru_autor1_ime = document.createElement("proj:ime");
+		podaci_o_autoru_autor1_ime.setTextContent("Petar");
+		Element podaci_o_autoru_autor1_prezime = document.createElement("proj:prezime");
+		podaci_o_autoru_autor1_prezime.setTextContent("Kupusarevic");
+		podaci_o_autoru_autor1.appendChild(podaci_o_autoru_autor1_adresa);
+		podaci_o_autoru_autor1.appendChild(podaci_o_autoru_autor1_kontakt);
+		podaci_o_autoru_autor1.appendChild(podaci_o_autoru_autor1_ime);
+		podaci_o_autoru_autor1.appendChild(podaci_o_autoru_autor1_prezime);
+		podaci_o_autoru.appendChild(podaci_o_autoru_autor1);
+		Element podaci_o_autoru_autor2 = document.createElement("autor");
+		Element podaci_o_autoru_autor2_adresa = document.createElement("proj:adresa");
+		Element podaci_o_autoru_autor2_adresa_mesto = document.createElement("proj:mesto");
+		podaci_o_autoru_autor2_adresa_mesto.setTextContent("Novi Sad");
+		Element podaci_o_autoru_autor2_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		podaci_o_autoru_autor2_adresa_postanski_broj.setTextContent("21000");
+		Element podaci_o_autoru_autor2_adresa_ulica = document.createElement("proj:ulica");
+		podaci_o_autoru_autor2_adresa_ulica.setTextContent("Kraljevica Marka");
+		Element podaci_o_autoru_autor2_adresa_broj = document.createElement("proj:broj");
+		podaci_o_autoru_autor2_adresa_broj.setTextContent("12/42");
+		podaci_o_autoru_autor2_adresa.appendChild(podaci_o_autoru_autor2_adresa_mesto);
+		podaci_o_autoru_autor2_adresa.appendChild(podaci_o_autoru_autor2_adresa_postanski_broj);
+		podaci_o_autoru_autor2_adresa.appendChild(podaci_o_autoru_autor2_adresa_ulica);
+		podaci_o_autoru_autor2_adresa.appendChild(podaci_o_autoru_autor2_adresa_broj);
+		Element podaci_o_autoru_autor2_kontakt = document.createElement("proj:kontakt");
+		Element podaci_o_autoru_autor2_kontakt_email = document.createElement("proj:email");
+		podaci_o_autoru_autor2_kontakt_email.setTextContent("petrov_drug_pauk@gmail.com");
+		podaci_o_autoru_autor2_kontakt.appendChild(podaci_o_autoru_autor2_kontakt_email);
+		Element podaci_o_autoru_autor2_ime = document.createElement("proj:ime");
+		podaci_o_autoru_autor2_ime.setTextContent("Pauk");
+		Element podaci_o_autoru_autor2_prezime = document.createElement("proj:prezime");
+		podaci_o_autoru_autor2_prezime.setTextContent("Kupusarevic");
+		podaci_o_autoru_autor2.appendChild(podaci_o_autoru_autor2_adresa);
+		podaci_o_autoru_autor2.appendChild(podaci_o_autoru_autor2_kontakt);
+		podaci_o_autoru_autor2.appendChild(podaci_o_autoru_autor2_ime);
+		podaci_o_autoru_autor2.appendChild(podaci_o_autoru_autor2_prezime);
+		podaci_o_autoru.appendChild(podaci_o_autoru_autor2);
+
+
+
+		Element nacin_koriscenja_dela = document.createElement("nacin_koriscenja_dela");
+		nacin_koriscenja_dela.setAttribute("redni_broj","10");
+		nacin_koriscenja_dela.setTextContent("Citati.... naravno..");
+
+		Element datum_podnosenja_zahteva = document.createElement("datum_podnosenja_zahteva");
+		datum_podnosenja_zahteva.setTextContent("11.12.2022.");
+
+		zahtev.appendChild(podaci_o_autoru);
+		zahtev.appendChild(pseudonim_podnosioca);
+		zahtev.appendChild(punomocnik);
+		zahtev.appendChild(naslov_dela);
+		zahtev.appendChild(vrsta_dela);
+		zahtev.appendChild(forma_dela);
+		zahtev.appendChild(podaci_o_autoru);
+		zahtev.appendChild(nacin_koriscenja_dela);
+		zahtev.appendChild(datum_podnosenja_zahteva);
 
 
 		return document;
