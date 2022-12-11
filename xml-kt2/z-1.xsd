@@ -2,8 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://localhost:3030/z1" xmlns:proj="http://localhost:3030/tipovi"
     xmlns:z1="http://localhost:3030/z1">
-    <xs:import namespace="http://localhost:3030/tipovi"
-        schemaLocation="../Projekat/XML-projekat/sheme/deljeni_tipovi.xsd"/>
+    <xs:import namespace="http://localhost:3030/tipovi" schemaLocation="../sheme/deljeni_tipovi.xsd"/>
     <xs:element name="zahtev">
         <xs:complexType>
             <xs:sequence>
@@ -13,7 +12,16 @@
                 <xs:element name="podaci_o_zigu">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="vrsta_ziga" type="z1:TVrstaZiga"> </xs:element>
+                            <xs:element name="vrsta_ziga">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="z1:TVrstaZiga">
+                                            <xs:attribute fixed="4" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element name="format_ziga">
                                 <xs:complexType>
                                     <xs:simpleContent>
@@ -99,12 +107,19 @@
                             <xs:element name="za_klase" type="xs:float"/>
                             <xs:element name="za_graficko_resenje" type="xs:float"/>
                         </xs:sequence>
+                        <xs:attribute fixed="11" name="redni_broj" type="xs:int"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="zavod">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element maxOccurs="7" name="prilog" type="z1:TPrilozi"/>
+                            <xs:element maxOccurs="1" name="prilozi">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="7" name="prilog" type="z1:TPrilozi"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element name="broj_prijave">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
