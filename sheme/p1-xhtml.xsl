@@ -143,7 +143,6 @@
                        
                         <xsl:for-each select = "zahtev/formaPodnosioca/zahtevZaPriznanjePrava/prijave/ranijaPrijava">
                             <tr> 
-                                <xsl:value-of select="@broj"/>
                                 <td><xsl:value-of select = "datum"/></td> 
                                 <td><xsl:value-of select = "brojPrijave" separator="&#xA;"/></td> 
                                 <td><xsl:value-of select = "drzavaIliOrganizacija" separator="&#xA;"/></td>

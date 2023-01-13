@@ -30,6 +30,35 @@
                         padding="10px">
                         Zahtev za priznanje patenta
                     </fo:block>
+                    
+                    <fo:table table-layout="fixed" width="75%" font-family="sans-serif"
+                        margin="10px auto 10px auto" border="3px solid black">
+                        <fo:table-column column-width="25%" />
+                        <fo:table-column column-width="25%" />
+                        <fo:table-column column-width="25%" />
+                        <fo:table-body>
+                            <fo:table-row>
+                                <fo:table-cell padding="7px" number-columns-spanned="2" font-weight="bold"><fo:block>Popunjava zavod</fo:block></fo:table-cell>
+                            </fo:table-row>
+                            <fo:table-row>
+                                <fo:table-cell padding="7px" number-columns-spanned="2"><fo:block>Broj prijave</fo:block></fo:table-cell>
+                                <fo:table-cell padding="7px"><fo:block><xsl:value-of select="zahtev/zavod/formaZaZavod/brojPrijave"/></fo:block></fo:table-cell>
+                            </fo:table-row>
+                            <fo:table-row>
+                                <fo:table-cell padding="7px" number-columns-spanned="2"><fo:block>Datum prijema</fo:block></fo:table-cell>
+                                <fo:table-cell padding="7px"><fo:block><xsl:value-of select="zahtev/zavod/formaZaZavod/datumPrijema"/></fo:block></fo:table-cell>
+                            </fo:table-row>
+                            <fo:table-row>
+                                <fo:table-cell padding="7px" number-columns-spanned="2"><fo:block>Datum podnosenja</fo:block></fo:table-cell>
+                                <fo:table-cell padding="7px"><fo:block><xsl:value-of select="zahtev/zavod/formaZaZavod/datumPodnosenja"/></fo:block></fo:table-cell>
+                            </fo:table-row>
+                        </fo:table-body>
+                        
+                    </fo:table>
+                    <fo:block margin="50px auto 50px auto">
+                        <xsl:value-of select="zahtev/zavod/podaciOZavodu/institucija"/><xsl:text>&#xA;&#xd;</xsl:text>
+                        <xsl:value-of select="zahtev/zavod/podaciOZavodu/proj:adresa/*" separator=",&#xa;&#xd;"/>
+                    </fo:block>
 
                     <fo:block>
                         <fo:table table-layout="fixed" width="100%" font-family="sans-serif"
@@ -208,22 +237,22 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:for-each
-                                    select="zahtev/formaPodnosioca/zahtevZaPriznanjePrava/prijave">
+                                    select="zahtev/formaPodnosioca/zahtevZaPriznanjePrava/prijave/ranijaPrijava">
                                     <fo:table-row>
                                         <fo:table-cell padding="7px" border-bottom="1px solid black" border-right="1px solid black">
                                             <fo:block>
-                                                <xsl:value-of select="ranijaPrijava/datum" />
+                                                <xsl:value-of select="datum" />
                                             </fo:block>
                                         </fo:table-cell>
                                         <fo:table-cell padding="7px" border-bottom="1px solid black" border-right="1px solid black">
                                             <fo:block>
-                                                <xsl:value-of select="ranijaPrijava/brojPrijave" />
+                                                <xsl:value-of select="brojPrijave" />
                                             </fo:block>
                                         </fo:table-cell>
                                         <fo:table-cell padding="7px" number-columns-spanned="2" border-bottom="1px solid black">
                                             <fo:block>
                                                 <xsl:value-of
-                                                    select="ranijaPrijava/drzavaIliOrganizacija" />
+                                                    select="drzavaIliOrganizacija" />
                                             </fo:block>
                                         </fo:table-cell>
                                     </fo:table-row>
