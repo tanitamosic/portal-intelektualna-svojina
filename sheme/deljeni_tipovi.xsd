@@ -68,7 +68,7 @@
     </xs:simpleType>
     <xs:simpleType name="TTelefon">
         <xs:restriction base="xs:string">
-            <xs:pattern value="(\+,)"/>
+            <xs:pattern value="\d{9,10}"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="TDatum">

@@ -2,7 +2,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     xmlns:proj="http://localhost:3030/tipovi"
     xmlns:zpp="http://localhost:3030/zahtev_za_priznanje_patenta">
-
     <xs:import namespace="http://localhost:3030/tipovi" schemaLocation="deljeni_tipovi.xsd"/>
     <xs:element name="zahtev">
         <xs:complexType>
@@ -89,15 +88,14 @@
                                         <xs:element name="prijave">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="ranijaPrijava1"
-                                                  type="TRanijaPrijava"/>
-                                                  <xs:element name="ranijaPrijava2"
-                                                  type="TRanijaPrijava"/>
+                                                  <xs:element name="ranijaPrijava"
+                                                  type="TRanijaPrijava" maxOccurs="unbounded"
+                                                  minOccurs="0"/>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
                                         <xs:element name="podaciOOstalimPravimaNaListu2"
-                                            type="xs:boolean"/>
+                                            type="xs:boolean" default="true"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -115,6 +113,7 @@
             <xs:element name="brojPrijave" type="TBrojPrijave"/>
             <xs:element name="drzavaIliOrganizacija" type="xs:string"/>
         </xs:sequence>
+        <xs:attribute name="broj" type="xs:nonNegativeInteger" use="required"/>
     </xs:complexType>
     <xs:simpleType name="TBrojPrijave">
         <xs:restriction base="xs:string">
