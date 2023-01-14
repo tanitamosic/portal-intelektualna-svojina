@@ -65,17 +65,16 @@ public class XmlTransformer {
     }
 
     public static void main(String[] args) {
-        XmlTransformer transformer = new XmlTransformer();
-        try {
+//        XmlTransformer transformer = new XmlTransformer();
+//        try {
 //            transformer.createXHTML("/home/mihajlo/XML-projekat/sheme/p-1.xsl", "/home/mihajlo/XML-projekat/sheme/instance-p11.xml", "./result.xhtml");
-            transformer.convertToPdf("/home/mihajlo/XML-projekat/sheme/p1-pdf.xsl", "/home/mihajlo/XML-projekat/sheme/instance-p11.xml", "./result.pdf");
-        } catch (TransformerException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        } catch (SAXException ex) {
-            throw new RuntimeException(ex);
-        }
+//            transformer.convertToPdf("/home/mihajlo/XML-projekat/sheme/p1-pdf.xsl", "/home/mihajlo/XML-projekat/sheme/instance-p11.xml", "./result.pdf");
+//        } catch (TransformerException e) {
+//            e.printStackTrace();
+//        } catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        } catch (SAXException ex) {
+//            throw new RuntimeException(ex);
+//        }
     }
 }
