@@ -19,6 +19,7 @@ public class FusekiReader {
     private FusekiReader() {
     }
 
+    //                                              "<%hobby>", "chess"
     public static ArrayList<String> executeQuery(Map<String,String> params) throws IOException {
         AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties();
         String sparqlQueryTemplate = readFile(QUERY_FILEPATH, StandardCharsets.UTF_8);
