@@ -1,0 +1,11 @@
+PREFIX pred: <http://www.xmlsux.com/predicate/>
+
+SELECT ?vrsta_dela ?naziv_dela ?pseudonim ?forma_dela
+FROM <http://localhost:8081/fuseki/Metadata/data/Metadata>
+WHERE {
+  ?z pred:naziv_dela <%naziv_dela>^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral> ;
+     pred:forma_dela ?forma_dela ;
+     pred:naziv_dela ?naziv_dela ;
+     pred:vrsta_dela ?vrsta_dela ;
+     pred:pseudonim_podnosioca ?pseudonim .
+}
