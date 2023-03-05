@@ -1,0 +1,74 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+<rdf:Description rdf:about="pred:podnosilac_zahteva">
+<pred:is_podnosilac xmlns:pred="http://www.xmlsux.com/predicate/" rdf:resource="pred:podnosilac_zahteva"/>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilac_zahteva">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="string">Jupiter</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilac_zahteva">
+<pred:naziv_preduzeca xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="string">Cabbage Corp Ltd.</pred:naziv_preduzeca>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilac_zahteva">
+<pred:pib xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">999999999</pred:pib>
+</rdf:Description>
+<rdf:Description rdf:about="pred:zahtev">
+<pred:pseudonim_podnosioca xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">21 Cabbage</pred:pseudonim_podnosioca>
+</rdf:Description>
+<rdf:Description rdf:about="pred:punomocnik">
+<pred:is_punomocnik xmlns:pred="http://www.xmlsux.com/predicate/" rdf:resource="pred:punomocnik"/>
+</rdf:Description>
+<rdf:Description rdf:about="pred:punomocnik">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Novi Sad</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:punomocnik">
+<pred:telefon xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">+381656524299</pred:telefon>
+</rdf:Description>
+<rdf:Description rdf:about="pred:punomocnik">
+<pred:email xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">petar.kupusarevic@gmail.com</pred:email>
+</rdf:Description>
+<rdf:Description rdf:about="pred:punomocnik">
+<pred:ime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Petar</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:punomocnik">
+<pred:prezime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Kupusarevic</pred:prezime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:zahtev">
+<pred:naziv_dela xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">How to scam people</pred:naziv_dela>
+</rdf:Description>
+<rdf:Description rdf:about="pred:zahtev">
+<pred:vrsta_dela xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Informaciono</pred:vrsta_dela>
+</rdf:Description>
+<rdf:Description rdf:about="pred:zahtev">
+<pred:forma_dela xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Knjiga</pred:forma_dela>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor1">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Novi Sad</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor1">
+<pred:telefon xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">+381656524299</pred:telefon>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor1">
+<pred:email xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">petar.kupusarevic@gmail.com</pred:email>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor1">
+<pred:ime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Petar</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor1">
+<pred:prezime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Kupusarevic</pred:prezime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor2">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Novi Sad</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor2">
+<pred:email xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">petrov_drug_pauk@gmail.com</pred:email>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor2">
+<pred:ime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Pauk</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:autor2">
+<pred:ime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Kupusarevic</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:zahtev">
+<pred:datum xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="date">11.12.2022.</pred:datum>
+</rdf:Description>
+</rdf:RDF>

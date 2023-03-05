@@ -1,3 +1,5 @@
+package com.xmlprojekat.dom;
+
 import java.io.OutputStream;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -28,34 +30,34 @@ public class DOMWriter {
 	private static String IMPORT_NAMESPACE = "http://localhost:3030/tipovi";
 
 	private static String XSI_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
-	
+
 	private static DocumentBuilderFactory factory;
-	
+
 	private static TransformerFactory transformerFactory;
-	
+
 	private Document document;
-	
+
 	/*
 	 * Factory initialization static-block
 	 */
 	static {
 		factory = DocumentBuilderFactory.newInstance();
-		
+
 		transformerFactory = TransformerFactory.newInstance();
 	}
-	
+
 	/**
 	 * Generates document object model for a given XML file.
 	 */
 	public void createDocument() {
 
 		try {
-			
+
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			
+
 			// Kreiranje novog dokumenta 
-			document = builder.newDocument(); 
-			
+			document = builder.newDocument();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,7 +67,7 @@ public class DOMWriter {
 	 * Generates sample document object model
 	 * programmatically using DOM API methods.
 	 */
-	public Document generateZ1(){
+	public Document generateZ1() {
 		createDocument();
 
 		Element zahtev = document.createElementNS(Z1_NAMESPACE, "zahtev");
@@ -79,19 +81,19 @@ public class DOMWriter {
 		Element adresa = document.createElementNS(IMPORT_NAMESPACE, "adresa");
 		podnosilac.appendChild(adresa);
 
-		Element mesto = document.createElementNS(IMPORT_NAMESPACE,"mesto");
+		Element mesto = document.createElementNS(IMPORT_NAMESPACE, "mesto");
 		adresa.appendChild(mesto);
 		mesto.appendChild(document.createTextNode("Novi Sad"));
 
-		Element postanskiBroj = document.createElementNS(IMPORT_NAMESPACE,"postanski_broj");
+		Element postanskiBroj = document.createElementNS(IMPORT_NAMESPACE, "postanski_broj");
 		adresa.appendChild(postanskiBroj);
 		postanskiBroj.appendChild(document.createTextNode("21000"));
 
-		Element ulica = document.createElementNS(IMPORT_NAMESPACE,"ulica");
+		Element ulica = document.createElementNS(IMPORT_NAMESPACE, "ulica");
 		adresa.appendChild(ulica);
 		ulica.appendChild(document.createTextNode("Sime Milosevica"));
 
-		Element broj = document.createElementNS(IMPORT_NAMESPACE,"broj");
+		Element broj = document.createElementNS(IMPORT_NAMESPACE, "broj");
 		adresa.appendChild(broj);
 		broj.appendChild(document.createTextNode("9a"));
 
@@ -118,19 +120,19 @@ public class DOMWriter {
 		Element adresa1 = document.createElementNS(IMPORT_NAMESPACE, "adresa");
 		punomocnik.appendChild(adresa);
 
-		Element mesto1 = document.createElementNS(Z1_NAMESPACE,"mesto");
+		Element mesto1 = document.createElementNS(Z1_NAMESPACE, "mesto");
 		adresa.appendChild(mesto1);
 		mesto.appendChild(document.createTextNode("Beograd"));
 
-		Element postanskiBroj1 = document.createElementNS(Z1_NAMESPACE,"postanski_broj");
+		Element postanskiBroj1 = document.createElementNS(Z1_NAMESPACE, "postanski_broj");
 		adresa.appendChild(postanskiBroj1);
 		postanskiBroj1.appendChild(document.createTextNode("11000"));
 
-		Element ulica1 = document.createElementNS(Z1_NAMESPACE,"ulica");
+		Element ulica1 = document.createElementNS(Z1_NAMESPACE, "ulica");
 		adresa.appendChild(ulica1);
 		ulica1.appendChild(document.createTextNode("Suvoborska"));
 
-		Element broj1 = document.createElementNS(Z1_NAMESPACE,"broj");
+		Element broj1 = document.createElementNS(Z1_NAMESPACE, "broj");
 		adresa.appendChild(broj1);
 		broj1.appendChild(document.createTextNode("115"));
 
@@ -140,7 +142,7 @@ public class DOMWriter {
 		Element email1 = document.createElementNS(IMPORT_NAMESPACE, "email");
 		kontakt.appendChild(document.createTextNode("kontakt@mikijevaagenicija.com"));
 		kontakt.appendChild(email1);
-		
+
 		Element naziv = document.createElementNS(IMPORT_NAMESPACE, "naziv_preduzeca");
 		naziv.appendChild(document.createTextNode("Mikijeva agencija"));
 		punomocnik.appendChild(naziv);
@@ -189,7 +191,7 @@ public class DOMWriter {
 		Element takse = document.createElementNS(Z1_NAMESPACE, "takse");
 		zahtev.appendChild(takse);
 
-		Element osnovna = document.createElementNS(Z1_NAMESPACE,"osnovna_taksa");
+		Element osnovna = document.createElementNS(Z1_NAMESPACE, "osnovna_taksa");
 		osnovna.appendChild(document.createTextNode("741.23"));
 		takse.appendChild(osnovna);
 
@@ -232,19 +234,19 @@ public class DOMWriter {
 		Element adresa = document.createElementNS(IMPORT_NAMESPACE, "adresa");
 		parentNode.appendChild(adresa);
 
-		Element mesto = document.createElementNS(IMPORT_NAMESPACE,"mesto");
+		Element mesto = document.createElementNS(IMPORT_NAMESPACE, "mesto");
 		adresa.appendChild(mesto);
 		mesto.appendChild(document.createTextNode(city));
 
-		Element postanskiBroj = document.createElementNS(IMPORT_NAMESPACE,"postanski_broj");
+		Element postanskiBroj = document.createElementNS(IMPORT_NAMESPACE, "postanski_broj");
 		adresa.appendChild(postanskiBroj);
 		postanskiBroj.appendChild(document.createTextNode(postNumber));
 
-		Element ulica = document.createElementNS(IMPORT_NAMESPACE,"ulica");
+		Element ulica = document.createElementNS(IMPORT_NAMESPACE, "ulica");
 		adresa.appendChild(ulica);
 		ulica.appendChild(document.createTextNode(street));
 
-		Element broj = document.createElementNS(IMPORT_NAMESPACE,"broj");
+		Element broj = document.createElementNS(IMPORT_NAMESPACE, "broj");
 		adresa.appendChild(broj);
 		broj.appendChild(document.createTextNode(streetNumber));
 
@@ -260,7 +262,7 @@ public class DOMWriter {
 		kontakt.appendChild(email);
 	}
 
-	public Document generateP1(){
+	public Document generateP1() {
 		createDocument();
 
 		Element zahtev = document.createElementNS(P1_NAMESPACE, "zahtev");
@@ -398,27 +400,27 @@ public class DOMWriter {
 		return document;
 	}
 
-	public Document generateA1(){
+	public Document generateA1() {
 		createDocument();
 
 		Element zahtev = document.createElement("zahtev");
 
-		zahtev.setAttribute("xmlns:proj","http://localhost:3030/tipovi");
-		zahtev.setAttribute("xmlns:a-1","http://localhost:3030/a-1");
-		zahtev.setAttribute("xmlns:xsi","http://www.w3.org/2001/XMLSchema-instance");
-		zahtev.setAttribute("xsi:noNamespaceSchemaLocation","file:./a-1.xsd");
-		zahtev.setAttribute("sifra","A-0001");
+		zahtev.setAttribute("xmlns:proj", "http://localhost:3030/tipovi");
+		zahtev.setAttribute("xmlns:a-1", "http://localhost:3030/a-1");
+		zahtev.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+		zahtev.setAttribute("xsi:noNamespaceSchemaLocation", "file:./a-1.xsd");
+		zahtev.setAttribute("sifra", "A-0001");
 
 		document.appendChild(zahtev);
 
 		Element podnosilac_zahteva = document.createElement("podnosilac_zahteva");
-		podnosilac_zahteva.setAttribute("redni_broj","1");
+		podnosilac_zahteva.setAttribute("redni_broj", "1");
 		Element podnosilac_zahteva_lice = document.createElement("lice");
-		podnosilac_zahteva_lice.setAttribute("xsi:type","proj:TPravnoLice");
+		podnosilac_zahteva_lice.setAttribute("xsi:type", "proj:TPravnoLice");
 		Element podnosilac_zahteva_lice_adresa = document.createElement("proj:adresa");
 		Element podnosilac_zahteva_lice_adresa_mesto = document.createElement("proj:mesto");
 		podnosilac_zahteva_lice_adresa_mesto.setTextContent("Jupiter");
-		Element podnosilac_zahteva_lice_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		Element podnosilac_zahteva_lice_adresa_postanski_broj = document.createElement("proj:postanski_broj");
 		podnosilac_zahteva_lice_adresa_postanski_broj.setTextContent("24000");
 		Element podnosilac_zahteva_lice_adresa_ulica = document.createElement("proj:ulica");
 		podnosilac_zahteva_lice_adresa_ulica.setTextContent("Great Red Spot");
@@ -443,20 +445,19 @@ public class DOMWriter {
 		podnosilac_zahteva.appendChild(podnosilac_zahteva_lice);
 
 
-
 		Element pseudonim_podnosioca = document.createElement("pseudonim_podnosioca");
-		pseudonim_podnosioca.setAttribute("redni_broj","2");
+		pseudonim_podnosioca.setAttribute("redni_broj", "2");
 		pseudonim_podnosioca.setTextContent("21 Cabbage");
 
 
 		Element punomocnik = document.createElement("punomocnik");
-		punomocnik.setAttribute("redni_broj","3");
+		punomocnik.setAttribute("redni_broj", "3");
 		Element punomocnik_lice = document.createElement("lice");
-		punomocnik_lice.setAttribute("xsi:type","proj:TFizickoLice");
+		punomocnik_lice.setAttribute("xsi:type", "proj:TFizickoLice");
 		Element punomocnik_lice_adresa = document.createElement("proj:adresa");
 		Element punomocnik_lice_adresa_mesto = document.createElement("proj:mesto");
 		punomocnik_lice_adresa_mesto.setTextContent("Novi Sad");
-		Element punomocnik_lice_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		Element punomocnik_lice_adresa_postanski_broj = document.createElement("proj:postanski_broj");
 		punomocnik_lice_adresa_postanski_broj.setTextContent("21000");
 		Element punomocnik_lice_adresa_ulica = document.createElement("proj:ulica");
 		punomocnik_lice_adresa_ulica.setTextContent("Kraljevica Marka");
@@ -485,24 +486,24 @@ public class DOMWriter {
 
 
 		Element naslov_dela = document.createElement("naslov_dela");
-		naslov_dela.setAttribute("redni_broj","4");
+		naslov_dela.setAttribute("redni_broj", "4");
 		naslov_dela.setTextContent("How to scam people");
 
 		Element vrsta_dela = document.createElement("vrsta_dela");
-		vrsta_dela.setAttribute("redni_broj","6");
+		vrsta_dela.setAttribute("redni_broj", "6");
 		vrsta_dela.setTextContent("Informaciono");
 
 		Element forma_dela = document.createElement("forma_dela");
-		forma_dela.setAttribute("redni_broj","7");
+		forma_dela.setAttribute("redni_broj", "7");
 		forma_dela.setTextContent("Knjiga");
 
 		Element podaci_o_autoru = document.createElement("podaci_o_autoru");
-		podaci_o_autoru.setAttribute("redni_broj","8");
+		podaci_o_autoru.setAttribute("redni_broj", "8");
 		Element podaci_o_autoru_autor1 = document.createElement("autor");
 		Element podaci_o_autoru_autor1_adresa = document.createElement("proj:adresa");
 		Element podaci_o_autoru_autor1_adresa_mesto = document.createElement("proj:mesto");
 		podaci_o_autoru_autor1_adresa_mesto.setTextContent("Novi Sad");
-		Element podaci_o_autoru_autor1_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		Element podaci_o_autoru_autor1_adresa_postanski_broj = document.createElement("proj:postanski_broj");
 		podaci_o_autoru_autor1_adresa_postanski_broj.setTextContent("21000");
 		Element podaci_o_autoru_autor1_adresa_ulica = document.createElement("proj:ulica");
 		podaci_o_autoru_autor1_adresa_ulica.setTextContent("Kraljevica Marka");
@@ -532,7 +533,7 @@ public class DOMWriter {
 		Element podaci_o_autoru_autor2_adresa = document.createElement("proj:adresa");
 		Element podaci_o_autoru_autor2_adresa_mesto = document.createElement("proj:mesto");
 		podaci_o_autoru_autor2_adresa_mesto.setTextContent("Novi Sad");
-		Element podaci_o_autoru_autor2_adresa_postanski_broj= document.createElement("proj:postanski_broj");
+		Element podaci_o_autoru_autor2_adresa_postanski_broj = document.createElement("proj:postanski_broj");
 		podaci_o_autoru_autor2_adresa_postanski_broj.setTextContent("21000");
 		Element podaci_o_autoru_autor2_adresa_ulica = document.createElement("proj:ulica");
 		podaci_o_autoru_autor2_adresa_ulica.setTextContent("Kraljevica Marka");
@@ -557,9 +558,8 @@ public class DOMWriter {
 		podaci_o_autoru.appendChild(podaci_o_autoru_autor2);
 
 
-
 		Element nacin_koriscenja_dela = document.createElement("nacin_koriscenja_dela");
-		nacin_koriscenja_dela.setAttribute("redni_broj","10");
+		nacin_koriscenja_dela.setAttribute("redni_broj", "10");
 		nacin_koriscenja_dela.setTextContent("Citati.... naravno..");
 
 		Element datum_podnosenja_zahteva = document.createElement("datum_podnosenja_zahteva");
@@ -608,41 +608,5 @@ public class DOMWriter {
 		} catch (TransformerException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static void main(String args[]) {
-
-		String filePath = null;
-
-		System.out.println("[INFO] DOM Parser");
-
-		if (args.length != 1) {
-
-			filePath = "data/xml/zavrsni_rad.xml";
-
-			System.out.println("[INFO] No input file, using default \""	+ filePath + "\"");
-
-		} else {
-			filePath = args[0];
-		}
-
-		DOMWriter handler = new DOMWriter();
-
-		// Kreiranje Document čvora
-		handler.createDocument();
-
-		// Generisanje DOM stabla
-		//handler.generateDOM();
-		
-		// Prikaz sadržaja (isprobati sa FileOutputStream-om)
-		handler.transform(System.out);
-		
-		/*
-		try {
-			handler.transform(new FileOutputStream("data/xml/zavrsni_rad_out_3.xml"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 }
