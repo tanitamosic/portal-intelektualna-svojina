@@ -1,8 +1,8 @@
 package xml.z1.Z1.dto;
 
-import com.xmlprojekat.model.Address;
-import com.xmlprojekat.model.Lice;
-import com.xmlprojekat.model.RanijaPrijava;
+import xml.z1.Z1.model.Address;
+import xml.z1.Z1.model.Lice;
+import xml.z1.Z1.model.RanijaPrijava;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class P1DTO {
+public class Z1DTO {
 
     private String srpskiNazivPronalaska;
     private String engleskiNazivPronalaska;

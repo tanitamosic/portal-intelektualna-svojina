@@ -1,6 +1,6 @@
 package xml.z1.Z1.dom;
 
-import com.xmlprojekat.exception.NonexistentFileException;
+import xml.z1.Z1.exception.NonexistentFileException;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;

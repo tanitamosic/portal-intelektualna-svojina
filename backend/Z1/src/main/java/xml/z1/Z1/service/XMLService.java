@@ -1,15 +1,21 @@
 package xml.z1.Z1.service;
 
-import com.xmlprojekat.dom.DOMParser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import xml.z1.Z1.dom.DOMParser;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import xml.z1.Z1.repository.ZahtevRepository;
 
 import java.time.LocalDateTime;
-
+@Service
 public abstract class XMLService {
 
+    @Autowired
     private DOMParser domParser;
+    @Autowired
+    private ZahtevRepository repo;
 
 
     protected void setDateInDocument(Element datum) {
@@ -41,5 +47,13 @@ public abstract class XMLService {
     }
 
     protected abstract String generateApplicationId();
+
+    public void saveFileFromString(String text){
+        try {
+            repo.saveZahtev(text);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }

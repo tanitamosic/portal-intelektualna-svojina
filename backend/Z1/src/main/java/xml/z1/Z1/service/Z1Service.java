@@ -1,7 +1,7 @@
 package xml.z1.Z1.service;
 
-import com.xmlprojekat.dom.DOMParser;
-import com.xmlprojekat.dto.XMLDto;
+import xml.z1.Z1.dom.DOMParser;
+import xml.z1.Z1.dto.XmlDto;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,15 +14,15 @@ import java.util.Random;
 
 
 @Service
-public class P1Service extends XMLService {
+public class Z1Service extends XMLService {
     private Integer id;
     private final DOMParser domParser;
 
-    public P1Service(DOMParser domParser) {
+    public Z1Service(DOMParser domParser) {
         this.domParser = domParser;
     }
 
-    public String applyZavod(XMLDto dto) throws IOException, SAXException, ParserConfigurationException, TransformerException {
+    public String applyZavod(XmlDto dto) throws IOException, SAXException, ParserConfigurationException, TransformerException {
         Document document = domParser.buildDocumentFromText(dto.getText());
         Element zavod = (Element) document.getElementsByTagName("forma_za_zavod").item(0);
 

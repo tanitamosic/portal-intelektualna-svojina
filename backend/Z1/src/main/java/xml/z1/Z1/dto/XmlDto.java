@@ -5,13 +5,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class XMLDto {
+public class XmlDto {
     private String text;
 
-    public XMLDto(String text) {
+    public XmlDto(String text) {
         this.text = text;
     }
 
-    public XMLDto() {
+    public XmlDto() {
     }
 }
