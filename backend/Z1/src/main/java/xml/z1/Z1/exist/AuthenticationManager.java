@@ -56,7 +56,7 @@ public class AuthenticationManager {
     }
 
     public String getDriver() {
-        return driver;
+        return "org.exist.xmldb.DatabaseImpl";
     }
 
     public void setDriver(String driver) {
@@ -64,7 +64,7 @@ public class AuthenticationManager {
     }
 
     public String getUri() {
-        return uri;
+        return "xmldb:exist://localhost/8088/exist/xmlrpc";
     }
 
     public void setUri(String uri) {

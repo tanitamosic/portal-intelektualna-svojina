@@ -6,9 +6,20 @@ import xml.z1.Z1.dom.DOMParser;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import xml.z1.Z1.fuseki.FusekiReader;
+import xml.z1.Z1.fuseki.FusekiWriter;
+import xml.z1.Z1.fuseki.MetadataExtractor;
 import xml.z1.Z1.repository.ZahtevRepository;
 
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public abstract class XMLService {
 
@@ -16,6 +27,9 @@ public abstract class XMLService {
     private DOMParser domParser;
     @Autowired
     private ZahtevRepository repo;
+    @Autowired
+    private MetadataExtractor metadataExtractor;
+
 
 
     protected void setDateInDocument(Element datum) {
@@ -55,5 +69,14 @@ public abstract class XMLService {
             e.printStackTrace();
         }
     }
+
+    public ArrayList<String> storeXML(InputStream input_xml, OutputStream output_rdf) throws IOException, TransformerException {
+        metadataExtractor.extractMetadata(input_xml, output_rdf);
+        FusekiWriter.saveRDF();
+        Map<String, String> params = new HashMap<>();
+        params.put("<%naziv_dela>", "\"How to scam people\"");
+        return FusekiReader.executeQuery(params);
+    }
+
 
 }

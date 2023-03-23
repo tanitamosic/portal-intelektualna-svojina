@@ -7,6 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
+import java.util.Scanner;
+
 @RestController
 @RequestMapping(value = "api/xml", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 public class Z1Controller implements XMLController {
@@ -49,16 +53,16 @@ public class Z1Controller implements XMLController {
         String content = new Scanner(fileInputStream).useDelimiter("\\Z").next();
 
         StreamSource source = new StreamSource(new StringReader(content));
+
         return content;
 
     }
 
 
-    // TODO: hendlanje exceptiona
-    @PostMapping()
-    public ResponseEntity<XMLDto> getFinishedDocument(@RequestBody XMLDto dto) throws Exception{
-        String response = service.applyZavod(dto);
-        return new ResponseEntity<XMLDto>(new XMLDto(response), HttpStatus.OK);
+    @PostMapping(path = "/save")
+    public ResponseEntity<String> saveFromText(@RequestBody XmlDto dto){
+        service.saveFileFromString(dto.getText());
+        return new ResponseEntity<String>(HttpStatus.OK);
     }
 
 }
