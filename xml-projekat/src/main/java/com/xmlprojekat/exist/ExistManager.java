@@ -1,4 +1,4 @@
-package com.xmlprojekat.db;
+package com.xmlprojekat.exist;
 
 import org.exist.xmldb.EXistResource;
 import org.exist.xupdate.XUpdateProcessor;

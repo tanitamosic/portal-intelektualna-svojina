@@ -1,4 +1,4 @@
-package com.xmlprojekat.db;
+package com.xmlprojekat.exist;
 
 import lombok.Getter;
 import lombok.Setter;
