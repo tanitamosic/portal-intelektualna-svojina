@@ -14,6 +14,7 @@ import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XPathQueryService;
 import org.xmldb.api.modules.XUpdateQueryService;
 
+import javax.xml.crypto.Data;
 import javax.xml.transform.OutputKeys;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -50,8 +51,9 @@ public class ExistManager {
 
     }
 
-    public Collection getOrCreateCollection(String collectionUri, int pathOffset) throws XMLDBException {
-        Collection col = DatabaseManager.getCollection(authManager.getUri()+collectionUri,authManager.getUser(),authManager.getPassword());
+    public Collection getOrCreateCollection(String collectionUri, int pathOffset) throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        createConnection();
+        Collection col = DatabaseManager.getCollection(authManager.getUri()+collectionUri,authManager.getUsername(),authManager.getPassword());
 
         if(col == null){
             if(collectionUri.startsWith("/")){
@@ -64,11 +66,11 @@ public class ExistManager {
                     path.append("/"+pathSegments[i]);
                 }
                 Collection startCol = DatabaseManager.getCollection(authManager.getUri()+path,
-                        authManager.getUser(), authManager.getPassword());
+                        authManager.getUsername(), authManager.getPassword());
                 if (startCol == null){
                     String parentPath = path.substring(0, path.lastIndexOf("/"));
                     Collection parentCol = DatabaseManager.getCollection(authManager.getUri()+parentPath,
-                            authManager.getUser(), authManager.getPassword());
+                            authManager.getUsername(), authManager.getPassword());
                     CollectionManagementService service = (CollectionManagementService) parentCol.getService(
                             "CollectionManagementService", "1.0");
                     col = service.createCollection(pathSegments[pathOffset]);
@@ -112,7 +114,10 @@ public class ExistManager {
             res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
             res.setContent(XMLString);
             col.storeResource(res);
-        } finally {
+        } catch (XMLDBException | ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        finally {
             closeConnection(col,res);
         }
     }
@@ -123,7 +128,7 @@ public class ExistManager {
         XMLResource res = null;
         try{
             col = DatabaseManager.getCollection(authManager.getUri()+collectionUri,
-                    authManager.getUser(), authManager.getPassword());
+                    authManager.getUsername(), authManager.getPassword());
             col.setProperty(OutputKeys.INDENT, "yes");
             res = (XMLResource) col.getResource(documentId);
             return res;
@@ -140,7 +145,7 @@ public class ExistManager {
         ResourceSet result = null;
         try{
             col = DatabaseManager.getCollection(authManager.getUri()+collectionUri,
-                    authManager.getUser(), authManager.getPassword());
+                    authManager.getUsername(), authManager.getPassword());
             col.setProperty(OutputKeys.INDENT, "yes");
             XPathQueryService xpathService = (XPathQueryService) col.getService("XPathQueryService", "1.0");
             xpathService.setProperty("indent", "yes");
@@ -160,7 +165,7 @@ public class ExistManager {
         String chosenTemplate = UPDATE;
         try{
             col = DatabaseManager.getCollection(authManager.getUri()+collectionUri,
-                    authManager.getUser(), authManager.getPassword());
+                    authManager.getUsername(), authManager.getPassword());
             XUpdateQueryService service = (XUpdateQueryService) col.getService("XUpdateQueryService", "1.0");
             service.setProperty("indent", "yes");
             service.updateResource(document, String.format(chosenTemplate,contextXPath,patch));
@@ -178,7 +183,7 @@ public class ExistManager {
         String chosenTemplate = APPEND;
         try{
             col = DatabaseManager.getCollection(authManager.getUri()+collectionUri,
-                    authManager.getUser(), authManager.getPassword());
+                    authManager.getUsername(), authManager.getPassword());
             XUpdateQueryService service = (XUpdateQueryService) col.getService("XUpdateQueryService", "1.0");
             service.setProperty("indent", "yes");
             service.updateResource(document, String.format(chosenTemplate,contextXPath,patch));
