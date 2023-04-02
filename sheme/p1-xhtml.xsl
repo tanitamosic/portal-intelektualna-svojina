@@ -1,166 +1,301 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:proj="http://localhost:3030/tipovi"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    
-    exclude-result-prefixes="xs"
-    version="2.0">
-    <xsl:output method="xml" />
+    exclude-result-prefixes="xs" version="2.0">
 
+    <xsl:output method="xml" />
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
             <head>
-                <title>Zahtev P1</title>
-                <style>
-                    .center.text {
-                    text-align: center;
-                    }
+                <title>Patent</title>
+                <style type="text/css">
                     table {
-                    padding: 7px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 60%;
-                    border: 3px solid black;
+                    margin: 10px;
+                    width: 100%;
+                    border:0px;
                     }
-                    .field {
-                    box-shadow: 0px 1px 0px 0px rgb(0, 0, 0);
+                    th, td {
+                    text-align: left;
+                    padding: 3px;
+                    border:0px;
+                    border-bottom-width:1px solid black;
+                    border-right-width:1px solid black;
                     }
-                    td {
-                    padding: 7px;
+
+                    tr{
+                    border:0px;
                     }
+
+                    body { 
+                        font-family: sans-serif; 
+                    }
+
                 </style>
             </head>
-            
             <body>
-                <div class="center text">
-                    <h1>Zahtev za priznanje patenta</h1>
-                </div>
-                <div>
-                    <table>
-                        <tr>
-                            <td colspan="4"><b>Popunjava zavod</b></td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">Broj prijave</td>
-                            <td colspan="3"><xsl:value-of select="zahtev/zavod/formaZaZavod/brojPrijave"/></td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">Datum prijema</td>
-                            <td colspan="3"><xsl:value-of select="zahtev/zavod/formaZaZavod/datumPrijema"/></td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">Datum podnosenja</td>
-                            <td colspan="3"><xsl:value-of select="zahtev/zavod/formaZaZavod/datumPodnosenja"/></td>
-                        </tr>
-                    </table>
-                    <div class="center text">
-                        <p><xsl:value-of select="zahtev/zavod/podaciOZavodu/institucija"/></p>
-                        <p><xsl:value-of select="zahtev/zavod/podaciOZavodu/proj:adresa/*" separator=",&#xa;"/></p>
-                    </div>
-                    
-                </div>
-                <div>
-                    <table>
-                        <tr class="field">
-                            <td><b>Polje broj I NAZIV PRONALASKA</b></td>
-                        </tr>
-                        <tr>
-                            <td>Na srpskom: <xsl:value-of select="zahtev/formaPodnosioca/nazivPronalaska/srpski"/></td>
-                        </tr>
-                        <tr>
-                            <td>Na engleskom: <xsl:value-of select="zahtev/formaPodnosioca/nazivPronalaska/engleski"/></td>
-                        </tr>
-                        <tr class="field">
-                            <td><b>Polje broj II PODNOSILAC PRIJAVE</b></td>
+                <table style="width: 65%">
+                    <tr>
+                        <td colspan="2" style="text-align:center; border:1px solid black;">Popunjava zavod</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;">Broj prijave</td>
+                        <td><xsl:value-of select="zahtev/zavod/formaZaZavod/brojPrijave"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;">Datum prijema</td>
+                        <td><xsl:value-of select="zahtev/zavod/formaZaZavod/datumPrijema"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;">Priznati datum podnosenja</td>
+                        <td><xsl:value-of select="zahtev/zavod/formaZaZavod/datumPodnosenja"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;">Pecat i potpis</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p><br/>
+                    Republika Srbija<br/>
+                    Zavod za intelektualnu svojinu<br/>
+                    Kneginje Ljubice broj 5<br/>
+                    11000 Beograd
+                </p>
+                <center>
+                    <h3>ZAHTEV<br/>
+                        ZA PRIZNANJE PATENTA</h3>
+                </center>
+
+                <table>
+                    <tr><th colspan="3" style="border-top-width:1px; border-left-width:1px;">Polje broj I NAZIV PRONALASKA</th></tr>
+                    <tr>
+                        <td colspan="3" style="border-left-width:1px;">Na srpskom jeziku: <xsl:value-of select="zahtev/formaPodnosioca/nazivPronalaska/srpski" /><br/>
+                            Na engleskom jeziku: <xsl:value-of select="zahtev/formaPodnosioca/nazivPronalaska/engleski" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="border-left-width:1px;">
+                            <b>Polje broj II PODNOSILAC PRIJAVE</b>
                             <xsl:if test="zahtev/formaPodnosioca/podnosilacPrijave/jePronalazac = 'true'">
-                                <td>Podnosilac prijave je pronalazac</td>
+                                Podnosilac prijave je pronalazac
                             </xsl:if>
                             <xsl:if test="zahtev/formaPodnosioca/podnosilacPrijave/jePronalazac != 'true'">
-                                <td>Podnosilac prijave nije pronalazac</td>
+                                Podnosilac prijave nije pronalazac
                             </xsl:if>
-                        </tr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" style="border-left-width:1px;">
+                            Ime i prezime / Poslovno ime 
+                            <br/><br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:ime" /> <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:prezime" />
+                            <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:naziv_preduzeca" /> <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:pib" />
+                        </td>
+                        <td rowspan="3">
+                            Ulica i broj, poštanski broj, mesto i država
+                            <br/><br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:adresa/*" separator="&#x20;" />
+                        </td>
+                        <td>
+                            Broj telefona
+                            <br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:kontakt/proj:telefon" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Broj faksa
+                            <br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:kontakt/proj:faks" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">
+                            E-pošta
+                            <br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:kontakt/proj:email" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-left-width:1px;">Drzavljanstvo: <xsl:value-of select="//pat:Podaci_o_podnosiocu_prijave//pat:Drzavljanstvo"/></td>
+                    </tr>
+                    <tr>
+                        <!-- <td colspan="3" style="border-left-width:1px;">
+                            <xsl:choose>
+                                <xsl:when test="//pat:Putanja_do_priloga_podnosioca">
+                                    <xsl:element name="a">
+                                        <xsl:attribute name="href">
+                                            http://localhost:8000/patent/download/prilog/<xsl:value-of select="//pat:Putanja_do_priloga_podnosioca"/>
+                                        </xsl:attribute>
+                                        Izjavu o zajedničkom predstavniku
+                                    </xsl:element>
+                                </xsl:when>
+                            </xsl:choose>
+                        </td> -->
+                    </tr>
+                </table>
+
+                <br/>
+
+                <table>
+                    <tr>
+                        <td colspan="3" style="border-top-width:1px; border-left-width:1px;">
+                            <b>Polje broj III PRONALAZAC</b>
+                            <xsl:if test="zahtev/formaPodnosioca/pronalazac/zeliBitiNaveden = 'false'"> Pronalazac ne zeli da bude naveden u prijavi </xsl:if>
+                            <xsl:if test="zahtev/formaPodnosioca/pronalazac/zeliBitiNaveden = 'true'"> Pronalazac zeli da bude naveden u prijavi </xsl:if>
+                        </td>
+                    </tr>
+                    <xsl:if test="zahtev/formaPodnosioca/pronalazac/zeliBitiNaveden = 'false'"> <!-- informacije o pronalazacu se ispisuju samo ukoliko on to zeli -->
                         <tr>
-                            <td>Adresa: <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:adresa/*" separator="&#xa;"/></td>
-                        </tr>
-                        <tr>
-                            <td>Kontakt: <xsl:value-of select="zahtev/formaPodnosioca/podnosilacPrijave/proj:kontakt/*" separator="&#xa;"/></td>
-                        </tr>
-                        <tr class="field">
-                            <td><b>Polje broj III PRONALAZAC</b></td>
-                        </tr>
-                        <tr>
+                            <td rowspan="3" style="border-left-width:1px;">
+                                Ime i prezime / Poslovno ime 
+                            <br/><br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:ime" /> <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:prezime" /> 
+                            <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:naziv_preduzeca" /> <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:pib" />
+                            </td>
+                            <td rowspan="3">
+                                Ulica i broj, poštanski broj, mesto i država
+                                <br/><br/>
+                                <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:adresa/*" separator="&#x20;" />
+                            </td>
                             <td>
-                                <span><xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:ime"/>&#160;</span> 
-                                <span><xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:prezime"/></span>
+                                Broj telefona
+                                <br/>
+                                <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:kontakt/proj:telefon" />
                             </td>
                         </tr>
                         <tr>
-                            <td>Adresa: <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:adresa/*" separator="&#xa;"/></td>
-                        </tr>
-                        <tr>
-                            <td>Kontakt: <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:kontakt/proj:*" separator="&#xa;"/></td>
-                        </tr>
-                        <tr class="field">
-                            <td><b>Polje broj IV</b></td>
-                            <td colspan="2"><xsl:value-of select="zahtev/formaPodnosioca/posrednik/vrstaPosrednika"/></td>
-                        </tr>
-                        <tr>
-                            <td>Adresa: <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:adresa/*"/></td>
-                        </tr>
-                        <tr>
-                            <td>Kontakt: <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:kontakt/proj:*" separator="&#xa;"/></td>
-                        </tr>
-                        <tr class="field">
-                            <td><b>Polje broj V</b></td>
-                        </tr>
-                        <tr>
-                            <td>Adresa za dostavljanje: <xsl:value-of select="zahtev/formaPodnosioca/adresaZaDostavljanje/proj:adresa/proj:*"/></td>
-                        </tr>
-                        <tr class="field">
-                            <td><b>Polje broj VI NACIN DOSTAVLJANJA</b></td>
-                            <td colspan="3"><xsl:value-of select="zahtev/formaPodnosioca/nacinDostavljanja"/></td>
-                        </tr>
-                        <tr class="field">
-                            <td><b>Polje broj VII</b></td>
-                            <td colspan="2"><xsl:value-of select="zahtev/formaPodnosioca/prijava/vrstaPrijave"/></td>
+                            <td>
+                                Broj faksa
+                                <br/>
+                                <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:kontakt/proj:faks" />
+                            </td>
                         </tr>
                         <tr>
                             <td>
-                                Broj prvobitne prijave / osnovne prijave, odnosno osnovnog patenta: <xsl:value-of select="zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave"/>
+                                E-pošta
+                                <br/>
+                                <xsl:value-of select="zahtev/formaPodnosioca/pronalazac/proj:kontakt/proj:email" />
                             </td>
-                            <td>
-                                Datum podnosenja prvobitne prijave / osnovne prijave: <xsl:value-of select="zahtev/formaPodnosioca/prijava/datumPodnosenjaPrvobitnePrijave"/>
-                            </td>
-                        </tr>
-                        <tr class="field">
-                            <td colspan="2"><b>Polje broj VIII ZAHTEV ZA PRIZNANJE PRAVA PRVENSTVA IZ RANIJIH PRIJAVA</b></td>
                         </tr>
                         <tr>
-                            <td>Datum podnosenja ranije prijave</td>
-                            <td>Broj ranije prijave</td>
-                            <td>Dvoslovna oznaka drzave, regionalne ili medjunarodne organizacije</td>
+                            <!-- <td colspan="3" style="border-left-width:1px;">
+                                <xsl:choose>
+                                    <xsl:when test="//pat:Putanja_do_primera">
+                                        <xsl:element name="a">
+                                            <xsl:attribute name="href">
+                                                http://localhost:8000/patent/download/prilog/<xsl:value-of select="//pat:Putanja_do_primera"/>
+                                            </xsl:attribute>
+                                            Izjava podnosilaca prijave o osnovu sticanja prava
+                                        </xsl:element>
+                                    </xsl:when>
+                                </xsl:choose>
+                            </td> -->
                         </tr>
-                       
-                        <xsl:for-each select = "zahtev/formaPodnosioca/zahtevZaPriznanjePrava/prijave/ranijaPrijava">
-                            <tr> 
-                                <td><xsl:value-of select = "datum"/></td> 
-                                <td><xsl:value-of select = "brojPrijave" separator="&#xA;"/></td> 
-                                <td><xsl:value-of select = "drzavaIliOrganizacija" separator="&#xA;"/></td>
-                            </tr>
-                        </xsl:for-each>
-                        <xsl:if test="zahtev/formaPodnosioca/zahtevZaPriznanjePrava/podaciOOstalimPravimaNaListu2 = 'true'">
-                            <tr>Dodatni list:</tr>
-                            <tr>
-                                <td>
-                                    <xsl:value-of select="zahtev/formaPodnosioca/dodatniList2"/>
-                                </td>
-                            </tr>
-                        </xsl:if>
-                    </table>
-                </div>
-                
+                    </xsl:if>
+                </table>
+
+                <br/>
+
+                <table>
+                    <tr>
+                        <td colspan="3" style="border-top-width:1px; border-left-width:1px;">
+                            <b>Polje broj IV</b>
+                            <xsl:value-of select="zahtev/formaPodnosioca/posrednik/vrstaPosrednika" />
+                            <br/>
+                            ZAJEDNICKI PREDSTAVNIK: <xsl:text>&#x20;</xsl:text>
+                            <xsl:if test="zahtev/formaPodnosioca/posrednik/zajednickiPredstavnik = 'true'"> DA </xsl:if>
+                            <xsl:if test="zahtev/formaPodnosioca/posrednik/zajednickiPredstavnik = 'false'"> NE </xsl:if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="border-left-width:1px;">
+                            <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:ime" /> <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:prezime" />
+                            <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:naziv_preduzeca" /> <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:pib" />
+                        </td>
+                        <td rowspan="2">
+                            Ulica i broj, poštanski broj, mesto i država
+                            <br/><br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:adresa/*" separator="&#x20;"/>
+                        </td>
+                        <td>
+                            Broj telefona
+                            <br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:telefon"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            E-pošta
+                            <br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/posrednik/proj:emai" />
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th style="border-left-width:1px;">Polje broj V ADRESA ZA DOSTAVLJANJA</th>
+                    </tr>
+                    <tr>
+                        <td style="border-left-width:1px;">Ulica i broj, poštanski broj i mesto:
+                            <br/><br/>
+                            <xsl:value-of select="zahtev/formaPodnosioca/adresaZaDostavljanje/proj:adresa/proj:*" separator="&#xa;"/>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th style="border-left-width:1px;">Polje broj VI NACIN DOSTAVLJANJA</th>
+                    </tr>
+                    <tr>
+                        <td style="border-left-width:1px;">
+                            <xsl:value-of select="zahtev/formaPodnosioca/nacinDostavljanja" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border-left-width:1px;">Polje broj VII
+                            <xsl:value-of select="zahtev/formaPodnosioca/prijava/vrstaPrijave" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <td style="border-left-width:1px;">
+                            Broj prvobitne prijave / osnovne prijave, odnosno osnovnog patenta: <xsl:value-of select="zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-left-width:1px;">
+                            Datum podnosenja prvobitne prijave / osnovne prijave: <xsl:value-of select="zahtev/formaPodnosioca/prijava/datumPodnosenjaPrvobitnePrijave" />
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr><th colspan="7" style="border-left-width:1px;">Polje broj VIII ZAHTEV ZA PRIZNANJE PRAVA PRVENSTVA IZ RANIJIH PRIJAVA</th></tr>
+                    <tr>
+                        <th colspan="2" style="border-left-width:1px;">
+                            Broj ranije prijave
+                        </th>
+                        <th colspan="3">
+                            Datum podnosenja ranije prijave
+                        </th>
+                        <th colspan="2">
+                            Dvoslovna oznaka drzave, regionalne ili medjunarodne organizacije
+                        </th>
+                    </tr>
+                    <xsl:for-each select="zahtev/formaPodnosioca/zahtevZaPriznanjePrava/prijave/ranijaPrijava">
+                        <tr>
+                            <td colspan="2" style="border-left-width:1px;">
+                                <xsl:value-of select="brojPrijave" />
+                            </td>
+                            <td colspan="3">
+                                <xsl:value-of select="datum" />
+                            </td>
+                            <td colspan="2">
+                                <xsl:value-of select="drzavaIliOrganizacija" />
+                            </td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
             </body>
-            
         </html>
     </xsl:template>
 </xsl:stylesheet>

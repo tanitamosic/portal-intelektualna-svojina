@@ -45,13 +45,23 @@
                                     <xs:complexContent>
                                         <xs:extension base="proj:TLice">
                                             <xs:sequence>
-                                                <xs:element name="jePronalazac" type="xs:boolean"/>
+                                                <xs:element name="jePronalazac" type="xs:boolean"/> 
                                             </xs:sequence>
                                         </xs:extension>
                                     </xs:complexContent>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="pronalazac" type="proj:TLice"/>
+                            <xs:element name="pronalazac"> 
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="proj:TLice">
+                                            <xs:sequence>
+                                                <xs:element name="zeliBitiNaveden" type="xs:boolean"/> 
+                                            </xs:sequence>
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element name="posrednik">
                                 <xs:complexType>
                                     <xs:complexContent>

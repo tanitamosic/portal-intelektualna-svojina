@@ -2,7 +2,7 @@
 <zahtev xmlns:proj="http://localhost:3030/tipovi"
  xmlns:zpp="http://localhost:3030/zahtev_za_priznanje_patenta"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="file:/home/mihajlo/XML-projekat/sheme/p-1.xsd">
+ xsi:p-1="file:/home/mihajlo/XML-projekat/sheme/p-1.xsd">
     <zavod>
         <formaZaZavod>
             <brojPrijave>П-0000\0000</brojPrijave>
@@ -52,6 +52,7 @@
             </proj:kontakt>
             <proj:ime>ime0</proj:ime>
             <proj:prezime>prezime0</proj:prezime>
+            <zeliBitiNaveden>true</zeliBitiNaveden>
         </pronalazac>
         <posrednik>
             <proj:adresa>
