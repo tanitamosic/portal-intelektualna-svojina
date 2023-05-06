@@ -159,7 +159,7 @@
                                 
                             </fo:table-cell>
                         </fo:table-row>
-                        <xsl:if test="zahtev/formaPodnosioca/pronalazac/zeliBitiNaveden = 'false'">
+                        <xsl:if test="zahtev/formaPodnosioca/pronalazac/zeliBitiNaveden = 'true'">
                             <fo:table-row>
                                 <fo:table-cell border-bottom="1px solid black" border-right="1px solid black" padding="3px" number-rows-spanned="3" border-left="1px solid black">
                                     <fo:block>
@@ -225,7 +225,7 @@
                     <fo:table-body>
                         <fo:table-row>
                             <fo:table-cell border-bottom="1px solid black" border-right="1px solid black" padding="3px" number-columns-spanned="3" border-left="1px solid black" border-top="1px solid black">
-                                <fo:block font-weight="bold">
+                                <fo:block font-weight="bold" linefeed-treatment="preserve">
                                     Polje broj IV
                                     <xsl:value-of select="zahtev/formaPodnosioca/posrednik/vrstaPosrednika" />
                                     <xsl:text>&#xd;&#xa;</xsl:text>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     xmlns:proj="http://localhost:3030/tipovi"
-    xmlns:zpp="http://localhost:3030/zahtev_za_priznanje_patenta">
+    xmlns:p-1="http://localhost:3030/zahtev_za_priznanje_patenta">
     <xs:import namespace="http://localhost:3030/tipovi" schemaLocation="deljeni_tipovi.xsd"/>
     <xs:element name="zahtev">
         <xs:complexType>
@@ -127,7 +127,7 @@
     </xs:complexType>
     <xs:simpleType name="TBrojPrijave">
         <xs:restriction base="xs:string">
-            <xs:pattern value="П-\d{4}\\\d{4}"/>
+            <xs:pattern value="P-\d{4}\\\d{4}"/>
             <xs:whiteSpace value="collapse"/>
         </xs:restriction>
     </xs:simpleType>
