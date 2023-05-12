@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.w3c.dom.Node;
 
 @Getter
 @Setter
@@ -20,4 +21,9 @@ public class FizickoLice extends Lice {
         this.prezime = prezime;
     }
 
+    public FizickoLice(Node lice) {
+        super(lice.getChildNodes());
+        this.ime = lice.getChildNodes().item(0).getTextContent();
+        this.prezime = lice.getChildNodes().item(1).getTextContent();
+    }
 }

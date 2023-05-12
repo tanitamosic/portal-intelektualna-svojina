@@ -1,20 +1,16 @@
 package xml.p1.P1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.xmldb.api.base.XMLDBException;
+import org.springframework.web.bind.annotation.*;
 import xml.p1.P1.dto.P1DTO;
+import xml.p1.P1.dto.SearchDTO;
 import xml.p1.P1.model.P1Zahtev;
 import xml.p1.P1.service.P1Service;
 
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 
 @RestController
@@ -36,8 +32,13 @@ public class P1Controller {
         return new ResponseEntity<>("uspelo", HttpStatus.OK);
     }
 
-    @PostMapping(value="/search", consumes="application/xml", produces="application/xml")
-    public ResponseEntity<P1Zahtev> searchQuery() {
+    @PostMapping(value="/advanced-search", consumes="application/xml", produces="application/xml")
+    public ResponseEntity<P1Zahtev> textSearchQuery(@RequestBody SearchDTO dto) {
         return null;
+    }
+
+    @GetMapping(value="text-search/{searchParam}", produces="application/xml")
+    public ResponseEntity<List<P1Zahtev>> advancedSearchQuery(@PathVariable String searchParam) {
+        return new ResponseEntity<>(p1Service.conductTextBasedSearch(searchParam), HttpStatus.OK);
     }
 }

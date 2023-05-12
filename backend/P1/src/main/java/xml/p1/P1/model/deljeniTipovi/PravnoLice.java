@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.w3c.dom.Node;
 
 @Getter
 @Setter
@@ -18,6 +19,12 @@ public class PravnoLice extends Lice {
         super(a, k);
         this.naziv_preduzeca = naziv_preduzeca;
         this.pib = pib;
+    }
+
+    public PravnoLice(Node podnosilacPrijave) {
+        super(podnosilacPrijave.getChildNodes());
+        this.pib = podnosilacPrijave.getChildNodes().item(2).getTextContent();
+        this.naziv_preduzeca = podnosilacPrijave.getChildNodes().item(3).getTextContent();
     }
 
 }

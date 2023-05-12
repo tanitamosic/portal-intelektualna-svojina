@@ -1,14 +1,12 @@
 package xml.p1.P1.exist;
 
 import org.exist.xmldb.EXistResource;
+import org.exist.xmldb.RemoteXMLResource;
 import org.exist.xupdate.XUpdateProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.xmldb.api.DatabaseManager;
-import org.xmldb.api.base.Collection;
-import org.xmldb.api.base.Database;
-import org.xmldb.api.base.ResourceSet;
-import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.base.*;
 import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XPathQueryService;
@@ -16,7 +14,12 @@ import org.xmldb.api.modules.XUpdateQueryService;
 
 import javax.xml.transform.OutputKeys;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ExistManager {
@@ -30,6 +33,8 @@ public class ExistManager {
 
     @Autowired
     private AuthenticationManager authManager;
+
+    private static final String COLLECTION_URI = "db/p1";
 
     public void createConnection() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, XMLDBException {
         Class<?> cl = Class.forName(authManager.getDriver());
@@ -189,6 +194,56 @@ public class ExistManager {
             }
         }
 
+    }
+
+    public List<XMLResource> searchForText(String searchText) throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, UnsupportedEncodingException {
+        // Search for XML files in the collection
+        createConnection();
+        List<XMLResource> resources = new ArrayList<>();
+        String xPath = "/*[contains(.,\"" + searchText + "\")]";
+        String uri = authManager.getUri() + "db/p1";
+
+        Collection col = DatabaseManager.getCollection(uri,authManager.getUsername(),authManager.getPassword());
+
+        XPathQueryService xPathQueryService = (XPathQueryService) col.getService("XPathQueryService", "1.0");
+        xPathQueryService.setProperty("indent", "yes");
+        ResourceIterator iter = xPathQueryService.query(xPath).getIterator();
+        while (iter.hasMoreResources()) {
+            Resource res = iter.nextResource();
+            System.out.println(res.getContent());
+            RemoteXMLResource resxml = (RemoteXMLResource) res;
+            resources.add(resxml);
+        }
+        return resources;
+    }
+
+    private static String createXPathExpressionForTextSearch(List<String> words, boolean matchCase) {
+        int wordsDone = 0;
+        String xpath = "/*[";
+
+        for (String word : words) {
+            xpath = xpath.concat("contains(");
+
+            if (!matchCase) {
+                xpath = xpath.concat("lower-case(.)");
+                word = word.toLowerCase();
+            } else {
+                xpath = xpath.concat(".");
+            }
+
+            xpath = xpath.concat(", ").concat("\"").concat(word).concat("\"");
+            xpath = xpath.concat(")");
+
+            wordsDone++;
+            if (wordsDone != words.size()) {
+                xpath = xpath.concat(" and ");
+            }
+        }
+
+        xpath = xpath.concat("]");
+//        for (String word : words)
+//            xpath = xpath.concat(" | //pat:Naziv_pronalaska[contains(@Naziv, '" + word + "')]");
+        return xpath;
     }
 
 }
