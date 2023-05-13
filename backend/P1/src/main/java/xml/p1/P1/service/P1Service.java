@@ -41,7 +41,7 @@ public class P1Service {
         Document document = converter.generateP1(zahtev);
         String xml = converter.documentToString(document);
 
-//        sparqlService.saveRDF(xml, "src/main/resources/data/rdf/" + title + ".rdf");
+        sparqlService.saveRDF(xml, "src/main/resources/data/rdf/" + title + ".rdf");
         existManager.storeFromText("db/p1", title, xml);
 
         String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";

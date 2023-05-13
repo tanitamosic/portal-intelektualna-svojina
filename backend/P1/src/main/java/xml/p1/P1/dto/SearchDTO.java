@@ -11,5 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SearchDTO {
 
-    public String rawTextParam;
+    private String rawTextParam;
+
+    private MetadataType tipMetapodatka;
+
+
 }

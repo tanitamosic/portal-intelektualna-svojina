@@ -106,12 +106,10 @@ public class P1toXMLConverter {
         formaPodnosioca.appendChild(nazivPronalaska);
         Element srpski = document.createElement( "srpski");
         srpski.setAttribute("property", "pred:srpski");
-        srpski.setAttribute("datatype", "xs:string");
         nazivPronalaska.appendChild(srpski);
         srpski.appendChild(document.createTextNode(p1.getSrpskiNazivPronalaska()));
         Element engleski = document.createElement( "engleski");
         engleski.setAttribute("property", "pred:engleski");
-        engleski.setAttribute("datatype", "xs:string");
         nazivPronalaska.appendChild(engleski);
         engleski.appendChild(document.createTextNode(p1.getEngleskiNazivPronalaska()));
 
@@ -126,11 +124,9 @@ public class P1toXMLConverter {
             Element imePodnosioca = document.createElement("proj:ime");
             imePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getIme()));
             imePodnosioca.setAttribute("property", "pred:ime");
-            imePodnosioca.setAttribute("datatype", "xs:string");
             Element prezimePodnosioca = document.createElement("proj:prezime");
             prezimePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getPrezime()));
             prezimePodnosioca.setAttribute("property", "pred:prezime");
-            prezimePodnosioca.setAttribute("datatype", "xs:string");
 
             podnosilacPrijave.appendChild(imePodnosioca);
             podnosilacPrijave.appendChild(prezimePodnosioca);
@@ -139,10 +135,8 @@ public class P1toXMLConverter {
 
             Element pibPodnosioca = document.createElement("proj:pib");
             pibPodnosioca.setAttribute("property", "pred:pib");
-            pibPodnosioca.setAttribute("datatype", "xs:string");
             Element naziv_preduzecaPodnosioca = document.createElement("proj:naziv_preduzeca");
             naziv_preduzecaPodnosioca.setAttribute("property", "pred:naziv_preduzeca");
-            naziv_preduzecaPodnosioca.setAttribute("datatype", "xs:string");
 
             PravnoLice pl = (PravnoLice) p1.getPodnosilacPrijave();
             pibPodnosioca.appendChild(document.createTextNode(pl.getPib()));
@@ -157,7 +151,6 @@ public class P1toXMLConverter {
         Element jePronalazac = document.createElement( "jePronalazac");
 
         jePronalazac.setAttribute("property", "pred:jePronalazac");
-        jePronalazac.setAttribute("datatype", "xs:boolean");
         jePronalazac.appendChild(document.createTextNode(p1.getPodnosilacJePronalazac().toString()));
         podnosilacPrijave.appendChild(jePronalazac);
 
@@ -172,10 +165,8 @@ public class P1toXMLConverter {
         if (p1.getPronalazacZeliBitiNaveden()) {
             Element imePronalazaca = document.createElement( "proj:ime");
             imePronalazaca.setAttribute("property", "pred:ime");
-            imePronalazaca.setAttribute("datatype", "xs:string");
             Element prezimePronalazaca = document.createElement( "proj:prezime");
             prezimePronalazaca.setAttribute("property", "pred:prezime");
-            prezimePronalazaca.setAttribute("datatype", "xs:string");
 
             imePronalazaca.appendChild(document.createTextNode(Pronalazac.getIme()));
             prezimePronalazaca.appendChild(document.createTextNode(Pronalazac.getPrezime()));
@@ -188,7 +179,6 @@ public class P1toXMLConverter {
         }
         Element zeliBitiNaveden = document.createElement( "zeliBitiNaveden");
         zeliBitiNaveden.setAttribute("property", "pred:zeliBitiNaveden");
-        zeliBitiNaveden.setAttribute("datatype", "xs:boolean");
         zeliBitiNaveden.appendChild(document.createTextNode(p1.getPronalazacZeliBitiNaveden().toString()));
         pronalazac.appendChild(zeliBitiNaveden);
         formaPodnosioca.appendChild(pronalazac);
@@ -209,10 +199,8 @@ public class P1toXMLConverter {
         if (PosrednikOBJ instanceof FizickoLice) {
             Element imePosrednika = document.createElement("proj:ime");
             imePosrednika.setAttribute("property", "pred:ime");
-            imePosrednika.setAttribute("datatype", "xs:string");
             Element prezimePosrednika = document.createElement("proj:prezime");
             prezimePosrednika.setAttribute("property", "pred:prezime");
-            prezimePosrednika.setAttribute("datatype", "xs:string");
 
             FizickoLice fl = (FizickoLice) PosrednikOBJ;
             imePosrednika.appendChild(document.createTextNode(fl.getIme()));
@@ -224,10 +212,8 @@ public class P1toXMLConverter {
         } else {
             Element pibPosrednika = document.createElement("proj:pib");
             pibPosrednika.setAttribute("property", "pred:pib");
-            pibPosrednika.setAttribute("datatype", "xs:string");
             Element naziv_preduzecaPosrednika = document.createElement("proj:naziv_preduzeca");
             naziv_preduzecaPosrednika.setAttribute("property", "pred:naziv_preduzeca");
-            naziv_preduzecaPosrednika.setAttribute("datatype", "xs:string");
 
             PravnoLice pl = (PravnoLice) PosrednikOBJ;
             pibPosrednika.appendChild(document.createTextNode(pl.getPib()));
@@ -240,7 +226,6 @@ public class P1toXMLConverter {
         addContact(posrednik, p1.getPosrednik().getKontakt());
         Element vrstaPosrednika = document.createElement( "vrstaPosrednika");
         vrstaPosrednika.setAttribute("property","pred:vrstaPosrednika");
-        vrstaPosrednika.setAttribute("datatype","xs:string");
         vrstaPosrednika.appendChild(document.createTextNode(p1.getVrstaPosrednika()));
         posrednik.appendChild(vrstaPosrednika);
 
@@ -253,7 +238,6 @@ public class P1toXMLConverter {
         // // NACIN DOSTAVLJANJA
         Element nacinDostavljanja = document.createElement( "nacinDostavljanja");
         nacinDostavljanja.setAttribute("property", "pred:nacinDostavljanja");
-        nacinDostavljanja.setAttribute("datatype", "xs:string");
         formaPodnosioca.appendChild(nacinDostavljanja);
         nacinDostavljanja.appendChild(document.createTextNode(p1.getNacinDostavljanja()));
 
@@ -262,12 +246,10 @@ public class P1toXMLConverter {
         formaPodnosioca.appendChild(prijava);
         Element vrstaPrijave = document.createElement( "vrstaPrijave");
         vrstaPrijave.setAttribute("property", "pred:vrstaPrijave");
-        vrstaPrijave.setAttribute("datatype", "xs:string");
         prijava.appendChild(vrstaPrijave);
         vrstaPrijave.appendChild(document.createTextNode(p1.getVrstaPrijave()));
         Element brojPrvobitnePrijave = document.createElement( "brojPrvobitnePrijave");
         brojPrvobitnePrijave.setAttribute("property", "pred:brojPrvobitnePrijave");
-        brojPrvobitnePrijave.setAttribute("datatype", "xs:string");
         prijava.appendChild(brojPrvobitnePrijave);
         brojPrvobitnePrijave.appendChild(document.createTextNode(p1.getBrojPrvobitnePrijave()));
         Element datumPodnosenjaPrvobitnePrijave = document.createElement( "datumPodnosenjaPrvobitnePrijave");
@@ -294,10 +276,8 @@ public class P1toXMLConverter {
             datum1.setAttribute("datatype", "xs:date");
             Element brojPrijave1 = document.createElement( "brojPrijave");
             brojPrijave1.setAttribute("about", " pred:brojPrijave");
-            brojPrijave1.setAttribute("datatype", "xs:string");
             Element drzavaOrg1 = document.createElement( "drzavaIliOrganizacija");
             drzavaOrg1.setAttribute("about", " pred:drzavaIliOrganizacija");
-            drzavaOrg1.setAttribute("datatype", "xs:string");
             datum1.appendChild(document.createTextNode(r.getDatum()));
             brojPrijave1.appendChild(document.createTextNode(r.getBrojPrijave()));
             drzavaOrg1.appendChild(document.createTextNode(r.getDrzavaIliOrganizacija()));
@@ -308,7 +288,6 @@ public class P1toXMLConverter {
 
         Element podaciOOstalimPravimaNaListu2 = document.createElement( "podaciOOstalimPravimaNaListu2");
         podaciOOstalimPravimaNaListu2.setAttribute("about", " pred:podaciOOstalimPravimaNaListu2");
-        podaciOOstalimPravimaNaListu2.setAttribute("datatype", "xs:boolean");
         podaciOOstalimPravimaNaListu2.appendChild(document.createTextNode(p1.getImaDodatnogLista().toString()));
         zahtevZaPriznanjePrava.appendChild(podaciOOstalimPravimaNaListu2);
 
@@ -327,25 +306,21 @@ public class P1toXMLConverter {
 
         Element mesto = document.createElement("proj:mesto");
         mesto.setAttribute("property", "pred:mesto");
-        mesto.setAttribute("datatype", "xs:string");
         adresa.appendChild(mesto);
         mesto.appendChild(document.createTextNode(a.getMesto()));
 
         Element postanskiBroj = document.createElement("proj:postanski_broj");
         postanskiBroj.setAttribute("property", "pred:postanski_broj");
-        postanskiBroj.setAttribute("datatype", "xs:string");
         adresa.appendChild(postanskiBroj);
         postanskiBroj.appendChild(document.createTextNode(a.getPostanskiBroj()));
 
         Element ulica = document.createElement("proj:ulica");
         ulica.setAttribute("property", "pred:ulica");
-        ulica.setAttribute("datatype", "xs:string");
         adresa.appendChild(ulica);
         ulica.appendChild(document.createTextNode(a.getUlica()));
 
         Element broj = document.createElement("proj:broj");
         broj.setAttribute("property", "pred:broj");
-        broj.setAttribute("datatype", "xs:string");
         adresa.appendChild(broj);
         broj.appendChild(document.createTextNode(a.getBroj()));
     }
@@ -357,21 +332,18 @@ public class P1toXMLConverter {
         if (null != contact.getEmail()) {
             Element email = document.createElement("proj:email");
             email.setAttribute("property", "pred:email");
-            email.setAttribute("datatype", "xs:string");
             email.appendChild(document.createTextNode(contact.getEmail()));
             kontakt.appendChild(email);
         }
         if (null != contact.getTelefon()) {
             Element telefon = document.createElement("proj:telefon");
             telefon.setAttribute("property", "pred:telefon");
-            telefon.setAttribute("datatype", "xs:string");
             telefon.appendChild(document.createTextNode(contact.getTelefon()));
             kontakt.appendChild(telefon);
         }
         if (null != contact.getFaks()) {
             Element faks = document.createElement("proj:faks");
             faks.setAttribute("property", "pred:faks");
-            faks.setAttribute("datatype", "xs:string");
             faks.appendChild(document.createTextNode(contact.getFaks()));
             kontakt.appendChild(faks);
         }

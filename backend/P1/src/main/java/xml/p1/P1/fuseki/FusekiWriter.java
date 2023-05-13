@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class FusekiWriter {
 
-    private static final String GRAPH_URI="Metadata";
+    private static final String GRAPH_URI="P1/Metadata";
 
     public static void saveRDF(String rdf_data) throws IOException {
         AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties();
