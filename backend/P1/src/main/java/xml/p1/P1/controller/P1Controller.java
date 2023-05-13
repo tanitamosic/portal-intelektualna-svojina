@@ -9,7 +9,9 @@ import xml.p1.P1.dto.P1DTO;
 import xml.p1.P1.dto.SearchDTO;
 import xml.p1.P1.model.P1Zahtev;
 import xml.p1.P1.service.P1Service;
+import xml.p1.P1.service.SparqlService;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -19,6 +21,8 @@ public class P1Controller {
 
     @Autowired
     P1Service p1Service;
+    @Autowired
+    SparqlService sparqlService;
 
     @PostMapping(value="/post-p1", consumes="application/xml", produces="application/xml")
     public ResponseEntity<String> getCSRRequests(@RequestBody P1DTO dto) {
@@ -33,8 +37,12 @@ public class P1Controller {
     }
 
     @PostMapping(value="/advanced-search", consumes="application/xml", produces="application/xml")
-    public ResponseEntity<P1Zahtev> textSearchQuery(@RequestBody SearchDTO dto) {
-        return null;
+    public ResponseEntity<List<String>> textSearchQuery(@RequestBody SearchDTO dto) {
+        try {
+            return new ResponseEntity<>(sparqlService.search(dto.getSearchParam(), dto.getTipMetapodatka()), HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping(value="text-search/{searchParam}", produces="application/xml")

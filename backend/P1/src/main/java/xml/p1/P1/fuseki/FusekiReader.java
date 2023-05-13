@@ -16,13 +16,6 @@ import java.util.Map;
 @Component
 public class FusekiReader {
 
-    private static final String QUERY_FILEPATH = "src/main/resources/data/sparql/query.rq";
-    private static final String GRAPH_URI = "metadata"; // http://localhost:8088/fuseki/PatentData/data/metadata
-    private static final String PREDICATE_TRIPLET_PART = "<http://www.xmlsux.com/predicate/";
-    private static final String SUBJECT_TRIPLET_PART = "<http://www.ftn.uns.ac.rs/patent/";
-    private static final String PREDICATE_ID_METADATA_NAME = "broj_prijave"; // "<http://www.ftn.uns.ac.rs/patent/predicate/broj_prijave>";
-    private static final String SUBJECT = "patent";
-
     private FusekiReader() {
     }
 
