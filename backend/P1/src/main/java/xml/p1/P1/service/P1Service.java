@@ -1,5 +1,13 @@
 package xml.p1.P1.service;
 
+import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFWriter;
+import org.apache.jena.riot.*;
+import org.apache.jena.riot.system.StreamRDF;
+import org.apache.jena.riot.system.StreamRDFLib;
+import org.apache.jena.riot.writer.JsonLDWriter;
 import org.apache.xerces.dom.DeferredElementNSImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +23,10 @@ import xml.p1.P1.model.P1Zahtev;
 import xml.p1.P1.transformer.XmlTransformer;
 
 import javax.xml.transform.TransformerException;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,18 +44,21 @@ public class P1Service {
     @Autowired
     DOMParser domParser;
     public void createP1Zahtev(P1DTO dto)
-            throws TransformerException, XMLDBException, ClassNotFoundException, InvocationTargetException,
-            NoSuchMethodException, InstantiationException, IllegalAccessException, IOException, SAXException {
+            throws TransformerException, IOException, SAXException {
         P1Zahtev zahtev = new P1Zahtev(dto);
         String title = zahtev.getNameForCollection();
         Document document = converter.generateP1(zahtev);
         String xml = converter.documentToString(document);
 
-        sparqlService.saveRDF(xml, "src/main/resources/data/rdf/" + title + ".rdf");
-        existManager.storeFromText("db/p1", title, xml);
+        String rdf_path = "src/main/resources/data/rdf/" + title + ".rdf";
+        String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
+        sparqlService.saveRDF(xml, rdf_path);
+        saveJsonLD(rdf_path, json_path);
+//        existManager.storeFromText("db/p1", title, xml);
 
         String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
         converter.writeDocumentToPath(document, xmlLocation);
+
 
         String outputPDFLocation = "src/main/resources/static/pdf/" + title + ".pdf";
         XmlTransformer.convertToPdf(PDF_XSL, xmlLocation, outputPDFLocation);
@@ -71,5 +84,21 @@ public class P1Service {
         return new ArrayList<>();
     }
 
+    public void saveJsonLD(String in_rdf, String out_json) throws IOException {
+        // Create a Jena model and read in the input RDF file
+        Model model = ModelFactory.createDefaultModel();
+        InputStream inputStream = new FileInputStream(in_rdf);
+        RDFParser.source(inputStream).lang(RDFLanguages.RDFXML).parse(model);
 
+        // Create a OutputStream to hold the output
+        OutputStream outputStream = new FileOutputStream(out_json);
+
+        // Use the JSON-LD writer to write the model as JSON-LD to the output stream
+        RDFDataMgr.write(outputStream, model, Lang.JSONLD);
+
+        // Clean up resources
+        inputStream.close();
+        outputStream.flush();
+        outputStream.close();
+    }
 }

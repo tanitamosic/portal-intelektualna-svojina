@@ -18,7 +18,7 @@ public class SparqlUtil {
     private static final String UPDATE_TEMPLATE = "INSERT DATA { %s }";
 
     /* Insert RDF data to an arbitrary named graph */
-    private static final String UPDATE_TEMPLATE_NAMED_GRAPH = "INSERT DATA { GRAPH <%1$s> { %2$s } }";
+    private static final String INSERT_TEMPLATE_NAMED_GRAPH = "INSERT DATA { GRAPH <%1$s> { %2$s } }";
 
 
     /* Simple SPARQL query on a named graph */
@@ -45,7 +45,13 @@ public class SparqlUtil {
     }
 
     public static String insertData(String graphURI, String ntriples) {
-        return String.format(UPDATE_TEMPLATE_NAMED_GRAPH, graphURI, ntriples);
+        return String.format(INSERT_TEMPLATE_NAMED_GRAPH, graphURI, ntriples);
+    }
+
+    public static String replaceData(String graphURI, String ntriples) {
+        String deleteQuery = "DELETE { GRAPH <" + graphURI + "> { ?s ?p ?o } } WHERE { GRAPH <" + graphURI + "> { ?s ?p ?o } };\n";
+        String insertQuery = String.format(INSERT_TEMPLATE_NAMED_GRAPH, graphURI, ntriples);
+        return deleteQuery + insertQuery;
     }
 
     public static String selectData(String graphURI, String sparqlCondition) {
