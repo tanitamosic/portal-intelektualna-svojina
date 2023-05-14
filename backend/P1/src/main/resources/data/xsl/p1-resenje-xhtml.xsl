@@ -37,22 +37,20 @@
                     <tr>
                         <td>Broj prijave</td>
                         <td>
-                            <xsl:value-of
-                                    select="//pat:broj_prijave"/>
+                            <xsl:value-of select="resenje_zahteva/broj_prijave"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Datum obrade</td>
                         <td>
-                            <xsl:value-of
-                                    select="substring(//pat:resenje_zahteva//pat:datum_obrade, 0, 11)"/>
+                            <xsl:value-of select="resenje_zahteva/datum_obrade"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <xsl:element name="a">
                                 <xsl:attribute name="href">
-                                    http://localhost:8000/patent/download/zahtev/<xsl:value-of select="//pat:resenje_zahteva//pat:broj_prijave"/>
+                                    http://localhost:8083/download/pdf/<xsl:value-of select="resenje_zahteva/broj_prijave"/>
                                 </xsl:attribute>
                                 Referenca na zahtev
                             </xsl:element>
@@ -67,22 +65,20 @@
                     <tr>
                         <td>Ime i prezima</td>
                         <td>
-                            <xsl:value-of
-                                    select="//pat:resenje_zahteva//pat:ime_sluzbenika"/>
+                            <xsl:value-of select="resenje_zahteva/ime_sluzbenika"/> <xsl:value-of select="resenje_zahteva/prezime_sluzbenika"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Email adresa</td>
                         <td>
-                            <xsl:value-of
-                                    select="//pat:resenje_zahteva//pat:email_sluzbenika"/>
+                            <xsl:value-of select="resenje_zahteva/email_sluzbenika"/>
                         </td>
                     </tr>
                 </table>
                 <br/>
                 <table>
                     <xsl:choose>
-                        <xsl:when test="//pat:resenje_zahteva//pat:odbijen='false'">
+                        <xsl:when test="resenje_zahteva/odbijen='false'">
                             <tr>
                                 <td>Status zahteva</td>
                                 <td>
@@ -95,11 +91,10 @@
                             <tr>
                                 <td>Sifra</td>
                                 <td>
-                                    <xsl:value-of
-                                            select="//pat:resenje_zahteva//pat:sifra"/>
                                     <xsl:attribute name="style">
-                                        <xsl:value-of select="'color:green;'"/>
+                                        <xsl:value-of select="'color:red;'"/>
                                     </xsl:attribute>
+                                    <xsl:value-of select="resenje_zahteva/sifra"/>
                                 </td>
                             </tr>
                         </xsl:when>
@@ -116,8 +111,7 @@
                             <tr>
                                 <td>Razlog odbijanja</td>
                                 <td>
-                                    <xsl:value-of
-                                            select="//pat:resenje_zahteva//pat:razlog_odbijanja"/>
+                                    <xsl:value-of select="resenje_zahteva/razlog_odbijanja"/>
                                 </td>
                             </tr>
                         </xsl:otherwise>

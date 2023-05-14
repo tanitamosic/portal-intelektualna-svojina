@@ -24,7 +24,7 @@
                 </x:xmpmeta>
             </fo:declarations>
 
-            <fo:page-sequence master-reference="P1">
+            <fo:page-sequence master-reference="P1-resenje">
                 <fo:flow flow-name="xsl-region-body">
 
                     <fo:block linefeed-treatment="preserve" text-align="center" font-size="16px" font-weight="bold">
@@ -40,7 +40,7 @@
                                     <fo:block>Broj prijave</fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px">
-                                    <fo:block>TODO: PUT XPATH</fo:block>
+                                    <fo:block><xsl:value-of select="resenje_zahteva/broj_prijave"/></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row border="1px solid black">
@@ -48,18 +48,13 @@
                                     <fo:block>Datum obrade</fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px">
-                                    <fo:block>TODO: PUT XPATH</fo:block>
+                                    <fo:block><xsl:value-of select="resenje_zahteva/datum_obrade"/></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row>
-                                <fo:table-cell padding="3px"number-columns-spanned="2">
+                                <fo:table-cell padding="3px" number-columns-spanned="2">
                                     <fo:block>
-                                        <xsl:element name="a">
-                                            <xsl:attribute name="href">
-                                                http://localhost:8083/download/pdf/ TODO: PUT XPATH
-                                            </xsl:attribute>
-                                            Referenca na zahtev
-                                        </xsl:element>
+                                        <fo:basic-link external-destination="http://localhost:8083/download/pdf/{resenje_zahteva/broj_prijave}">Referenca na zahtev</fo:basic-link>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
@@ -74,7 +69,7 @@
                               margin="10px auto 10px auto" border="3px solid black" border-collapse="collapse">
                         <fo:table-body>
                             <fo:table-row border="1px solid black">
-                                <fo:table-cell padding="3px"number-columns-spanned="2">
+                                <fo:table-cell padding="3px" number-columns-spanned="2">
                                     <fo:block>Službenik koji je obradio zahtev</fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
@@ -83,7 +78,7 @@
                                     <fo:block>Ime i prezime</fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px">
-                                    <fo:block>TODO : PUT XPATH</fo:block>
+                                    <fo:block><xsl:value-of select="resenje_zahteva/ime_sluzbenika"/> <xsl:value-of select="resenje_zahteva/prezime_sluzbenika"/></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row border="1px solid black">
@@ -91,7 +86,7 @@
                                     <fo:block>Email</fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px">
-                                    <fo:block>TODO : PUT XPATH</fo:block>
+                                    <fo:block><xsl:value-of select="resenje_zahteva/email_sluzbenika"/></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                         </fo:table-body>
@@ -105,16 +100,13 @@
                               margin="10px auto 10px auto" border="3px solid black" border-collapse="collapse">
                         <fo:table-body>
                             <xsl:choose>
-                                <xsl:when test="TODO: PUT XPATH='false'">
+                                <xsl:when test="resenje_zahteva/odbijen='false'">
                                     <fo:table-row>
                                         <fo:table-cell padding="3px">
                                             <fo:block>Status zahteva</fo:block>
                                         </fo:table-cell>
                                         <fo:table-cell padding="3px">
-                                            <fo:block>
-                                                <xsl:attribute name="style">
-                                                    <xsl:value-of select="'color:green;'"/>
-                                                </xsl:attribute>
+                                            <fo:block color="green">
                                                 PRIHVACEN
                                             </fo:block>
 
@@ -126,11 +118,7 @@
                                         </fo:table-cell>
                                         <fo:table-cell padding="3px">
                                             <fo:block>
-                                                <xsl:value-of
-                                                        select="TODO: PUT XPATH"/>
-                                                <xsl:attribute name="style">
-                                                    <xsl:value-of select="'color:green;'"/>
-                                                </xsl:attribute>
+                                                <xsl:value-of select="resenje_zahteva/sifra"/>
                                             </fo:block>
                                         </fo:table-cell>
                                     </fo:table-row>
@@ -141,10 +129,7 @@
                                             <fo:block>Status zahteva</fo:block>
                                         </fo:table-cell>
                                         <fo:table-cell padding="3px">
-                                            <fo:block>
-                                                <xsl:attribute name="style">
-                                                    <xsl:value-of select="'color:red;'"/>
-                                                </xsl:attribute>
+                                            <fo:block color="red">
                                                 ODBIJEN
                                             </fo:block>
                                         </fo:table-cell>
@@ -155,7 +140,7 @@
                                         </fo:table-cell>
                                         <fo:table-cell padding="3px">
                                             <fo:block>
-                                                <xsl:value-of select="TODO: PUT XPATH"/>
+                                                <xsl:value-of select="resenje_zahteva/razlog_odbijanja"/>
                                             </fo:block>
                                         </fo:table-cell>
                                     </fo:table-row>

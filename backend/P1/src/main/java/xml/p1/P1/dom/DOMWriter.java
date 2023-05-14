@@ -3,6 +3,7 @@ package xml.p1.P1.dom;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import xml.p1.P1.model.P1Resenje;
 import xml.p1.P1.model.P1Zahtev;
 import xml.p1.P1.model.RanijaPrijava;
 import xml.p1.P1.model.deljeniTipovi.*;
@@ -17,7 +18,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 @Component
-public class P1toXMLConverter {
+public class DOMWriter {
 
     private DocumentBuilderFactory factory;
 
@@ -30,7 +31,7 @@ public class P1toXMLConverter {
 
     private static final String P1_NAMESPACE = "http://localhost:3030/zahtev_za_priznanje_patenta";
 
-    public P1toXMLConverter() {
+    public DOMWriter() {
         factory = DocumentBuilderFactory.newInstance();
 
         transformerFactory = TransformerFactory.newInstance();
@@ -347,6 +348,45 @@ public class P1toXMLConverter {
             faks.appendChild(document.createTextNode(contact.getFaks()));
             kontakt.appendChild(faks);
         }
+    }
+
+    public Document generateP1Resenje(P1Resenje dto) {
+        createDocument();
+
+        Element resenje = document.createElement("resenje_zahteva");
+        document.appendChild(resenje);
+        resenje.setAttribute("xmlns:proj", IMPORT_NAMESPACE);
+        resenje.setAttribute("xmlns:p-1-r", "http://localhost:3030/resenje_za_priznanje_patenta");
+        resenje.setAttribute("xmlns:xsi", XSI_NAMESPACE);
+        resenje.setAttribute("xmlns:pred", "http://www.xmlsux.com/predicate/");
+        resenje.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/p1-resenje.xsd");
+
+        Element broj_prijave = document.createElement("broj_prijave");
+        broj_prijave.appendChild(document.createTextNode(dto.getBrojPrijave()));
+        Element datum_obrade = document.createElement("datum_obrade");
+        datum_obrade.appendChild(document.createTextNode(dto.getDatumObrade()));
+        Element odbijen = document.createElement("odbijen");
+        odbijen.appendChild(document.createTextNode(String.valueOf(dto.getOdbijen())));
+        Element ime_sluzbenika = document.createElement("ime_sluzbenika");
+        ime_sluzbenika.appendChild(document.createTextNode(dto.getImeSluzbenika()));
+        Element prezime_sluzbenika = document.createElement("prezime_sluzbenika");
+        prezime_sluzbenika.appendChild(document.createTextNode(dto.getPrezimeSluzbenika()));
+        Element email_sluzbenika = document.createElement("email_sluzbenika");
+        email_sluzbenika.appendChild(document.createTextNode(dto.getEmailSluzbenika()));
+        Element razlog_odbijanja = document.createElement("razlog_odbijanja");
+        razlog_odbijanja.appendChild(document.createTextNode(dto.getRazlogOdbijanja()));
+        Element sifra = document.createElement("sifra");
+        sifra.appendChild(document.createTextNode(dto.getSifra()));
+
+        resenje.appendChild(broj_prijave);
+        resenje.appendChild(datum_obrade);
+        resenje.appendChild(odbijen);
+        resenje.appendChild(ime_sluzbenika);
+        resenje.appendChild(prezime_sluzbenika);
+        resenje.appendChild(email_sluzbenika);
+        resenje.appendChild(razlog_odbijanja);
+        resenje.appendChild(sifra);
+        return document;
     }
 
 

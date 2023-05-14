@@ -1,13 +1,8 @@
 package xml.p1.P1.service;
 
-import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.RDFWriter;
 import org.apache.jena.riot.*;
-import org.apache.jena.riot.system.StreamRDF;
-import org.apache.jena.riot.system.StreamRDFLib;
-import org.apache.jena.riot.writer.JsonLDWriter;
 import org.apache.xerces.dom.DeferredElementNSImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +11,9 @@ import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
 import xml.p1.P1.dom.DOMParser;
-import xml.p1.P1.dom.P1toXMLConverter;
+import xml.p1.P1.dom.DOMWriter;
 import xml.p1.P1.dto.P1DTO;
+import xml.p1.P1.model.P1Resenje;
 import xml.p1.P1.exist.ExistManager;
 import xml.p1.P1.model.P1Zahtev;
 import xml.p1.P1.transformer.XmlTransformer;
@@ -25,8 +21,6 @@ import xml.p1.P1.transformer.XmlTransformer;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.StandardCharsets;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +28,11 @@ import java.util.List;
 public class P1Service {
 
     private final String PDF_XSL = "src/main/resources/data/xsl/p1-pdf.xsl";
+    private final String PDF_RESENJE_XSL = "src/main/resources/data/xsl/p1-resenje-pdf.xsl";
+    private final String XHTML_RESENJE_XSL = "src/main/resources/data/xsl/p1-resenje-xhtml.xsl";
     private final String XHTML_XSL = "src/main/resources/data/xsl/p1-xhtml.xsl";
     @Autowired
-    P1toXMLConverter converter;
+    DOMWriter converter;
     @Autowired
     ExistManager existManager;
     @Autowired
@@ -44,7 +40,8 @@ public class P1Service {
     @Autowired
     DOMParser domParser;
     public void createP1Zahtev(P1DTO dto)
-            throws TransformerException, IOException, SAXException {
+            throws TransformerException, IOException, SAXException, XMLDBException, ClassNotFoundException,
+            InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         P1Zahtev zahtev = new P1Zahtev(dto);
         String title = zahtev.getNameForCollection();
         Document document = converter.generateP1(zahtev);
@@ -54,7 +51,7 @@ public class P1Service {
         String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
         sparqlService.saveRDF(xml, rdf_path);
         saveJsonLD(rdf_path, json_path);
-//        existManager.storeFromText("db/p1", title, xml);
+        existManager.storeFromText("db/p1", title, xml);
 
         String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
         converter.writeDocumentToPath(document, xmlLocation);
@@ -65,6 +62,24 @@ public class P1Service {
 
         String outputXHTMLLocation = "src/main/resources/static/xhtml/" + title + ".xhtml";
         XmlTransformer.convertToXhtml(XHTML_XSL, xmlLocation, outputXHTMLLocation);
+    }
+
+    public void createP1Resenje(P1Resenje resenje) throws TransformerException, XMLDBException, ClassNotFoundException,
+            InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException,
+            IOException, SAXException {
+        String title = resenje.getTitle();
+        Document document = converter.generateP1Resenje(resenje);
+        String xml = converter.documentToString(document);
+
+        existManager.storeFromText("db/p1", title, xml);
+        String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
+        converter.writeDocumentToPath(document, xmlLocation);
+
+        String outputPDFLocation = "src/main/resources/static/pdf/" + title + ".pdf";
+        XmlTransformer.convertToPdf(PDF_RESENJE_XSL, xmlLocation, outputPDFLocation);
+
+        String outputXHTMLLocation = "src/main/resources/static/xhtml/" + title + ".xhtml";
+        XmlTransformer.convertToXhtml(XHTML_RESENJE_XSL, xmlLocation, outputXHTMLLocation);
     }
 
 
