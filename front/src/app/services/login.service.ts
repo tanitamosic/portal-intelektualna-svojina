@@ -15,7 +15,7 @@ export class LoginService  {
       "password": password
     }
     const xmlZahtev = JsonToXML.parse("loginRequest", body);
-    return this.http.post('/api/login', xmlZahtev, this.getOptions());
+    return this.http.post('/entry/login', xmlZahtev, this.getOptions());
   }
 
   private getOptions() {

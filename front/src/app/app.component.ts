@@ -21,4 +21,8 @@ export class AppComponent {
   login() {
     this.router.navigateByUrl('login').then(r => {});
   }
+
+  register() {
+    this.router.navigateByUrl('registration').then(r => {});
+  }
 }
