@@ -83,14 +83,14 @@ public class P1Service {
     }
 
 
-    public List<P1Zahtev> conductTextBasedSearch(String rawText) {
+    public List<String> conductTextBasedSearch(String rawText) {
         try {
             List<XMLResource> resources = existManager.searchForText(rawText);
-            List<P1Zahtev> zahtevi = new ArrayList<>();
+            List<String> zahtevi = new ArrayList<>();
             for (XMLResource xml: resources) {
                 DeferredElementNSImpl document = (DeferredElementNSImpl) xml.getContentAsDOM();
                 P1Zahtev zahtev = new P1Zahtev(document);
-                zahtevi.add(zahtev);
+                zahtevi.add(zahtev.getBrojPrijave());
             }
             return zahtevi;
         } catch(Exception e) {

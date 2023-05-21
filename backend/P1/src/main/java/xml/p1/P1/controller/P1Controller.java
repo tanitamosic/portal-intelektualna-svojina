@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/p1")
 public class P1Controller {
 
     @Autowired
@@ -58,7 +58,7 @@ public class P1Controller {
     }
 
     @GetMapping(value="text-search/{searchParam}", produces="application/xml")
-    public ResponseEntity<List<P1Zahtev>> advancedSearchQuery(@PathVariable String searchParam) {
+    public ResponseEntity<List<String>> advancedSearchQuery(@PathVariable String searchParam) {
         return new ResponseEntity<>(p1Service.conductTextBasedSearch(searchParam), HttpStatus.OK);
     }
 }

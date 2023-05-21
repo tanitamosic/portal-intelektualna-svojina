@@ -23,9 +23,10 @@
                         padding: 3px;
                         border: 1px;
                         border-color: black;
+                        border-collapse: collapse;
                     }
                     tr:nth-child(even){ background-color: #f2f2f2 }
-                    tr { border: 1px; border-color: black; }
+                    tr { border: 1px; border-color: black; border-collapse: collapse; }
                 </style>
             </head>
             <body>

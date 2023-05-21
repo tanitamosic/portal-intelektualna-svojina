@@ -15,7 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 @RestController
-@RequestMapping(value = "/download")
+@RequestMapping(value = "/p1/download")
 public class DownloadController {
 
     @GetMapping(value="rdf/{filename}", produces=MediaType.APPLICATION_XHTML_XML_VALUE)

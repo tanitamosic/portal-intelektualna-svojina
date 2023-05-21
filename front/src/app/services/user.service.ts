@@ -25,11 +25,8 @@ export class UserService {
       // @ts-ignore
       this.user = JSON.parse(localStorage.getItem("user"));
       console.log(this.user);
-      // @ts-ignore
-      switch (this.user.role) {
-        case 'ROLE_ADMIN': { this.router.navigateByUrl('admin/home').then(r => {}); break; }
-        case 'ROLE_CLIENT': { this.router.navigateByUrl('user/home').then(r => {}); break; }
-      }
+
+      this.router.navigateByUrl(this.user.role + '/home').then(r => {});
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {LoginService} from "../services/login.service";
-import {UserService} from "../services/user.service";
-import {User} from "../model/User";
+import {LoginService} from "../../services/login.service";
+import {UserService} from "../../services/user.service";
+import {User} from "../../model/User";
 import {XmlParser} from "@angular/compiler";
 import {Router} from "@angular/router";
 

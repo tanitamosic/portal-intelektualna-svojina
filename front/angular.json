@@ -27,7 +27,12 @@
             "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/assets/xonomy/",
+                "output": "/assets/xonomy/"
+              }
             ],
             "styles": [
               "src/styles.sass"

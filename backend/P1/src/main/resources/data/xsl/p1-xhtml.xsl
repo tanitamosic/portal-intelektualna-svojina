@@ -17,6 +17,7 @@
                         border:0px;
                         margin-left: auto;
                         margin-right: auto;
+                        border-collapse: collapse;
                     }
                     th, td {
                         text-align: left;
@@ -26,10 +27,12 @@
                         border-right-width:1px;
                         border-style: solid;
                         border-color: black;
+                        border-collapse: collapse;
                     }
 
                     tr{
                         border:0px;
+                        border-collapse: collapse;
                     }
 
                     body {
