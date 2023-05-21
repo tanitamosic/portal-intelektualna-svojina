@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import * as JsonToXML from "js2xmlparser";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,16 @@ export class SearchService {
       }),
       responseType: 'document' as 'json'
     };
+  }
+
+  post(searchParam: string, tipMetapodatka: string, doctype: string): Observable<Object> {
+    let body = {
+      searchParam,
+      tipMetapodatka
+    }
+    let prefix: string = this.getUrlPrefix(doctype);
+    const xmlZahtev = JsonToXML.parse("advancedSearch", body);
+    return this.http.post(prefix + 'advanced-search', xmlZahtev, this.getOptions());
   }
 
   getUrlPrefix(doctype: string) {

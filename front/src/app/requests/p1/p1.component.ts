@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {RequestService} from "../../services/request.service";
 // import * as Xonomy from 'xonomy'
 declare const Xonomy: any;
 
@@ -8,6 +9,9 @@ declare const Xonomy: any;
   styleUrls: ['./p1.component.scss']
 })
 export class P1Component {
+
+  constructor(private requestService: RequestService) {
+  }
 
   ngOnInit() {
     this.initializeXonomy();
@@ -79,27 +83,14 @@ export class P1Component {
     <imaDodatnogLista></imaDodatnogLista>
     <dodatniList></dodatniList>
 </zahtev>`;
-    const xmlSchema = `<?xml version="1.0" encoding="UTF-8"?>
-    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-      <!-- Define your XML Schema here -->
-    </xs:schema>`;
     let docSpec = {
-      onchange: function () {
-        console.log("Change")
-      },
       validate: function (jsElement: any) {
-        // if (jsElement.value)
-
-        if (jsElement.name == "drzavaIliOrganizacija") {
-          console.log(jsElement.children[0])
-        }
-        for (var i = 0; i < jsElement.children.length; i++) {
-          var jsChild = jsElement.children[i];
+        for (let i = 0; i < jsElement.children.length; i++) {
+          let jsChild = jsElement.children[i];
           if (jsChild.type == "element") { //if element
             docSpec.validate(jsChild); //recursion
           } else if (jsChild.type == "text") {
             if (jsChild.value == "") {
-              console.log("STIGAO")
               Xonomy.warnings.push({
                   // htmlID: jsAttribute.htmlID,
                   text: "This attribute must not be empty."
@@ -199,7 +190,7 @@ export class P1Component {
         "pronalazac": {
           menu: [{
             caption: "Postavi na <TFizickoLice>",
-            function (jsElement: any) {
+            action: function (jsElement: any) {
               let xml = "<ime></ime>";
               let xml2 = "<prezime></prezime>"
               Xonomy.newElementChild(jsElement, xml);
@@ -207,7 +198,7 @@ export class P1Component {
               Xonomy.refresh();
             },
             hideIf: function (jsElement: any) {
-              return jsElement.hasChildElement("Poslovno_ime") || jsElement.hasChildElement("ImePrezime");
+              return jsElement.hasChildElement("ime") || jsElement.hasChildElement("prezime");
             }
           },
             {
@@ -220,7 +211,7 @@ export class P1Component {
                 Xonomy.refresh();
               },
               hideIf: function (jsElement: any) {
-                return jsElement.hasChildElement("Poslovno_ime") || jsElement.hasChildElement("ImePrezime");
+                return jsElement.hasChildElement("naziv_preduzeca") || jsElement.hasChildElement("pib");
               }
             },
           ]
@@ -338,7 +329,25 @@ export class P1Component {
           hasText: true,
           oneliner: true,
           asker: Xonomy.askString
-        }
+        },
+        "ime": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "prezime": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        },
+      "naziv_preduzeca": {
+        hasText: true,
+        oneliner: true,
+        asker: Xonomy.askString
+      }, "pib": {
+        hasText: true,
+        oneliner: true,
+        asker: Xonomy.askString
+      },
       }
     }
 
@@ -347,8 +356,18 @@ export class P1Component {
   }
 
   saveXmlChanges(): void {
-    const modifiedXml = Xonomy.harvest(); // Retrieve the modified XML
-    // Handle the modified XML as needed (e.g., save to the server)
+    let modifiedXml = Xonomy.harvest(); // Retrieve the modified XML
+    modifiedXml = modifiedXml.replaceAll("xml:space='preserve'", '')
+    const request = this.requestService.postRequest(modifiedXml, 'P1');
+    request.subscribe((res) => {
+      alert('Zahtev uspesno poslat');
+      location.reload();
+    }, (err) => {
+      alert('Doslo je do greske.')
+    })
   }
 
+  back() {
+    location.reload()
+  }
 }

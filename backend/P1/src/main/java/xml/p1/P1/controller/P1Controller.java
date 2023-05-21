@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 import xml.p1.P1.dto.P1DTO;
 import xml.p1.P1.dto.SearchDTO;
 import xml.p1.P1.model.P1Resenje;
-import xml.p1.P1.model.P1Zahtev;
 import xml.p1.P1.service.P1Service;
 import xml.p1.P1.service.SparqlService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -51,6 +51,9 @@ public class P1Controller {
     @PostMapping(value="/advanced-search", consumes="application/xml", produces="application/xml")
     public ResponseEntity<List<String>> textSearchQuery(@RequestBody SearchDTO dto) {
         try {
+            if (null != dto.getSearchParam() || dto.getSearchParam().isBlank() || null == dto.getTipMetapodatka()) {
+                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
+            }
             return new ResponseEntity<>(sparqlService.search(dto.getSearchParam(), dto.getTipMetapodatka()), HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
