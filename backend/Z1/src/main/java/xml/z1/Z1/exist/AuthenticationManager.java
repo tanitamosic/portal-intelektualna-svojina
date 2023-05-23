@@ -48,7 +48,7 @@ public class AuthenticationManager {
     }
 
     public String getPort() {
-        return port;
+        return "8088";
     }
 
     public void setPort(String port) {
