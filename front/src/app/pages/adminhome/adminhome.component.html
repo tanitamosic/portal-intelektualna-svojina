@@ -1,0 +1,59 @@
+<div>
+  <button (click)='logout()'>
+    Odjavi se
+  </button>
+</div>
+
+<hr/>
+
+<div>
+  <label for="name">Tekstrualna pretraga:</label>
+  <input type="text" id="name" name="name" [(ngModel)]="rawSearchParam">
+</div>
+<div>
+  <input type="radio" id="a1" name="raw" value="A1" [(ngModel)]="rawSearchDoctype">
+  <label for="a1">A1</label>
+
+  <input type="radio" id="p1" name="raw" value="P1" [(ngModel)]="rawSearchDoctype">
+  <label for="p1">P1</label>
+
+  <input type="radio" id="z1" name="raw" value="Z1" [(ngModel)]="rawSearchDoctype">
+  <label for="z1">Z1</label>
+
+</div>
+<div>
+  <button (click)="rawSearch()" title="Pretrazi zahteve tekstualnom pretragom">
+    Pretrazi zahteve
+  </button>
+</div>
+
+<hr/>
+<div>
+  <input type="text" placeholder="Metapodatak1" [(ngModel)]="advancedSearchParam1">
+
+  <select [(ngModel)]="selectedOperator">
+    <option value="AND">AND</option>
+    <option value="OR">OR</option>
+    <option value="NOT">NOT</option>
+  </select>
+  <input type="text" placeholder="Metapodatak2" [(ngModel)]="advancedSearchParam2">
+</div>
+<div>
+  <input type="radio" id="a11" name="advanced" value="A1" [(ngModel)]="advancedSearchDoctype">
+  <label for="a11">A1</label>
+
+  <input type="radio" id="p11" name="advanced" value="P1" [(ngModel)]="advancedSearchDoctype">
+  <label for="p11">P1</label>
+
+  <input type="radio" id="z11" name="advanced" value="Z1" [(ngModel)]="advancedSearchDoctype">
+  <label for="z11">Z1</label>
+
+</div>
+<div>
+  <button (click)="advancedSearch()" title="Pretrazi zahteve naprednom pretragom">
+    Pretrazi zahteve
+  </button>
+</div>
+
+<hr/>
+

@@ -1,0 +1,9 @@
+<div>
+  <button *ngIf="!userService.isLoggedIn()" (click)="login()">Login</button>
+</div>
+
+<div>
+  <button *ngIf="!userService.isLoggedIn()" (click)="register()">Registration</button>
+</div>
+
+<router-outlet></router-outlet>

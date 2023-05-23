@@ -1,0 +1,17 @@
+<div>
+  <div class="cell">
+    <span>
+    <input placeholder="email" id="float-input-email" type="text" maxlength="25" [(ngModel)]="email">
+
+  </span>
+  </div>
+  <div class="cell">
+    <span>
+    <input placeholder="password" id="float-input-password" type="password" maxlength="16" [(ngModel)]="password">
+
+  </span>
+  </div>
+  <div class="cell">
+    <button  id="attemptLoginBtn" style="margin-left: 20px; background-color: lightgreen"  (click)="login($event)">Login</button>
+  </div>
+</div>
