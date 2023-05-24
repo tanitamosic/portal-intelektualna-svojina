@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.xmldb.api.base.XMLDBException;
 import xml.p1.P1.dto.P1DTO;
 import xml.p1.P1.dto.SearchDTO;
 import xml.p1.P1.model.P1Resenje;
@@ -11,6 +12,8 @@ import xml.p1.P1.service.P1Service;
 import xml.p1.P1.service.SparqlService;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,5 +66,14 @@ public class P1Controller {
     @GetMapping(value="text-search/{searchParam}", produces="application/xml")
     public ResponseEntity<List<String>> advancedSearchQuery(@PathVariable String searchParam) {
         return new ResponseEntity<>(p1Service.conductTextBasedSearch(searchParam), HttpStatus.OK);
+    }
+
+    @GetMapping(value="all-requests", produces="application/xml")
+    public ResponseEntity<List<String>> getAll() {
+        try {
+            return new ResponseEntity<>(p1Service.getAllRequests(), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

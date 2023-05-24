@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -215,6 +216,16 @@ public class ExistManager {
             resources.add(resxml);
         }
         return resources;
+    }
+
+    public List<String> getAllDocuments() throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, UnsupportedEncodingException {
+        createConnection();
+        List<XMLResource> resources = new ArrayList<>();
+        String uri = authManager.getUri() + "db/p1";
+
+        Collection col = DatabaseManager.getCollection(uri, authManager.getUsername(), authManager.getPassword());
+
+        return Arrays.stream(col.listResources()).toList();
     }
 
     private static String createXPathExpressionForTextSearch(List<String> words, boolean matchCase) {

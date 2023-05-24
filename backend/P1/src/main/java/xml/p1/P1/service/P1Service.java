@@ -22,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -115,5 +116,9 @@ public class P1Service {
         inputStream.close();
         outputStream.flush();
         outputStream.close();
+    }
+
+    public List<String> getAllRequests() throws XMLDBException, UnsupportedEncodingException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        return existManager.getAllDocuments();
     }
 }

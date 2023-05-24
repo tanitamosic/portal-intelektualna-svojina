@@ -127,7 +127,7 @@
     </xs:complexType>
     <xs:simpleType name="TBrojPrijave">
         <xs:restriction base="xs:string">
-            <xs:pattern value="P-\d{4}\\\d{4}"/>
+            <xs:pattern value="P-\d{4}-\d{4}"/>
             <xs:whiteSpace value="collapse"/>
         </xs:restriction>
     </xs:simpleType>

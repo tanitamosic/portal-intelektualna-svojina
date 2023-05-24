@@ -48,7 +48,7 @@ public class SparqlService {
         HashMap<String, String> params = new HashMap<>();
         params.put(rqParams.get(metadataType), searchParam);
         List<String> results = FusekiReader.executeQuery(params, metadataType.getValue());
-        // element liste izgleda ovako: prijave: P-2023\1234
+        // element liste izgleda ovako: prijave: P-2023-1234
         // slicujem prvih 9 elemenata, da bi dobio samo broj prijave nazad.
         results = results.stream()
                 .map(e -> e.substring(9)).toList();
