@@ -39,7 +39,7 @@ public class P1Controller {
         return new ResponseEntity<>("uspelo", HttpStatus.OK);
     }
 
-    @PostMapping(value="/resi-p1", consumes="application/xml", produces="application/xml")
+    @PostMapping(value="/resi", consumes="application/xml", produces="application/xml")
     public ResponseEntity<String> postP1resenje(@RequestBody P1Resenje resenje) {
         try {
             p1Service.createP1Resenje(resenje);
@@ -49,6 +49,17 @@ public class P1Controller {
             return new ResponseEntity<>("nije uspelo", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>("uspelo", HttpStatus.OK);
+    }
+
+    @GetMapping(value="/resenje-postoji/{broj}", produces="application/xml")
+    public ResponseEntity<Boolean> doesDecisionExist(@PathVariable String broj) {
+        try {
+            return new ResponseEntity<>(p1Service.doesDecisionExist(broj), HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping(value="/advanced-search", consumes="application/xml", produces="application/xml")

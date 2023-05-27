@@ -228,33 +228,12 @@ public class ExistManager {
         return Arrays.stream(col.listResources()).toList();
     }
 
-    private static String createXPathExpressionForTextSearch(List<String> words, boolean matchCase) {
-        int wordsDone = 0;
-        String xpath = "/*[";
-
-        for (String word : words) {
-            xpath = xpath.concat("contains(");
-
-            if (!matchCase) {
-                xpath = xpath.concat("lower-case(.)");
-                word = word.toLowerCase();
-            } else {
-                xpath = xpath.concat(".");
-            }
-
-            xpath = xpath.concat(", ").concat("\"").concat(word).concat("\"");
-            xpath = xpath.concat(")");
-
-            wordsDone++;
-            if (wordsDone != words.size()) {
-                xpath = xpath.concat(" and ");
-            }
-        }
-
-        xpath = xpath.concat("]");
-//        for (String word : words)
-//            xpath = xpath.concat(" | //pat:Naziv_pronalaska[contains(@Naziv, '" + word + "')]");
-        return xpath;
+    public Boolean searchForDocument(String name) throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        createConnection();
+        String uri = authManager.getUri() + "db/p1";
+        Collection col = DatabaseManager.getCollection(uri, authManager.getUsername(), authManager.getPassword());
+        List<String> documents = Arrays.stream(col.listResources()).toList();
+        return documents.contains(name);
     }
 
 }

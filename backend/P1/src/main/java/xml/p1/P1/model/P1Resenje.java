@@ -15,7 +15,6 @@ public class P1Resenje {
     private String emailSluzbenika;
     private String datumObrade;
     private String razlogOdbijanja = "";
-    private String sifra;
     private Boolean odbijen;
 
     public String getTitle() {

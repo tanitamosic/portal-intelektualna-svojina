@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {SearchService} from "../../services/search.service";
 import {Observable} from "rxjs";
+import {DecisionService} from "../../services/decision.service";
 
 @Component({
   selector: 'app-adminhome',
@@ -26,7 +27,7 @@ export class AdminhomeComponent {
   metadataParamType1: string = '';
   metadataParamType2: string = '';
 
-  constructor(private route: Router, private searchService: SearchService) {
+  constructor(private route: Router, private searchService: SearchService, private decisionService: DecisionService) {
   }
 
   logout() {
@@ -140,14 +141,46 @@ export class AdminhomeComponent {
     this.requestsAndResolutions = [];
   }
 
-  fillRequestsAndResolutions(array: any[]) {
-    array.forEach((e) => {
-      let obj = {
-        request: e,
-        resolution: 'Resenje-' + e,
-        url: 'http://localhost:4200' + this.searchService.getUrlPrefix(this.rawSearchDoctype) + 'download'
+  async fillRequestsAndResolutions(array: any[]) {
+    this.clearTable()
+    for (const e of array) {
+      if (!e.startsWith('Resenje'))  {
+        let hasDecision = await this.determineDecisionPresence(e)
+        let endpointPrefix = e.at(0).toLowerCase() + '1'
+        let obj = {
+          request: e,
+          resolution: 'Resenje-' + e,
+          url: 'http://localhost:4200/' + endpointPrefix + '/download',
+          // hasDecision: false
+          hasDecision
+        }
+        this.requestsAndResolutions.push(obj);
       }
-      this.requestsAndResolutions.push(obj);
-    })
+    }
+  }
+
+  async determineDecisionPresence(request: string) {
+    // @ts-ignore
+    let endpointPrefix = request.at(0).toLowerCase() + '1'
+    let imeResenja = 'Resenje-' + request
+    const r = this.decisionService.getRequestDecision(imeResenja, endpointPrefix)
+    const response = await r.toPromise()
+    const xmlResponse = response as XMLDocument;
+    const serializer = new XMLSerializer();
+    const xmlString = serializer.serializeToString(xmlResponse);
+    console.log(xmlString);
+    // Create a DOMParser instance
+    const parser = new DOMParser();
+    // Parse the XML string
+    const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+    // Get the list of <item> elements
+    // @ts-ignore
+    return xmlDoc.getElementsByTagName('Boolean').item(0).textContent === 'true'
+  }
+
+  makeDecision(request: any) {
+    console.log(request)
+    this.decisionService.setDocumentForDecision(request)
+    this.route.navigate(['/make-decision']).then(r => {})
   }
 }

@@ -302,7 +302,7 @@
                         </fo:table-row>
                         <fo:table-row>
                             <fo:table-cell border-bottom="1px solid black" border-right="1px solid black" padding="3px" border-left="1px solid black">
-                                <fo:block> Broj prvobitne prijave / osnovne prijave, odnosno osnovnog patenta: <xsl:value-of select="zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave" /></fo:block>
+                                <fo:block> Broj prvobitne prijave / osnovne prijave, odnosno osnovnog patenta: <fo:basic-link external-destination="http://localhost:8083/download/pdf/{zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave}"><xsl:value-of select="zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave" /></fo:basic-link></fo:block>
                             </fo:table-cell>
                         </fo:table-row>
                         <fo:table-row>
@@ -336,7 +336,7 @@
                         <xsl:for-each select="zahtev/formaPodnosioca/zahtevZaPriznanjePrava/prijave/ranijaPrijava">
                             <fo:table-row>
                                 <fo:table-cell border-bottom="1px solid black" border-right="1px solid black" padding="3px" number-columns-spanned="2" border-left="1px solid black">
-                                    <fo:block><xsl:value-of select="brojPrijave" /></fo:block>
+                                    <fo:block> <fo:basic-link external-destination="http://localhost:8083/download/pdf/{brojPrijave}"> <xsl:value-of select="brojPrijave" /></fo:basic-link></fo:block>
                                     
                                 </fo:table-cell>
                                 <fo:table-cell border-bottom="1px solid black" border-right="1px solid black" padding="3px" number-columns-spanned="3">

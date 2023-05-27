@@ -121,4 +121,8 @@ public class P1Service {
     public List<String> getAllRequests() throws XMLDBException, UnsupportedEncodingException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         return existManager.getAllDocuments();
     }
+
+    public Boolean doesDecisionExist(String broj) throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        return existManager.searchForDocument(broj);
+    }
 }

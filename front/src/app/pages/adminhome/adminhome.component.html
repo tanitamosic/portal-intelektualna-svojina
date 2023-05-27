@@ -97,6 +97,7 @@
       <th>Resenje u xml</th>
       <th>Resenje u pdf</th>
       <th>Resenje u xhtml</th>
+      <th></th>
     </tr>
     <tr *ngFor="let item of requestsAndResolutions; let i = index">
       <td><a [href]="item.url + '/xml/' + item.request" target="_blank">{{ item.request }}</a></td>
@@ -107,6 +108,7 @@
       <td><a [href]="item.url + '/xml/' + item.resolution" target="_blank">{{ item.resolution }}</a></td>
       <td><a [href]="item.url + '/pdf/' + item.resolution" target="_blank">{{ item.resolution }}</a></td>
       <td><a [href]="item.url + '/xhtml/' + item.resolution" target="_blank">{{ item.resolution }}</a></td>
+      <td><button *ngIf="!item.hasDecision" (click)="makeDecision(item.request)">Napravi resenje</button></td>
     </tr>
   </table>
 </div>

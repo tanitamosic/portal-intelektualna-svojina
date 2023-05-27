@@ -12,6 +12,7 @@ import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { A1Component } from './requests/a1/a1.component';
 import { P1Component } from './requests/p1/p1.component';
 import { Z1Component } from './requests/z1/z1.component';
+import { DecisionComponent } from './decision/decision.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Z1Component } from './requests/z1/z1.component';
     AdminhomeComponent,
     A1Component,
     P1Component,
-    Z1Component
+    Z1Component,
+    DecisionComponent
   ],
     imports: [
         BrowserModule,
