@@ -19,7 +19,7 @@ export class DecisionComponent {
   zahtev: string = '';
 
   endpointPrefix: { [key: string]: string } = {
-    'A1': '/a1/', // TODO: DODAJ TVOJU PUTANJU
+    'A1': '/a1/resenje-postoji/', // TODO: DODAJ TVOJU PUTANJU
     'P1': '/p1/resenje-postoji/',
     'Z1': '/z1/' // TODO: DODAJ TVOJU PUTANJU
   }
