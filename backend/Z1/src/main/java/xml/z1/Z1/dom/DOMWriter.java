@@ -65,7 +65,7 @@ public class DOMWriter {
         // ZAVOD
         Element zavod = document.createElement("zavod");
         zavod.setAttribute("about", "pred:zavod");
-        zavod.appendChild(zavod);
+        zahtev.appendChild(zavod);
 
         Element brojPrijave = document.createElement("brojPrijave");
         brojPrijave.setAttribute("property", "pred:brojPrijave");

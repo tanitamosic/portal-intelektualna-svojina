@@ -56,6 +56,7 @@ public class Z1Zahtev {
     private Boolean dokazTaksa; // dokaz o uplati takse
 
     public Z1Zahtev(Z1DTO dto){
+        this.brojPrijave = generateBrojPrijave();
         this.podnosilac = dto.getPodnosilac();
         this.punomocnik = dto.getPunomocnik();
         this.zajednickiPredstavnik = dto.getZajednickiPredstavnik();
