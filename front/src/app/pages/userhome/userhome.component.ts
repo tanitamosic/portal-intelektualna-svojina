@@ -85,11 +85,13 @@ export class UserhomeComponent {
   }
 
   fillRequestsAndResolutions(array: any[]) {
+    this.clearTable()
     array.forEach((e) => {
+      let endpointPrefix = e.at(0).toLowerCase() + '1'
       let obj = {
         request: e,
         resolution: 'Resenje-' + e,
-        url: 'http://localhost:4200' + this.searchService.getUrlPrefix(this.rawSearchDoctype) + 'download'
+        url: 'http://localhost:4200/' + endpointPrefix + '/download'
       }
       this.requestsAndResolutions.push(obj);
     })

@@ -45,4 +45,10 @@ export class SearchService {
     return this.serverPrefix[doctype]
   }
 
+  getAll(doctype: string) {
+    let prefix: string = this.getUrlPrefix(doctype);
+    return this.http.get(prefix + 'all-requests', this.getOptions());
+
+  }
+
 }

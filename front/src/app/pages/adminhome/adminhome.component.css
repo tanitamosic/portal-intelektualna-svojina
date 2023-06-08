@@ -1,0 +1,20 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  width: 200px;
+  text-align: center;
+}
+
+th {
+  width: 200px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table-container {
+  height: 300px; /* Set the desired height of the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+}

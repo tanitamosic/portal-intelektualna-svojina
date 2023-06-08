@@ -375,8 +375,6 @@ public class DOMWriter {
         email_sluzbenika.appendChild(document.createTextNode(dto.getEmailSluzbenika()));
         Element razlog_odbijanja = document.createElement("razlog_odbijanja");
         razlog_odbijanja.appendChild(document.createTextNode(dto.getRazlogOdbijanja()));
-        Element sifra = document.createElement("sifra");
-        sifra.appendChild(document.createTextNode(dto.getSifra()));
 
         resenje.appendChild(broj_prijave);
         resenje.appendChild(datum_obrade);
@@ -385,7 +383,6 @@ public class DOMWriter {
         resenje.appendChild(prezime_sluzbenika);
         resenje.appendChild(email_sluzbenika);
         resenje.appendChild(razlog_odbijanja);
-        resenje.appendChild(sifra);
         return document;
     }
 

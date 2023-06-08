@@ -270,7 +270,7 @@
                     </tr>
                     <tr>
                         <td style="border-left-width:3px;">
-                            Broj prvobitne prijave / osnovne prijave, odnosno osnovnog patenta: <xsl:value-of select="zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave" />
+                            Broj prvobitne prijave / osnovne prijave, odnosno osnovnog patenta: <a href="http://localhost:8083/download/pdf/{zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave}" target="_blank"><xsl:value-of select="zahtev/formaPodnosioca/prijava/brojPrvobitnePrijave" /></a>
                         </td>
                     </tr>
                     <tr>
@@ -295,7 +295,7 @@
                     <xsl:for-each select="zahtev/formaPodnosioca/zahtevZaPriznanjePrava/prijave/ranijaPrijava">
                         <tr>
                             <td colspan="2" style="border-left-width:3px;">
-                                <xsl:value-of select="brojPrijave" />
+                                <a href="http://localhost:8083/download/pdf/{brojPrijave}" target="_blank"><xsl:value-of select="brojPrijave" /></a>
                             </td>
                             <td colspan="3">
                                 <xsl:value-of select="datum" />

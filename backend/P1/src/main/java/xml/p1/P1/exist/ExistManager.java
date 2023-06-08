@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -217,33 +218,22 @@ public class ExistManager {
         return resources;
     }
 
-    private static String createXPathExpressionForTextSearch(List<String> words, boolean matchCase) {
-        int wordsDone = 0;
-        String xpath = "/*[";
+    public List<String> getAllDocuments() throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, UnsupportedEncodingException {
+        createConnection();
+        List<XMLResource> resources = new ArrayList<>();
+        String uri = authManager.getUri() + "db/p1";
 
-        for (String word : words) {
-            xpath = xpath.concat("contains(");
+        Collection col = DatabaseManager.getCollection(uri, authManager.getUsername(), authManager.getPassword());
 
-            if (!matchCase) {
-                xpath = xpath.concat("lower-case(.)");
-                word = word.toLowerCase();
-            } else {
-                xpath = xpath.concat(".");
-            }
+        return Arrays.stream(col.listResources()).toList();
+    }
 
-            xpath = xpath.concat(", ").concat("\"").concat(word).concat("\"");
-            xpath = xpath.concat(")");
-
-            wordsDone++;
-            if (wordsDone != words.size()) {
-                xpath = xpath.concat(" and ");
-            }
-        }
-
-        xpath = xpath.concat("]");
-//        for (String word : words)
-//            xpath = xpath.concat(" | //pat:Naziv_pronalaska[contains(@Naziv, '" + word + "')]");
-        return xpath;
+    public Boolean searchForDocument(String name) throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        createConnection();
+        String uri = authManager.getUri() + "db/p1";
+        Collection col = DatabaseManager.getCollection(uri, authManager.getUsername(), authManager.getPassword());
+        List<String> documents = Arrays.stream(col.listResources()).toList();
+        return documents.contains(name);
     }
 
 }

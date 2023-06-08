@@ -1,0 +1,40 @@
+<div>
+  <button (click)="back()">Nazad</button>
+</div>
+
+<hr/>
+
+<div>
+  Zahtev: {{zahtev}}
+</div>
+
+<div>
+  Ime sluzbenika: {{user.name}}<br>
+  Prezime sluzbenika: {{user.surname}}
+</div>
+
+<div>
+  Datum: {{date}}
+</div>
+
+<hr/>
+
+<div>
+  Odluka:<br/>
+  <input type="radio" id="a11" name="advanced" value="Prihvacen" (click)="decisionTrue()" [(ngModel)]="odluka">
+  <label for="a11">Prihvacen</label>
+
+  <input type="radio" id="p11" name="advanced" value="Odbijen" (click)="decisionFalse()" [(ngModel)]="odluka">
+  <label for="p11">Odbijen</label>
+</div>
+
+<div>
+  <textarea *ngIf="odluka==='Odbijen'" rows="4" placeholder="Razlog za odbijanje" [(ngModel)]="rejectionReason"></textarea>
+</div>
+
+<hr/>
+
+<div>
+  <button (click)="confirmDecision()">Potvrdi resenje u zahtevu</button>
+</div>
+
