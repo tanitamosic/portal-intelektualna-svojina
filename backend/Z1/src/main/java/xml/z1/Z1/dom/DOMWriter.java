@@ -3,6 +3,8 @@ package xml.z1.Z1.dom;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.ls.DOMImplementationLS;
+import org.w3c.dom.ls.LSSerializer;
 import xml.z1.Z1.model.Z1Resenje;
 import xml.z1.Z1.model.Z1Zahtev;
 import xml.z1.Z1.model.deljeniTipovi.*;
@@ -13,6 +15,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 
@@ -29,7 +32,7 @@ public class DOMWriter {
     private Document document;
 
     // TODO promeni
-    private static final String Z1_NAMESPACE = "http://localhost:3030/z-1";
+    private static final String Z1_NAMESPACE = "http://localhost:3030/z1";
 
     public DOMWriter() {
         factory = DocumentBuilderFactory.newInstance();
@@ -57,7 +60,7 @@ public class DOMWriter {
         Element zahtev = document.createElement("zahtev");
         document.appendChild(zahtev);
         zahtev.setAttribute("xmlns:proj", IMPORT_NAMESPACE);
-        zahtev.setAttribute("xmlns:p-1", Z1_NAMESPACE);
+        zahtev.setAttribute("xmlns:z1", Z1_NAMESPACE);
         zahtev.setAttribute("xmlns:xsi", XSI_NAMESPACE);
         zahtev.setAttribute("xmlns:pred", "http://www.xmlsux.com/predicate/");
         zahtev.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/z-1.xsd");
@@ -104,22 +107,22 @@ public class DOMWriter {
         }
         if(z1.getPunomocje()){
             Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Punomoćje"));
+            prilog.appendChild(document.createTextNode("Punomocje"));
             prilozi.appendChild(prilog);
         }
         if(z1.getRanije()){
             Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Generalno punomoćje ranije priloženo"));
+            prilog.appendChild(document.createTextNode("Generalno punomocje ranije prilozeno"));
             prilozi.appendChild(prilog);
         }
         if(z1.getNaknadno()){
             Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Punomoćje će biti naknadno dostavljeno"));
+            prilog.appendChild(document.createTextNode("Punomocje ce biti naknadno dostavljeno"));
             prilozi.appendChild(prilog);
         }
         if(z1.getOpstiAkt()){
             Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Opšti akt o kolektivnom žigu/žigu garancije"));
+            prilog.appendChild(document.createTextNode("Opsti akt o kolektivnom zigu/zigu garancije"));
             prilozi.appendChild(prilog);
         }
         if(z1.getDokazPrvenstvo()){
@@ -137,6 +140,7 @@ public class DOMWriter {
 
         Element podnosilac = document.createElement( "podnosilac");
         podnosilac.setAttribute("about", "pred:podnosilac");
+        zahtev.appendChild(podnosilac);
         if (z1.getPodnosilac() instanceof FizickoLice) {
             podnosilac.setAttribute("xsi:type", "proj:TFizickoLice");
 
@@ -196,11 +200,11 @@ public class DOMWriter {
         Element opis = document.createElement("opis");
         opis.appendChild(document.createTextNode(z1.getOpis()));
         zig.appendChild(opis);
-        
+
         Element prevod = document.createElement("prevod");
         prevod.appendChild(document.createTextNode(z1.getPrevod()));
         zig.appendChild(prevod);
-        
+
         Element transliteracija = document.createElement("transliteracija");
         transliteracija.appendChild(document.createTextNode(z1.getTransliteracija()));
         zig.appendChild(transliteracija);
@@ -296,7 +300,7 @@ public class DOMWriter {
         addContact(zajednickiPredstavnik, z1.getZajednickiPredstavnik().getKontakt());
         Element vrstaPosrednika = document.createElement( "vrstaPosrednika");
         vrstaPosrednika.setAttribute("property","pred:vrstaPosrednika");
-        
+
         // TAKSE
         Element takse  = document.createElement("takse");
         zahtev.appendChild(takse);
@@ -405,35 +409,22 @@ public class DOMWriter {
     }
 
 
-    public void writeDocumentToPath(Document document, String filePath) {
+    public void writeDocumentToPath(String xml, String filePath) {
         try {
-            // Kreiranje instance objekta zaduzenog za serijalizaciju DOM modela
-            Transformer transformer = transformerFactory.newTransformer();
+            FileWriter myWriter = new FileWriter(filePath);
+            myWriter.write(xml);
+            myWriter.close();
 
-            // Indentacija serijalizovanog izlaza
-            transformer.setOutputProperty("{http://xml.apache.org/xalan}indent-amount", "2");
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-            // Nad "source" objektom (DOM stablo) vrši se transformacija
-            DOMSource source = new DOMSource(document);
-
-            // Rezultujući stream (argument metode)
-            StreamResult result = new StreamResult(new File(filePath));
-
-            // Poziv metode koja vrši opisanu transformaciju
-            transformer.transform(source, result);
-            result.getOutputStream().flush();
-
-        } catch (TransformerFactoryConfigurationError | TransformerException | IOException e) {
+        } catch (TransformerFactoryConfigurationError | IOException e) {
             e.printStackTrace();
         }
     }
 
     public String documentToString(Document doc) throws TransformerException {
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer = tf.newTransformer();
-        StringWriter writer = new StringWriter();
-        transformer.transform(new DOMSource(doc), new StreamResult(writer));
-        return writer.getBuffer().toString();
+        DOMImplementationLS domImplementation = (DOMImplementationLS) doc.getImplementation();
+        LSSerializer lsSerializer = domImplementation.createLSSerializer();
+        String xml = lsSerializer.writeToString(doc);
+        xml = xml.replace("UTF-16", "UTF-8");
+        return xml;
     }
 }

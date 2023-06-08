@@ -117,7 +117,7 @@ public class Z1Zahtev {
     }
 
     private String generateBrojPrijave() {
-        String retval = "Ž-2023-";
+        String retval = "Z-2023-";
         Random rand = new Random();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 4; i++) {
@@ -135,7 +135,7 @@ public class Z1Zahtev {
     }
 
     public String getNameForCollection() {
-        return "Ž-" + brojPrijave.substring(2, 6) + "-" + brojPrijave.substring(7, 11);
+        return "Z-" + brojPrijave.substring(2, 6) + "-" + brojPrijave.substring(7, 11);
     }
 
 }

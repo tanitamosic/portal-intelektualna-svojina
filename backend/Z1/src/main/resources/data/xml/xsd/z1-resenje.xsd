@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            xmlns:proj="http://localhost:3030/tipovi"
-           xmlns:p-1-r="http://localhost:3030/resenje_za_priznanje_patenta">
+           xmlns:z-1-r="http://localhost:3030/z1">
     <xs:import namespace="http://localhost:3030/tipovi" schemaLocation="deljeni_tipovi.xsd"/>
     <xs:element name="resenje_zahteva">
         <xs:complexType>

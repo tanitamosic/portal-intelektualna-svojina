@@ -57,7 +57,7 @@ public class Z1Service {
         existManager.storeFromText("db/z1", title, xml);
 
         String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
-        converter.writeDocumentToPath(document, xmlLocation);
+        converter.writeDocumentToPath(xml, xmlLocation);
 
 
         String outputPDFLocation = "src/main/resources/static/pdf/" + title + ".pdf";
@@ -76,7 +76,7 @@ public class Z1Service {
 
         existManager.storeFromText("db/z1", title, xml);
         String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
-        converter.writeDocumentToPath(document, xmlLocation);
+        converter.writeDocumentToPath(xml, xmlLocation);
 
         String outputPDFLocation = "src/main/resources/static/pdf/" + title + ".pdf";
         XmlTransformer.convertToPdf(PDF_RESENJE_XSL, xmlLocation, outputPDFLocation);
