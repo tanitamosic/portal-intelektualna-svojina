@@ -2,6 +2,7 @@ package xml.z1.Z1.fuseki;
 
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.RDFNode;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -12,17 +13,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
+@Component
 public class FusekiReader {
-
-    private static final String QUERY_FILEPATH = "src/main/resources/data/sparql/query.rq";
 
     private FusekiReader() {
     }
 
     //                                              "<%hobby>", "chess"
-    public static ArrayList<String> executeQuery(Map<String,String> params) throws IOException {
+    public static ArrayList<String> executeQuery(Map<String,String> params, String rq_path) throws IOException {
         AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties();
-        String sparqlQueryTemplate = readFile(QUERY_FILEPATH, StandardCharsets.UTF_8);
+        String sparqlQueryTemplate = readFile(rq_path, StandardCharsets.UTF_8);
         String sparqlQuery = SparqlUtil.replaceParameters(sparqlQueryTemplate, params);
         System.out.println("Query: "+sparqlQuery);
         QueryExecution query = QueryExecutionFactory.sparqlService(conn.queryEndpoint, sparqlQuery);

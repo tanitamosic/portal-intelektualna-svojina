@@ -1,7 +1,6 @@
 package xml.z1.Z1.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.xmldb.api.base.XMLDBException;
 import xml.z1.Z1.exist.ExistManager;

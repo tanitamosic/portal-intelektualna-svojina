@@ -1,4 +1,4 @@
-package xml.z1.Z1.model;
+package xml.z1.Z1.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PravnoLice {
+public class SearchDTO {
 
-    private String naziv_preduzeca;
-    private String pib;
+    private String searchParam;
+
+    private MetadataType tipMetapodatka;
+
+
 }

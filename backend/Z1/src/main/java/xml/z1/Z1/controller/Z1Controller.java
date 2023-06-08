@@ -1,68 +1,67 @@
 package xml.z1.Z1.controller;
 
-import org.springframework.web.bind.annotation.*;
-import xml.z1.Z1.dto.XmlDto;
-import xml.z1.Z1.service.Z1Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import xml.z1.Z1.dto.Z1DTO;
+import xml.z1.Z1.dto.SearchDTO;
+import xml.z1.Z1.model.Z1Resenje;
+import xml.z1.Z1.service.Z1Service;
+import xml.z1.Z1.service.SparqlService;
 
-import javax.xml.transform.stream.StreamSource;
-import java.io.*;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @RestController
-@RequestMapping(value = "api/xml", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-public class Z1Controller implements XMLController {
+@RequestMapping(value = "/z1")
+public class Z1Controller {
 
-    public Z1Controller(Z1Service service) {
-        this.service = service;
-    }
-    public Z1Service service;
+    @Autowired
+    Z1Service z1Service;
+    @Autowired
+    SparqlService sparqlService;
 
-
-    // TODO: hendlanje exceptiona
-    @PostMapping()
-    public ResponseEntity<XmlDto> getFinishedDocument(@RequestBody XmlDto dto) throws Exception{
-        String response = service.applyZavod(dto);
-        return new ResponseEntity<XmlDto>(new XmlDto(response), HttpStatus.OK);
-    }
-    @GetMapping("/readXML")
-    public String readXML() {
-        String input_xml = "src/main/resources/generated_xml/a-1.xml";
-//        String input_xml = "src/main/resources/data/xml/a-1.xml";
-//        String input_xml = "src/main/resources/data/xml/contacts.xml";
-        String output_rdf = "src/main/rdf/metadata.rdf";
-
+    @PostMapping(value="/post-z1", consumes="application/xml;charset=UTF-8", produces="application/xml")
+    public ResponseEntity<String> postZ1zahtev(@RequestBody Z1DTO dto) {
         try {
-            //FileInputStream fileInputStream = new FileInputStream(input_xml);
-            //String content = new Scanner(fileInputStream).useDelimiter("\\Z").next();
-            //System.out.println(content);
-            return service.storeXML(new FileInputStream(new File(input_xml)), new FileOutputStream(new File(output_rdf))).toString();
+            z1Service.createZ1Zahtev(dto);
         } catch (Exception e) {
+            System.out.println(e.getClass());
             e.printStackTrace();
+            return new ResponseEntity<>("nije uspelo", HttpStatus.BAD_REQUEST);
         }
-        return "OK";
-
+        return new ResponseEntity<>("uspelo", HttpStatus.OK);
     }
 
-    @GetMapping("/print")
-    public String print() throws FileNotFoundException {
-        //read file content into a string
-        FileInputStream fileInputStream = new FileInputStream("src/main/resources/data/xml/a-1.xml");
-        String content = new Scanner(fileInputStream).useDelimiter("\\Z").next();
-
-        StreamSource source = new StreamSource(new StringReader(content));
-
-        return content;
-
+    @PostMapping(value="/resi-z1", consumes="application/xml", produces="application/xml")
+    public ResponseEntity<String> postZ1resenje(@RequestBody Z1Resenje resenje) {
+        try {
+            z1Service.createZ1Resenje(resenje);
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            e.printStackTrace();
+            return new ResponseEntity<>("nije uspelo", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("uspelo", HttpStatus.OK);
     }
 
-
-    @PostMapping(path = "/save")
-    public ResponseEntity<String> saveFromText(@RequestBody XmlDto dto){
-        service.saveFileFromString(dto.getText());
-        return new ResponseEntity<String>(HttpStatus.OK);
+    @PostMapping(value="/advanced-search", consumes="application/xml", produces="application/xml")
+    public ResponseEntity<List<String>> textSearchQuery(@RequestBody SearchDTO dto) {
+        try {
+            if (null != dto.getSearchParam() || dto.getSearchParam().isBlank() || null == dto.getTipMetapodatka()) {
+                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
+            }
+            return new ResponseEntity<>(sparqlService.search(dto.getSearchParam(), dto.getTipMetapodatka()), HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
+    @GetMapping(value="text-search/{searchParam}", produces="application/xml")
+    public ResponseEntity<List<String>> advancedSearchQuery(@PathVariable String searchParam) {
+        return new ResponseEntity<>(z1Service.conductTextBasedSearch(searchParam), HttpStatus.OK);
+    }
 }

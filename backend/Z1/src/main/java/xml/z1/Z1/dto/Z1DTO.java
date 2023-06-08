@@ -1,12 +1,12 @@
 package xml.z1.Z1.dto;
 
-import xml.z1.Z1.model.Address;
-import xml.z1.Z1.model.Lice;
-import xml.z1.Z1.model.RanijaPrijava;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import xml.z1.Z1.model.RanijaPrijava;
+import xml.z1.Z1.model.deljeniTipovi.Address;
+import xml.z1.Z1.model.deljeniTipovi.Lice;
 
 import java.util.List;
 
@@ -19,13 +19,13 @@ public class Z1DTO {
     private String srpskiNazivPronalaska;
     private String engleskiNazivPronalaska;
 
-    private Boolean jePronalazac;
+    private Boolean podnosilacJePronalazac;
     private Lice podnosilacPrijave;
     private Boolean ostaliPodnosioci;
 
     private Lice pronalazac;
-    private String ostaliPronalazaci;
-
+//    private String ostaliPronalazaci;
+    private Boolean pronalazacZeliBitiNaveden;
     private String vrstaPosrednika; // MAYBE MAKE IT ENUM
     private Lice posrednik;
     private Address adresaZaDostavljanje;
@@ -37,5 +37,6 @@ public class Z1DTO {
 
     private List<RanijaPrijava> ranijePrijave;
 
+    private Boolean imaDodatnogLista;
     private String dodatniList;
 }
