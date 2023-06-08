@@ -88,31 +88,31 @@ public class Z1Zahtev {
 
     public Z1Zahtev(DeferredElementNSImpl document) {
         this.brojPrijave = document.getElementsByTagName("brojPrijave").item(0).getTextContent();
-        //this.datumPrijema = document.getElementsByTagName("datumPrijema").item(0).getTextContent();
-        this.datumPodnosenja = document.getElementsByTagName("datumPodnosenja").item(0).getTextContent();
-
-        this.podnosilac = null;
-        Node podnosilacPrijave = document.getElementsByTagName("podnosilacPrijave").item(0);
-        if (podnosilacPrijave.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
-            this.podnosilac = new FizickoLice(podnosilacPrijave);
-        } else {
-            this.podnosilac = new PravnoLice(podnosilacPrijave);
-        }
-
-        Node posrednik = document.getElementsByTagName("posrednik").item(0);
-        if (posrednik.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
-            this.podnosilac = new FizickoLice(posrednik);
-        } else {
-            this.podnosilac = new PravnoLice(posrednik);
-        }
-
-        NodeList prijave = document.getElementsByTagName("ranijaPrijava");
-        for (int idx = 0; idx < prijave.getLength(); idx++) {
-            Node prijava = prijave.item(idx);
-            NodeList podaciRanijePrijave = prijava.getChildNodes();
-            RanijaPrijava rp = new RanijaPrijava(podaciRanijePrijave);
-            //this.ranijePrijave.add(rp);
-        }
+//        this.datumPrijema = document.getElementsByTagName("datumPrijema").item(0).getTextContent();
+//        this.datumPodnosenja = document.getElementsByTagName("datumPodnosenja").item(0).getTextContent();
+//
+//        this.podnosilac = null;
+//        Node podnosilacPrijave = document.getElementsByTagName("podnosilacPrijave").item(0);
+//        if (podnosilacPrijave.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
+//            this.podnosilac = new FizickoLice(podnosilacPrijave);
+//        } else {
+//            this.podnosilac = new PravnoLice(podnosilacPrijave);
+//        }
+//
+//        Node posrednik = document.getElementsByTagName("posrednik").item(0);
+//        if (posrednik.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
+//            this.podnosilac = new FizickoLice(posrednik);
+//        } else {
+//            this.podnosilac = new PravnoLice(posrednik);
+//        }
+//
+//        NodeList prijave = document.getElementsByTagName("ranijaPrijava");
+//        for (int idx = 0; idx < prijave.getLength(); idx++) {
+//            Node prijava = prijave.item(idx);
+//            NodeList podaciRanijePrijave = prijava.getChildNodes();
+//            RanijaPrijava rp = new RanijaPrijava(podaciRanijePrijave);
+//            //this.ranijePrijave.add(rp);
+//        }
 
     }
 

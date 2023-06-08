@@ -199,7 +199,7 @@ public class ExistManager {
         createConnection();
         List<XMLResource> resources = new ArrayList<>();
         String xPath = "/*[contains(.,\"" + searchText + "\")]";
-        String uri = authManager.getUri() + "db/p1";
+        String uri = authManager.getUri() + "db/z1";
 
         Collection col = DatabaseManager.getCollection(uri,authManager.getUsername(),authManager.getPassword());
 

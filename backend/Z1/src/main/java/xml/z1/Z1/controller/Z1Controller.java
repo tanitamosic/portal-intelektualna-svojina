@@ -52,7 +52,7 @@ public class Z1Controller {
     @PostMapping(value="/advanced-search", consumes="application/xml", produces="application/xml")
     public ResponseEntity<List<String>> textSearchQuery(@RequestBody SearchDTO dto) {
         try {
-            if (null != dto.getSearchParam() || dto.getSearchParam().isBlank() || null == dto.getTipMetapodatka()) {
+            if (null == dto.getSearchParam() || dto.getSearchParam().isBlank() || null == dto.getTipMetapodatka()) {
                 return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
             }
             return new ResponseEntity<>(sparqlService.search(dto.getSearchParam(), dto.getTipMetapodatka()), HttpStatus.OK);

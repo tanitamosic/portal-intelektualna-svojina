@@ -1,0 +1,146 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+<rdf:Description rdf:about="pred:formaZaZavod">
+<pred:brojPrijave xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">P-2023-0766</pred:brojPrijave>
+</rdf:Description>
+<rdf:Description rdf:about="pred:formaZaZavod">
+<pred:datumPrijema xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">08.06.2023</pred:datumPrijema>
+</rdf:Description>
+<rdf:Description rdf:about="pred:formaZaZavod">
+<pred:datumPodnosenja xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">08.06.2023</pred:datumPodnosenja>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podaciOZavodu">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Knjeginje Ljubice</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podaciOZavodu">
+<pred:postanski_broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">11000</pred:postanski_broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podaciOZavodu">
+<pred:ulica xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Beograd</pred:ulica>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podaciOZavodu">
+<pred:broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">5</pred:broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:nazivPronalaska">
+<pred:srpski xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">srpski naziv</pred:srpski>
+</rdf:Description>
+<rdf:Description rdf:about="pred:nazivPronalaska">
+<pred:engleski xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">engleski naziv</pred:engleski>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:ime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">imePodnosioca1</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:prezime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">prezimePodnosioca1</pred:prezime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">beograd</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:postanski_broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">11000</pred:postanski_broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:ulica xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">mose pijade</pred:ulica>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">7</pred:broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:email xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">email1@example.com</pred:email>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:telefon xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0661234567</pred:telefon>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:faks xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0123510823</pred:faks>
+</rdf:Description>
+<rdf:Description rdf:about="pred:podnosilacPrijave">
+<pred:jePronalazac xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">false</pred:jePronalazac>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:ime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">imePronalazaca1</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:prezime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">prezimePronalazaca1</pred:prezime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">beograd</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:postanski_broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">11000</pred:postanski_broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:ulica xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">jove zmaja</pred:ulica>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">14</pred:broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:email xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">email2@example.com</pred:email>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:telefon xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">06612333367</pred:telefon>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:faks xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0123513333</pred:faks>
+</rdf:Description>
+<rdf:Description rdf:about="pred:pronalazac">
+<pred:zeliBitiNaveden xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">true</pred:zeliBitiNaveden>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:ime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">imePsrednika1</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:prezime xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">prezimePosrednika1</pred:prezime>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">beograd</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:postanski_broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">11000</pred:postanski_broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:ulica xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">radovana dragovica</pred:ulica>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">25</pred:broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:email xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">email3@example.com</pred:email>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:telefon xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0662222222</pred:telefon>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:faks xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0123512222</pred:faks>
+</rdf:Description>
+<rdf:Description rdf:about="pred:posrednik">
+<pred:vrstaPosrednika xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Punomocnik za zastupanje</pred:vrstaPosrednika>
+</rdf:Description>
+<rdf:Description rdf:about="pred:adresaZaDostavljanje">
+<pred:mesto xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">novi sad</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="pred:adresaZaDostavljanje">
+<pred:postanski_broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">21000</pred:postanski_broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:adresaZaDostavljanje">
+<pred:ulica xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">bulevar despota stefana</pred:ulica>
+</rdf:Description>
+<rdf:Description rdf:about="pred:adresaZaDostavljanje">
+<pred:broj xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">7</pred:broj>
+</rdf:Description>
+<rdf:Description rdf:about="pred:formaPodnosioca">
+<pred:nacinDostavljanja xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Iskljucivo elektronskim putem u formi elektronskog dokumenta</pred:nacinDostavljanja>
+</rdf:Description>
+<rdf:Description rdf:about="pred:formaPodnosioca">
+<pred:vrstaPrijave xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Dopunska prijava</pred:vrstaPrijave>
+</rdf:Description>
+<rdf:Description rdf:about="pred:formaPodnosioca">
+<pred:brojPrvobitnePrijave xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">P-2023-1234</pred:brojPrvobitnePrijave>
+</rdf:Description>
+<rdf:Description rdf:about="pred:formaPodnosioca">
+<pred:datumPodnosenjaPrvobitnePrijave xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">1.1.2023.</pred:datumPodnosenjaPrvobitnePrijave>
+</rdf:Description>
+<rdf:Description rdf:about="pred:formaPodnosioca">
+<pred:dodatniList2 xmlns:pred="http://www.xmlsux.com/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">str</pred:dodatniList2>
+</rdf:Description>
+</rdf:RDF>

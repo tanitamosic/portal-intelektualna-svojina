@@ -7,7 +7,7 @@
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
     exclude-result-prefixes="xs" version="2.0">
 
-    <xsl:template match="/z1:zahtev">
+    <xsl:template match="/zahtev">
         <fo:root>
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="Z1">
@@ -48,22 +48,22 @@
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="3" border-left="1px solid black">
                                     <fo:block linefeed-treatment="preserve">
-                                        <xsl:value-of select="concat(z1:podnosilac/proj:naziv_preduzeca, ', ')"></xsl:value-of> <xsl:value-of select="concat(z1:podnosilac/proj:pib, ', ')" ></xsl:value-of> <xsl:value-of select="concat(z1:podnosilac/proj:ime, ' ')"></xsl:value-of> <xsl:value-of select="concat(z1:podnosilac/proj:prezime, ', ')"></xsl:value-of>
+                                        <xsl:value-of select="concat(podnosilac/proj:naziv_preduzeca, ', ')"/> <xsl:value-of select="concat(podnosilac/proj:pib, ', ')" /> <xsl:value-of select="concat(podnosilac/proj:ime, ' ')"/> <xsl:value-of select="concat(podnosilac/proj:prezime, ', ')"/>
                                         
-                                        <xsl:value-of select="z1:podnosilac/proj:adresa/*" separator=" "></xsl:value-of>
+                                        <xsl:value-of select="podnosilac/proj:adresa/*" separator=" "/>
                                     </fo:block>
 
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" border-left="1px solid black">
-                                    <fo:block>telefon: <xsl:value-of select="z1:podnosilac/proj:kontakt/proj:telefon" /></fo:block>
+                                    <fo:block>telefon: <xsl:value-of select="podnosilac/proj:kontakt/proj:telefon" /></fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                    <fo:block>e-mail: <xsl:value-of select="z1:podnosilac/proj:kontakt/proj:email" /></fo:block>
+                                    <fo:block>e-mail: <xsl:value-of select="podnosilac/proj:kontakt/proj:email" /></fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                    <fo:block>faks: <xsl:value-of select="z1:podnosilac/proj:kontakt/proj:faks" /></fo:block>
+                                    <fo:block>faks: <xsl:value-of select="podnosilac/proj:kontakt/proj:faks" /></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row>
@@ -74,21 +74,21 @@
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="3" border-left="1px solid black">
                                     <fo:block linefeed-treatment="preserve">
-                                        <xsl:value-of select="z1:punomocnik/proj:naziv_preduzeca"></xsl:value-of> <xsl:value-of select="z1:punomocnik/proj:pib" ></xsl:value-of> <xsl:value-of select="z1:punomocnik/proj:ime"></xsl:value-of> <xsl:value-of select="z1:punomocnik/proj:prezime"></xsl:value-of>
+                                        <xsl:value-of select="punomocnik/proj:naziv_preduzeca"/> <xsl:value-of select="punomocnik/proj:pib" /> <xsl:value-of select="punomocnik/proj:ime"/> <xsl:value-of select="punomocnik/proj:prezime"/>
                                         
-                                        <xsl:value-of select="z1:punomocnik/proj:adresa/*" separator=" "></xsl:value-of></fo:block>
+                                        <xsl:value-of select="punomocnik/proj:adresa/*" separator=" "/></fo:block>
 
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" border-left="1px solid black">
-                                    <fo:block>telefon: <xsl:value-of select="z1:punomocnik/proj:kontakt/proj:telefon" /></fo:block>
+                                    <fo:block>telefon: <xsl:value-of select="punomocnik/proj:kontakt/proj:telefon" /></fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                    <fo:block>e-mail: <xsl:value-of select="z1:punomocnik/proj:kontakt/proj:email" /></fo:block>
+                                    <fo:block>e-mail: <xsl:value-of select="punomocnik/proj:kontakt/proj:email" /></fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                    <fo:block>faks: <xsl:value-of select="z1:punomocnik/proj:kontakt/proj:faks" /></fo:block>
+                                    <fo:block>faks: <xsl:value-of select="punomocnik/proj:kontakt/proj:faks" /></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row>
@@ -99,20 +99,20 @@
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="3" border-left="1px solid black">
                                     <fo:block linefeed-treatment="preserve">
-                                        <xsl:value-of select="z1:zajednicki_predstavnik/proj:naziv_preduzeca"></xsl:value-of> <xsl:value-of select="z1:zajednicki_predstavnik/proj:pib" ></xsl:value-of> <xsl:value-of select="z1:zajednicki_predstavnik/proj:ime"></xsl:value-of> <xsl:value-of select="z1:zajednicki_predstavnik/proj:prezime"></xsl:value-of>
+                                        <xsl:value-of select="zajednickiPredstavnik/proj:naziv_preduzeca"/> <xsl:value-of select="zajednickiPredstavnik/proj:pib" /> <xsl:value-of select="zajednickiPredstavnik/proj:ime"/> <xsl:value-of select="zajednickiPredstavnik/proj:prezime"/>
 
-                                        <xsl:value-of select="z1:zajednicki_predstavnik/proj:adresa/*" separator=",&#xa;"></xsl:value-of></fo:block>
+                                        <xsl:value-of select="zajednickiPredstavnik/proj:adresa/*" separator=",&#xa;"/></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" border-left="1px solid black">
-                                    <fo:block>telefon: <xsl:value-of select="z1:zajednicki_predstavnik/proj:kontakt/proj:telefon" /></fo:block>
+                                    <fo:block>telefon: <xsl:value-of select="zajednickiPredstavnik/proj:kontakt/proj:telefon" /></fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                    <fo:block>e-mail: <xsl:value-of select="z1:zajednicki_predstavnik/proj:kontakt/proj:email" /></fo:block>
+                                    <fo:block>e-mail: <xsl:value-of select="zajednickiPredstavnik/proj:kontakt/proj:email" /></fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                    <fo:block>faks: <xsl:value-of select="z1:zajednicki_predstavnik/proj:kontakt/proj:faks" /></fo:block>
+                                    <fo:block>faks: <xsl:value-of select="zajednickiPredstavnik/proj:kontakt/proj:faks" /></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
 
@@ -136,11 +136,11 @@
                                     <fo:block>a)</fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                    <fo:block><xsl:value-of select="z1:podaci_o_zigu/z1:vrsta_ziga"></xsl:value-of></fo:block>
+                                    <fo:block><xsl:value-of select="podaci_o_zigu/vrsta_ziga"/></fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="2" number-rows-spanned="2">
                                     <fo:block>
-                                        <xsl:value-of select="z1:podaci_o_zigu/z1:izgled_ziga"></xsl:value-of>
+                                        <xsl:value-of select="podaci_o_zigu/izgled_ziga"/>
                                         <!-- <xsl:element name="img">
                                             <xsl:attribute name="src"> data\<xsl:value-of
                                                     select="//sz:Zig//sz:Izgled_putanja_do_slike" />
@@ -152,54 +152,54 @@
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" border-left="1px solid black"><fo:block> b)</fo:block></fo:table-cell>
                                     <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
-                                        <fo:block><xsl:value-of select="z1:podaci_o_zigu/z1:format_ziga"></xsl:value-of></fo:block>
+                                        <fo:block><xsl:value-of select="podaci_o_zigu/format_ziga"/></fo:block>
                                     </fo:table-cell>
                                 
                             </fo:table-row>
 
-                            <xsl:if test="z1:podaci_o_zigu/z1:boja">
+                            <xsl:if test="podaci_o_zigu/boja">
                                 <fo:table-row>
                                     <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="2" border-left="1px solid black">
                                         <fo:block linefeed-treatment="preserve">
                                             <xsl:text>5. Naznacenje boje, odnosno boja iz kojih se znak sastoji:
                                             </xsl:text>
-                                            <xsl:value-of select="z1:podaci_o_zigu/z1:boja"></xsl:value-of>
+                                            <xsl:value-of select="podaci_o_zigu/boja"/>
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </xsl:if>
 
-                            <xsl:if test="z1:podaci_o_zigu/z1:transliteracija">
+                            <xsl:if test="podaci_o_zigu/transliteracija">
                                 <fo:table-row>
                                     <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="2" border-left="1px solid black">
                                         <fo:block linefeed-treatment="preserve">
-                                            <xsl:text>6. fo:table-rowansliteracija znaka:
+                                            <xsl:text>6. Transliteracija znaka:
                                             </xsl:text>
-                                            <xsl:value-of select="z1:podaci_o_zigu/z1:transliteracija"></xsl:value-of>
+                                            <xsl:value-of select="podaci_o_zigu/transliteracija"/>
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </xsl:if>
 
-                            <xsl:if test="z1:podaci_o_zigu/z1:prevod">
+                            <xsl:if test="podaci_o_zigu/prevod">
                                 <fo:table-row>
                                     <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="2" border-left="1px solid black">
                                         <fo:block linefeed-treatment="preserve">
                                             <xsl:text>7. Prevod znaka
                                             </xsl:text>
-                                            <xsl:value-of select="z1:podaci_o_zigu/z1:prevod"></xsl:value-of>
+                                            <xsl:value-of select="podaci_o_zigu/prevod"/>
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </xsl:if>
 
-                            <xsl:if test="z1:podaci_o_zigu/z1:opis">
+                            <xsl:if test="podaci_o_zigu/opis">
                                 <fo:table-row>
                                     <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="2" border-left="1px solid black">
                                         <fo:block linefeed-treatment="preserve">
                                             <xsl:text>8. Opis znaka
                                             </xsl:text>
-                                            <xsl:value-of select="z1:podaci_o_zigu/z1:opis"></xsl:value-of>
+                                            <xsl:value-of select="podaci_o_zigu/opis"/>
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
@@ -217,8 +217,8 @@
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" border-left="1px solid black" number-columns-spanned="3">
                                     <fo:block>    
-                                        <xsl:for-each select="z1:podaci_o_zigu/z1:klasa">  
-                                            <xsl:value-of select="self::z1:klasa"></xsl:value-of>, 
+                                        <xsl:for-each select="podaci_o_zigu/klasa">  
+                                            <xsl:value-of select="self::klasa"/>,
                                         </xsl:for-each>
                                     </fo:block>
                                 </fo:table-cell>
@@ -229,7 +229,7 @@
                                     <fo:block linefeed-treatment="preserve" font-weight="bold">
                                         <xsl:text>10. Zatrazeno pravo prvenstva i osnov: 
                                         </xsl:text>
-                                        <xsl:value-of select="z1:podaci_o_zigu/z1:pravo_prvenstva"></xsl:value-of>
+                                        <xsl:value-of select="podaci_o_zigu/pravo_prvenstva"/>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
@@ -252,18 +252,18 @@
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
                                     <fo:block>
-                                        <xsl:value-of select="z1:takse/z1:osnovna_taksa"></xsl:value-of>
+                                        <xsl:value-of select="takse/osnovna_taksa"/>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" border-left="1px solid black">
                                     <!-- <fo:block>b) Za <xsl:value-of select="count(//sz:Klasa)" /> klase</fo:block> -->
-                                    <fo:block> b) za <xsl:value-of select="count(z1:zahtev/z1:podaci_o_zigu/z1:klasa)" /> klasa </fo:block>
+                                    <fo:block> b) za <xsl:value-of select="count(zahtev/podaci_o_zigu/klasa)" /> klasa </fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
                                     <fo:block>
-                                        <xsl:value-of select="z1:takse/z1:za_klase"></xsl:value-of> 
+                                        <xsl:value-of select="takse/za_klase"/>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
@@ -273,7 +273,7 @@
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
                                     <fo:block>
-                                        <xsl:value-of select="z1:takse/z1:za_graficko_resenje"></xsl:value-of>
+                                        <xsl:value-of select="takse/za_graficko_resenje"/>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
@@ -283,7 +283,7 @@
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black">
                                     <fo:block>
-                                        <xsl:value-of select="sum(z1:takse/z1:osnovna_taksa | z1:takse/z1:za_klase | z1:takse/z1:za_graficko_resenje)" />
+                                        <xsl:value-of select="sum(takse/osnovna_taksa | takse/za_klase | takse/za_graficko_resenje)" />
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
@@ -302,8 +302,8 @@
                                     border-top="1px solid black" border-left="1px solid black">
                                     <fo:block>Prilozi uz zahtev:</fo:block>
                                     <fo:block>
-                                        <xsl:for-each select="z1:zavod/z1:prilozi/z1:prilog">
-                                            <fo:block font-size="15px"><xsl:value-of select="self::z1:prilog"></xsl:value-of></fo:block>
+                                        <xsl:for-each select="zavod/prilozi/prilog">
+                                            <fo:block font-size="15px"><xsl:value-of select="self::prilog"/></fo:block>
                                         </xsl:for-each>
                                     </fo:block>
                                 </fo:table-cell>
@@ -311,9 +311,9 @@
                                     text-align="center" border-top="1px solid black">
                                     <fo:block linefeed-treatment="preserve">Broj prijave ziga:
 
-                                    <xsl:value-of select="z1:zavod/z1:broj_prijave"></xsl:value-of>
+                                    <xsl:value-of select="zavod/brojPrijave"/>
                                   
-                                  Datum podnosenja: <xsl:value-of select="z1:zavod/z1:datum_podnosenja"></xsl:value-of></fo:block>
+                                  Datum podnosenja: <xsl:value-of select="zavod/datumPodnosenja"/></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             

@@ -175,7 +175,7 @@ public class DOMWriter {
 
         // PODACI O ZIGU
         Element zig = document.createElement("podaci_o_zigu");
-        podnosilac.setAttribute("about", "pred:podaci_o_zigu");
+        zig.setAttribute("about", "pred:podaci_o_zigu");
         zahtev.appendChild(zig);
 
         Element vrsta = document.createElement("vrsta_ziga");
