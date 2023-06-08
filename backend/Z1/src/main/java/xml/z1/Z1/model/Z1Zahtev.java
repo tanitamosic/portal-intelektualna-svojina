@@ -4,6 +4,7 @@ import lombok.*;
 import org.apache.xerces.dom.DeferredElementNSImpl;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import xml.z1.Z1.dto.Z1DTO;
 import xml.z1.Z1.model.deljeniTipovi.FizickoLice;
 import xml.z1.Z1.model.deljeniTipovi.Lice;
 import xml.z1.Z1.model.deljeniTipovi.PravnoLice;
@@ -37,7 +38,7 @@ public class Z1Zahtev {
     private String opis;
     private String prevod;
     private String transliteracija;
-    private List<Integer> klase;
+    private String klase;
     private String pravoPrvenstva;
 
 
@@ -54,7 +55,35 @@ public class Z1Zahtev {
     private Boolean dokazPrvenstvo; // dokaz o pravu prvenstva
     private Boolean dokazTaksa; // dokaz o uplati takse
 
+    public Z1Zahtev(Z1DTO dto){
+        this.podnosilac = dto.getPodnosilac();
+        this.punomocnik = dto.getPunomocnik();
+        this.zajednickiPredstavnik = dto.getZajednickiPredstavnik();
 
+        this.vrstaZiga = dto.getVrstaZiga();  // MAYBE MAKE THEM ENUM
+        this.formatZiga = dto.getFormatZiga();
+        this.izgledZiga = dto.getIzgledZiga();
+        this.boje = dto.getBoje();
+        this.opis = dto.getOpis();
+        this.prevod = dto.getPrevod();
+        this.transliteracija = dto.getTransliteracija();
+        this.klase = dto.getKlase();
+        this.pravoPrvenstva = dto.getPravoPrvenstva();
+
+
+        this.osnovnaTaksa = dto.getOsnovnaTaksa();
+        this.takseZaKlase = dto.getTakseZaKlase();
+        this.takseZaGrafRes = dto.getTakseZaGrafRes();
+
+        this.primerakZnaka = dto.getPrimerakZnaka();
+        this.spisak = dto.getSpisak();  // spisak robe i usluga
+        this.punomocje = dto.getPunomocje();
+        this.ranije = dto.getRanije();  // generalno punomocje ranije prilozeno
+        this.naknadno = dto.getNaknadno();  // punomocje ce biti naknadno dosavljeno
+        this.opstiAkt = dto.getOpstiAkt();  // opsti akto o kolektivnom zigu/zigu garancije
+        this.dokazPrvenstvo = dto.getDokazPrvenstvo();  // dokaz o pravu prvenstva
+        this.dokazTaksa = dto.getDokazTaksa();  // dokaz o uplati takse
+    }
 
     public Z1Zahtev(DeferredElementNSImpl document) {
         this.brojPrijave = document.getElementsByTagName("brojPrijave").item(0).getTextContent();

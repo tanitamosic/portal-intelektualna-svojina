@@ -205,10 +205,10 @@ public class DOMWriter {
         transliteracija.appendChild(document.createTextNode(z1.getTransliteracija()));
         zig.appendChild(transliteracija);
 
-        for(Integer i:z1.getKlase()) {
+        for(String i:z1.getKlase().replaceAll("\\s+","").split(",")) {
             Element k = document.createElement("klasa");
             k.setAttribute("property", "klasa");
-            k.appendChild(document.createTextNode(String.valueOf(i)));
+            k.appendChild(document.createTextNode(i));
             zig.appendChild(k);
         }
 

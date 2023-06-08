@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xml.z1.Z1.dto.SearchDTO;
+import xml.z1.Z1.dto.Z1DTO;
 import xml.z1.Z1.model.Z1Resenje;
 import xml.z1.Z1.model.Z1Zahtev;
 import xml.z1.Z1.service.Z1Service;
@@ -24,8 +25,8 @@ public class Z1Controller {
     @Autowired
     SparqlService sparqlService;
 
-    @PostMapping(value="/post-z1", consumes="application/xml;charset=UTF-8", produces="application/xml")
-    public ResponseEntity<String> postZ1zahtev(@RequestBody Z1Zahtev dto) {
+    @PostMapping(value="/post-z1", consumes="application/xml", produces="application/xml")
+    public ResponseEntity<String> postZ1zahtev(@RequestBody Z1DTO dto) {
         try {
             z1Service.createZ1Zahtev(dto);
         } catch (Exception e) {
