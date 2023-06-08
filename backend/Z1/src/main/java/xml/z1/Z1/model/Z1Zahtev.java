@@ -4,7 +4,6 @@ import lombok.*;
 import org.apache.xerces.dom.DeferredElementNSImpl;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import xml.z1.Z1.dto.Z1DTO;
 import xml.z1.Z1.model.deljeniTipovi.FizickoLice;
 import xml.z1.Z1.model.deljeniTipovi.Lice;
 import xml.z1.Z1.model.deljeniTipovi.PravnoLice;
@@ -56,16 +55,6 @@ public class Z1Zahtev {
     private Boolean dokazTaksa; // dokaz o uplati takse
 
 
-    public Z1Zahtev(Z1DTO dto) {
-        this.brojPrijave = generateBrojPrijave();
-//        this.datumPrijema = extractDate(new Date());
-        this.datumPodnosenja = extractDate(new Date());
-
-
-        this.podnosilac = dto.getPodnosilacPrijave();
-//        this.ostaliPodnosioci = dto.getOstaliPodnosioci();
-
-    }
 
     public Z1Zahtev(DeferredElementNSImpl document) {
         this.brojPrijave = document.getElementsByTagName("brojPrijave").item(0).getTextContent();

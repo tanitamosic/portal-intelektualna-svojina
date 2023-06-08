@@ -15,7 +15,6 @@ import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
 import xml.z1.Z1.dom.DOMParser;
 import xml.z1.Z1.dom.DOMWriter;
-import xml.z1.Z1.dto.Z1DTO;
 import xml.z1.Z1.exist.ExistManager;
 import xml.z1.Z1.model.Z1Resenje;
 import xml.z1.Z1.model.Z1Zahtev;
@@ -42,10 +41,10 @@ public class Z1Service {
     SparqlService sparqlService;
     @Autowired
     DOMParser domParser;
-    public void createZ1Zahtev(Z1DTO dto)
+    public void createZ1Zahtev(Z1Zahtev dto)
             throws TransformerException, IOException, SAXException, XMLDBException, ClassNotFoundException,
             InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Z1Zahtev zahtev = new Z1Zahtev(dto);
+        Z1Zahtev zahtev = dto;
         String title = zahtev.getNameForCollection();
         Document document = converter.generateZ1(zahtev);
         String xml = converter.documentToString(document);
