@@ -44,7 +44,7 @@ public class A1Service {
             throws TransformerException, IOException, SAXException, XMLDBException, ClassNotFoundException,
             InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         A1Zahtev zahtev = new A1Zahtev(dto);
-        String title = zahtev.getNameForCollection();
+        String title = zahtev.getSifra();
         Document document = converter.generateA1(zahtev);
         String xml = converter.documentToString(document);
 
@@ -91,7 +91,7 @@ public class A1Service {
             for (XMLResource xml: resources) {
                 DeferredElementNSImpl document = (DeferredElementNSImpl) xml.getContentAsDOM();
                 A1Zahtev zahtev = new A1Zahtev(document);
-                zahtevi.add(zahtev.getBrojPrijave());
+                zahtevi.add(zahtev.getSifra());
             }
             return zahtevi;
         } catch(Exception e) {

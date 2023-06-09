@@ -61,7 +61,6 @@ public class DOMWriter {
         zahtev.setAttribute("xmlns:xsi", XSI_NAMESPACE);
         zahtev.setAttribute("xmlns:pred", "http://www.xmlsux.com/predicate/");
         zahtev.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/a-1.xsd");
-        zahtev.setAttribute("sifra",a1.getSifra());
 
         Element podnosilac_zahteva = document.createElement("podnosilac_zahteva");
         podnosilac_zahteva.setAttribute("about", "pred:podnosilac");
@@ -245,6 +244,10 @@ public class DOMWriter {
         datum_podnosenja_zahteva.appendChild(document.createTextNode(a1.getDatum_podnosenja_zahteva()));
         zahtev.appendChild(datum_podnosenja_zahteva);
 
+        Element sifra = document.createElement("sifra");
+        sifra.appendChild(document.createTextNode(a1.getSifra()));
+        zahtev.appendChild(sifra);
+
 
 
         return document;
@@ -262,7 +265,7 @@ public class DOMWriter {
         Element postanskiBroj = document.createElement("proj:postanski_broj");
         postanskiBroj.setAttribute("property", "pred:postanski_broj");
         adresa.appendChild(postanskiBroj);
-        postanskiBroj.appendChild(document.createTextNode(a.getPostanskiBroj()));
+        postanskiBroj.appendChild(document.createTextNode(a.getPostanski_broj()));
 
         Element ulica = document.createElement("proj:ulica");
         ulica.setAttribute("property", "pred:ulica");
@@ -305,12 +308,12 @@ public class DOMWriter {
         Element resenje = document.createElement("resenje_zahteva");
         document.appendChild(resenje);
         resenje.setAttribute("xmlns:proj", IMPORT_NAMESPACE);
-        resenje.setAttribute("xmlns:p-1-r", "http://localhost:3030/resenje_za_priznanje_patenta");
+        resenje.setAttribute("xmlns:a-1-r", "http://localhost:3030/a-1");
         resenje.setAttribute("xmlns:xsi", XSI_NAMESPACE);
         resenje.setAttribute("xmlns:pred", "http://www.xmlsux.com/predicate/");
         resenje.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/p1-resenje.xsd");
 
-        Element broj_prijave = document.createElement("broj_prijave");
+        Element broj_prijave = document.createElement("sifra");
         broj_prijave.appendChild(document.createTextNode(dto.getBrojPrijave()));
         Element datum_obrade = document.createElement("datum_obrade");
         datum_obrade.appendChild(document.createTextNode(dto.getDatumObrade()));

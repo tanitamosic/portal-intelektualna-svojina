@@ -27,7 +27,7 @@
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
                                 <xs:attribute fixed="2" name="redni_broj" type="xs:int"
-                                    use="required"/>
+                                              use="required"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -45,7 +45,7 @@
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
                                 <xs:attribute fixed="4" name="redni_broj" type="xs:int"
-                                    use="required"/>
+                                              use="required"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -75,7 +75,7 @@
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
                                 <xs:attribute fixed="7" name="redni_broj" type="xs:int"
-                                    use="required"/>
+                                              use="required"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -93,7 +93,7 @@
                         <xs:simpleContent>
                             <xs:extension base="xs:boolean">
                                 <xs:attribute fixed="9" name="redni_broj" type="xs:int"
-                                    use="required"/>
+                                              use="required"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -103,7 +103,7 @@
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
                                 <xs:attribute fixed="10" name="redni_broj" type="xs:int"
-                                    use="required"/>
+                                              use="required"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -119,8 +119,9 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="datum_podnosenja_zahteva" type="proj:TDatum"/>
+                <xs:element name="sifra" type="xs:string"/>
             </xs:sequence>
-            <xs:attribute name="sifra" type="xs:string" use="required"/>
+
         </xs:complexType>
     </xs:element>
 </xs:schema>
