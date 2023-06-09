@@ -5,8 +5,10 @@
     xmlns:z1="http://localhost:3030/z1"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    exclude-result-prefixes="xs" version="2.0">
+    xmlns:qr="http://java4less.com/j4lbarcode/fop"
 
+    exclude-result-prefixes="xs" version="2.0">
+    <xs:import namespace="http://java4less.com/j4lbarcode/fop" schemaLocation="../xml/xsd/qrcode.xsd"/>
     <xsl:template match="/zahtev">
         <fo:root>
             <fo:layout-master-set>
@@ -140,7 +142,23 @@
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px" border-bottom="1px solid black" border-right="1px solid black" number-columns-spanned="2" number-rows-spanned="2">
                                     <fo:block>
-                                        <xsl:value-of select="podaci_o_zigu/izgled_ziga"/>
+                                        <fo:instream-foreign-object >
+                                            <qr:j4lbarcode mode="inline"> <!--xmlns="http://java4less.com/j4lbarcode/fop"  -->
+                                                <qrcode>
+                                                    <code>http://localhost:8085/z1/download/img/<xsl:value-of select="podaci_o_zigu/izgled_ziga"/></code>
+                                                    <moduleSize>2</moduleSize>
+                                                    <processTilde>false</processTilde>
+                                                    <margin>30</margin>
+                                                    <ecLevel>H</ecLevel>
+                                                    <encoding>AUTO</encoding>
+                                                    <configuration>1</configuration>
+                                                </qrcode>
+                                            </qr:j4lbarcode>
+
+                                        </fo:instream-foreign-object>
+
+
+
                                         <!-- <xsl:element name="img">
                                             <xsl:attribute name="src"> data\<xsl:value-of
                                                     select="//sz:Zig//sz:Izgled_putanja_do_slike" />

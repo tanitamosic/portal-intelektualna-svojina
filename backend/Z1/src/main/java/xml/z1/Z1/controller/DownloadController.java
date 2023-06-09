@@ -18,6 +18,15 @@ import java.io.FileNotFoundException;
 @RequestMapping(value = "/z1/download")
 public class DownloadController {
 
+    @GetMapping(value="img/{filename}", produces=MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<InputStreamResource> downloadImage(@PathVariable String filename) {
+        try {
+            return generateResponse("src/main/resources/data/img/", filename, ".png", MediaType.IMAGE_PNG);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping(value="rdf/{filename}", produces=MediaType.APPLICATION_XHTML_XML_VALUE)
     public ResponseEntity<InputStreamResource> downloadRDF(@PathVariable String filename) {
         try {

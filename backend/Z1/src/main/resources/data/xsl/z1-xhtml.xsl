@@ -96,14 +96,7 @@
 				 	<th style="border-left:1px solid black;"> b)</th>
 				 	<xsl:value-of select="podaci_o_zigu/format_ziga"/>
 				 	<td colspan="2" rowspan="5">
-				 		<xsl:element name="img">
-			 				<xsl:attribute name="width">100%</xsl:attribute>
-			 				<xsl:attribute name="maxWidth">250px</xsl:attribute>
-			 				<xsl:attribute name="maxHeight">250px</xsl:attribute>
-			              	<xsl:attribute name="src">
-								<xsl:value-of select="podaci_o_zigu/izgled_ziga"/>
-			              	</xsl:attribute>
-			            </xsl:element>
+						<img style="width: 250px; height: 250px;" src="http://localhost:8085/z1/download/img/{podaci_o_zigu/izgled_ziga}" alt="Zig" />
 				 	</td>
 			      </tr>
 			      
