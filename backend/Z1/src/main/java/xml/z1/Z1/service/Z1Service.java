@@ -50,11 +50,11 @@ public class Z1Service {
         Document document = converter.generateZ1(zahtev);
         String xml = converter.documentToString(document);
 
-//        String rdf_path = "src/main/resources/data/rdf/" + title + ".rdf";
-//        String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
-//        sparqlService.saveRDF(xml, rdf_path);
-//        saveJsonLD(rdf_path, json_path);
-//        existManager.storeFromText("db/z1", title, xml);
+        String rdf_path = "src/main/resources/data/rdf/" + title + ".rdf";
+        String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
+        sparqlService.saveRDF(xml, rdf_path, title);
+        saveJsonLD(rdf_path, json_path);
+        existManager.storeFromText("db/z1", title, xml);
 
         String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
         converter.writeDocumentToPath(xml, xmlLocation);
@@ -63,8 +63,8 @@ public class Z1Service {
         String outputPDFLocation = "src/main/resources/static/pdf/" + title + ".pdf";
         XmlTransformer.convertToPdf(PDF_XSL, xmlLocation, outputPDFLocation);
 
-//        String outputXHTMLLocation = "src/main/resources/static/xhtml/" + title + ".xhtml";
-//        XmlTransformer.convertToXhtml(XHTML_XSL, xmlLocation, outputXHTMLLocation);
+        String outputXHTMLLocation = "src/main/resources/static/xhtml/" + title + ".xhtml";
+        XmlTransformer.convertToXhtml(XHTML_XSL, xmlLocation, outputXHTMLLocation);
     }
 
     public void createZ1Resenje(Z1Resenje resenje) throws TransformerException, XMLDBException, ClassNotFoundException,
