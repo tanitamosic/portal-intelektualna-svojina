@@ -1,9 +1,14 @@
 PREFIX pred: <http://www.xmlsux.com/predicate/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX graph: <http://localhost:8081/fuseki/Metadata/data/A1/Metadata>
 
 SELECT (xsd:string(?sifra) AS ?sifre)
-FROM <http://localhost:8081/fuseki/Metadata/data/A1/Metadata>
 WHERE {
-   <pred:zahtev> pred:sifra ?sifra .
-   <pred:podnosilac> pred:email "<%param>"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral> .
+    SERVICE <http://localhost:8081/fuseki/Metadata/query> {
+        GRAPH ?graph {
+           <pred:zahtev> pred:sifra ?sifra .
+           <pred:podnosilac> pred:email "<%param>"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral> .
+        }
+        FILTER (STRSTARTS(STR(?graph), STR(graph:)))
+    }
 }
