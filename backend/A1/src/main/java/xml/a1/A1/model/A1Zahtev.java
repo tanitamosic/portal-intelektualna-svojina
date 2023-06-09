@@ -39,7 +39,7 @@ public class A1Zahtev {
 
     private ArrayList<Autor> podaci_o_naslovu_izvonog_dela_autori;
 
-    private String vrsa_dela;
+    private String vrsta_dela;
 
     private String forma_dela;
 
@@ -66,7 +66,7 @@ public class A1Zahtev {
         this.naslov_dela = dto.getNaslov_dela();
         this.podaci_o_naslovu_izvonog_dela_naslov = dto.getPodaci_o_naslovu_izvonog_dela_naslov();
         this.podaci_o_naslovu_izvonog_dela_autori = dto.getPodaci_o_naslovu_izvonog_dela_autori();
-        this.vrsa_dela = dto.getVrsa_dela();
+        this.vrsta_dela = dto.getVrsta_dela();
         this.forma_dela = dto.getForma_dela();
         this.autori = dto.getAutori();
         this.delo_stvoreno_u_radnom_odnosu = dto.getDelo_stvoreno_u_radnom_odnosu();
@@ -83,7 +83,7 @@ public class A1Zahtev {
         this.pseudonim_podnosioca = document.getElementsByTagName("pseudonim").item(0).getTextContent();
         this.naslov_dela = document.getElementsByTagName("naslov_dela").item(0).getTextContent();
         this.podaci_o_naslovu_izvonog_dela_naslov = document.getElementsByTagName("podaci_o_naslovu_izvonog_dela").item(0).getChildNodes().item(0).getTextContent();
-        this.vrsa_dela = document.getElementsByTagName("vrsa_dela").item(0).getTextContent();
+        this.vrsta_dela = document.getElementsByTagName("vrsta_dela").item(0).getTextContent();
         this.forma_dela = document.getElementsByTagName("forma_dela").item(0).getTextContent();
         this.delo_stvoreno_u_radnom_odnosu = Boolean.valueOf(document.getElementsByTagName("delo_stvoreno_u_radnom_odnosu").item(0).getTextContent());
         this.nacin_koriscenja_dela = document.getElementsByTagName("nacin_koriscenja_dela").item(0).getTextContent();

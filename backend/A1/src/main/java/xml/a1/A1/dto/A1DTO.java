@@ -30,7 +30,7 @@ public class A1DTO {
 
     private ArrayList<Autor> podaci_o_naslovu_izvonog_dela_autori;
 
-    private String vrsa_dela;
+    private String vrsta_dela;
 
     private String forma_dela;
 

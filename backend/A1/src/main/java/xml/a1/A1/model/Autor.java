@@ -15,7 +15,7 @@ import xml.a1.A1.model.deljeniTipovi.Kontakt;
 @NoArgsConstructor
 public class Autor extends FizickoLice {
 
-    private int godina_smrti;
+    private Integer godina_smrti;
 
     public Autor(Address a, Kontakt k, String ime, String prezime, int godina_smrti) {
         super(a, k, ime, prezime);
