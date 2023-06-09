@@ -89,9 +89,8 @@ public class A1Service {
             List<XMLResource> resources = existManager.searchForText(rawText);
             List<String> zahtevi = new ArrayList<>();
             for (XMLResource xml: resources) {
-                DeferredElementNSImpl document = (DeferredElementNSImpl) xml.getContentAsDOM();
-                A1Zahtev zahtev = new A1Zahtev(document);
-                zahtevi.add(zahtev.getSifra());
+                String sifra = ((DeferredElementNSImpl) xml.getContentAsDOM()).getElementsByTagName("sifra").item(0).getTextContent();
+                zahtevi.add(sifra);
             }
             return zahtevi;
         } catch(Exception e) {

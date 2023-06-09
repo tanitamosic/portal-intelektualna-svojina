@@ -61,7 +61,7 @@ public class DOMWriter {
         zahtev.setAttribute("xmlns:xsi", XSI_NAMESPACE);
         zahtev.setAttribute("xmlns:pred", "http://www.xmlsux.com/predicate/");
         zahtev.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/a-1.xsd");
-
+        zahtev.setAttribute("about", "pred:zahtev");
         Element podnosilac_zahteva = document.createElement("podnosilac_zahteva");
         podnosilac_zahteva.setAttribute("about", "pred:podnosilac");
         zahtev.setAttribute("redni_broj","1");
@@ -77,10 +77,10 @@ public class DOMWriter {
         addContact(podnosilac_zahteva_lice, a1.getPodnosilac_zahteva().getKontakt());
 
         if (a1.getPodnosilac_zahteva() instanceof FizickoLice ){
-            Element ime = document.createElement("ime");
+            Element ime = document.createElement("proj:ime");
             ime.setAttribute("property","pred:ime");
             ime.appendChild(document.createTextNode(((FizickoLice) a1.getPodnosilac_zahteva()).getIme()));
-            Element prezime = document.createElement("prezime");
+            Element prezime = document.createElement("proj:prezime");
             prezime.setAttribute("property","pred:prezime");
             prezime.appendChild(document.createTextNode(((FizickoLice) a1.getPodnosilac_zahteva()).getPrezime()));
             podnosilac_zahteva_lice.appendChild(ime);
@@ -119,10 +119,10 @@ public class DOMWriter {
         addContact(punomocnik_lice, a1.getPunomocnik().getKontakt());
 
         if (a1.getPunomocnik() instanceof FizickoLice ){
-            Element ime = document.createElement("ime");
+            Element ime = document.createElement("proj:ime");
             ime.setAttribute("property","pred:ime");
             ime.appendChild(document.createTextNode(((FizickoLice) a1.getPunomocnik()).getIme()));
-            Element prezime = document.createElement("prezime");
+            Element prezime = document.createElement("proj:prezime");
             prezime.setAttribute("property","pred:prezime");
             prezime.appendChild(document.createTextNode(((FizickoLice) a1.getPunomocnik()).getPrezime()));
             punomocnik_lice.appendChild(ime);
@@ -157,15 +157,15 @@ public class DOMWriter {
             autor.setAttribute("about","pred:autor");
             addAddress(autor, a.getAdresa());
             addContact(autor, a.getKontakt());
-            Element ime = document.createElement("ime");
+            Element ime = document.createElement("proj:ime");
             ime.setAttribute("property","pred:ime");
             ime.appendChild(document.createTextNode(a.getIme()));
-            Element prezime = document.createElement("prezime");
+            Element prezime = document.createElement("proj:prezime");
             prezime.setAttribute("property","pred:prezime");
             prezime.appendChild(document.createTextNode(a.getPrezime()));
             autor.appendChild(ime);
             autor.appendChild(prezime);
-            Element godina_smrti = document.createElement("godina_smrti");
+            Element godina_smrti = document.createElement("proj:godina_smrti");
             godina_smrti.appendChild(document.createTextNode(a.getGodina_smrti().toString()));
             autor.appendChild(godina_smrti);
             podaci_o_naslovu_izvornog_dela.appendChild(autor);
@@ -194,15 +194,15 @@ public class DOMWriter {
             autor.setAttribute("about","pred:autor");
             addAddress(autor, a.getAdresa());
             addContact(autor, a.getKontakt());
-            Element ime = document.createElement("ime");
+            Element ime = document.createElement("proj:ime");
             ime.setAttribute("property","pred:ime");
             ime.appendChild(document.createTextNode(a.getIme()));
-            Element prezime = document.createElement("prezime");
+            Element prezime = document.createElement("proj:prezime");
             prezime.setAttribute("property","pred:prezime");
             prezime.appendChild(document.createTextNode(a.getPrezime()));
             autor.appendChild(ime);
             autor.appendChild(prezime);
-            Element godina_smrti = document.createElement("godina_smrti");
+            Element godina_smrti = document.createElement("proj:godina_smrti");
             godina_smrti.appendChild(document.createTextNode(a.getGodina_smrti().toString()));
             autor.appendChild(godina_smrti);
             podaci_o_autoru.appendChild(autor);
@@ -245,6 +245,7 @@ public class DOMWriter {
         zahtev.appendChild(datum_podnosenja_zahteva);
 
         Element sifra = document.createElement("sifra");
+        sifra.setAttribute("property", "pred:sifra");
         sifra.appendChild(document.createTextNode(a1.getSifra()));
         zahtev.appendChild(sifra);
 
