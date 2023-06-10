@@ -188,7 +188,7 @@ export class Z1Component implements OnInit  {
     this.markAttachments();
 
     this.servis.postZahtev(zahtev).subscribe(data => {
-      let brojPrijaveZiga = data.getElementsByTagName("brojPrijaveZiga")[0].textContent;
+      let brojPrijaveZiga = data.getElementsByTagName("item")[0].textContent;
       console.log(brojPrijaveZiga);
       console.log(this.prilogPUNOMOCJE);
       this.uploadPrilogsForkJoin(brojPrijaveZiga);
@@ -207,9 +207,9 @@ export class Z1Component implements OnInit  {
       this.uploadDokazTakse(brojPrijaveZiga)
     ).subscribe(data => {
       console.log("sad jos samo da se sacuva");
-      this.servis.saveAfterPrilogAddition(brojPrijaveZiga).subscribe(data => {
-        console.log("sacuvali smo");
-      });
+      // this.servis.saveAfterPrilogAddition(brojPrijaveZiga).subscribe(data => {
+      //   console.log("sacuvali smo");
+      // });
     });
   }
 
