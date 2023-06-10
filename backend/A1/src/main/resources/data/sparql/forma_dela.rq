@@ -7,7 +7,7 @@ WHERE {
     SERVICE <http://localhost:8081/fuseki/Metadata/query> {
         GRAPH ?graph {
            <pred:zahtev> pred:sifra ?sifra .
-           <pred:podnosilac> pred:email "<%param>"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral> .
+           <pred:zahtev> pred:forma_dela "<%param>"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral> .
         }
         FILTER (STRSTARTS(STR(?graph), STR(graph:)))
     }

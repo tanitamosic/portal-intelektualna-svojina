@@ -25,100 +25,104 @@ import java.util.Random;
 @NoArgsConstructor
 public class A1Zahtev {
 
-    private String brojPrijave;
-    private String datumPrijema;
-    private String datumPodnosenja;
 
-    private String srpskiNazivPronalaska;
-    private String engleskiNazivPronalaska;
-    private Boolean podnosilacJePronalazac;
-    private Lice podnosilacPrijave;
-    //    private Boolean ostaliPodnosioci;
-    private FizickoLice pronalazac;
-    //    private String ostaliPronalazaci;
-    private Boolean pronalazacZeliBitiNaveden;
-    private String vrstaPosrednika; // MAYBE MAKE IT ENUM
-    private Lice posrednik;
-    private Address adresaZaDostavljanje;
-    private String nacinDostavljanja; // MAYBE ENUM
-    private String vrstaPrijave; //MAYBE ENUm
-    private String brojPrvobitnePrijave;
-    private String datumPodnosenjaPrvobitnePrijave;
 
-    private Boolean imaDodatnogLista;
-    private String dodatniList;
+    private Lice podnosilac_zahteva;
+
+    private String pseudonim_podnosioca;
+
+    private Lice punomocnik;
+
+    private String naslov_dela;
+
+    private String podaci_o_naslovu_izvonog_dela_naslov;
+
+    private ArrayList<Autor> podaci_o_naslovu_izvonog_dela_autori;
+
+    private String vrsta_dela;
+
+    private String forma_dela;
+
+    private ArrayList<Autor> autori;
+
+    private Boolean delo_stvoreno_u_radnom_odnosu;
+
+    private String nacin_koriscenja_dela;
+
+    private String prilozi_uz_zahtev_opis_dela;
+
+    private String prilozi_uz_zahtev_format_primera;
+
+    private String prilozi_uz_zahtev_naziv_fajla;
+
+    private String datum_podnosenja_zahteva;
+
+    private String sifra;
 
     public A1Zahtev(A1DTO dto) {
-        this.brojPrijave = generateBrojPrijave();
-        this.datumPrijema = extractDate(new Date());
-        this.datumPodnosenja = extractDate(new Date());
-
-        this.srpskiNazivPronalaska = dto.getSrpskiNazivPronalaska();
-        this.engleskiNazivPronalaska = dto.getEngleskiNazivPronalaska();
-        this.podnosilacJePronalazac = dto.getPodnosilacJePronalazac();
-        this.podnosilacPrijave = dto.getPodnosilacPrijave();
-//        this.ostaliPodnosioci = dto.getOstaliPodnosioci();
-        this.pronalazac = (FizickoLice) dto.getPronalazac();
-//        this.ostaliPronalazaci = dto.getOstaliPronalazaci();
-        this.pronalazacZeliBitiNaveden = dto.getPronalazacZeliBitiNaveden();
-        this.vrstaPosrednika = dto.getVrstaPosrednika();
-        this.posrednik = dto.getPosrednik();
-        this.adresaZaDostavljanje = dto.getAdresaZaDostavljanje();
-        this.nacinDostavljanja = dto.getNacinDostavljanja();
-        this.vrstaPrijave = dto.getVrstaPrijave();
-        this.brojPrvobitnePrijave = dto.getBrojPrvobitnePrijave();
-        this.datumPodnosenjaPrvobitnePrijave = dto.getDatumPodnosenjaPrvobitnePrijave();
-
-        this.imaDodatnogLista = dto.getImaDodatnogLista();
-        this.dodatniList = dto.getDodatniList();
+        this.podnosilac_zahteva = dto.getPodnosilac_zahteva();
+        this.pseudonim_podnosioca = dto.getPseudonim_podnosioca();
+        this.punomocnik = dto.getPunomocnik();
+        this.naslov_dela = dto.getNaslov_dela();
+        this.podaci_o_naslovu_izvonog_dela_naslov = dto.getPodaci_o_naslovu_izvonog_dela_naslov();
+        this.podaci_o_naslovu_izvonog_dela_autori = dto.getPodaci_o_naslovu_izvonog_dela_autori();
+        this.vrsta_dela = dto.getVrsta_dela();
+        this.forma_dela = dto.getForma_dela();
+        this.autori = dto.getAutori();
+        this.delo_stvoreno_u_radnom_odnosu = dto.getDelo_stvoreno_u_radnom_odnosu();
+        this.nacin_koriscenja_dela = dto.getNacin_koriscenja_dela();
+        this.prilozi_uz_zahtev_opis_dela = dto.getPrilozi_uz_zahtev_opis_dela();
+        this.prilozi_uz_zahtev_format_primera = dto.getPrilozi_uz_zahtev_format_primera();
+        this.prilozi_uz_zahtev_naziv_fajla = dto.getPrilozi_uz_zahtev_naziv_fajla();
+        this.datum_podnosenja_zahteva = dto.getDatum_podnosenja_zahteva();
+        this.sifra = dto.getSifra();
     }
 
     public A1Zahtev(DeferredElementNSImpl document) {
-        this.brojPrijave = document.getElementsByTagName("brojPrijave").item(0).getTextContent();
-        this.datumPrijema = document.getElementsByTagName("datumPrijema").item(0).getTextContent();
-        this.datumPodnosenja = document.getElementsByTagName("datumPodnosenja").item(0).getTextContent();
 
-        this.srpskiNazivPronalaska = document.getElementsByTagName("srpski").item(0).getTextContent();
-        this.engleskiNazivPronalaska = document.getElementsByTagName("engleski").item(0).getTextContent();
-        this.podnosilacJePronalazac = Boolean.valueOf(document.getElementsByTagName("jePronalazac").item(0).getTextContent());
+        this.pseudonim_podnosioca = document.getElementsByTagName("pseudonim").item(0).getTextContent();
+        this.naslov_dela = document.getElementsByTagName("naslov_dela").item(0).getTextContent();
+        this.podaci_o_naslovu_izvonog_dela_naslov = document.getElementsByTagName("podaci_o_naslovu_izvonog_dela").item(0).getChildNodes().item(0).getTextContent();
+        this.vrsta_dela = document.getElementsByTagName("vrsta_dela").item(0).getTextContent();
+        this.forma_dela = document.getElementsByTagName("forma_dela").item(0).getTextContent();
+        this.delo_stvoreno_u_radnom_odnosu = Boolean.valueOf(document.getElementsByTagName("delo_stvoreno_u_radnom_odnosu").item(0).getTextContent());
+        this.nacin_koriscenja_dela = document.getElementsByTagName("nacin_koriscenja_dela").item(0).getTextContent();
+        this.prilozi_uz_zahtev_opis_dela = document.getElementsByTagName("prilozi_uz_zahtev").item(0).getChildNodes().item(0).getTextContent();
+        this.prilozi_uz_zahtev_format_primera = document.getElementsByTagName("prilozi_uz_zahtev").item(0).getChildNodes().item(1).getTextContent();
+        this.prilozi_uz_zahtev_naziv_fajla = document.getElementsByTagName("prilozi_uz_zahtev").item(0).getChildNodes().item(2).getTextContent();
+        this.datum_podnosenja_zahteva = document.getElementsByTagName("datum_podnosenja_zahteva").item(0).getTextContent();
+        this.sifra = document.getElementsByTagName("sifra").item(0).getTextContent();
 
 
-        this.podnosilacPrijave = null;
-        Node podnosilacPrijave = document.getElementsByTagName("podnosilacPrijave").item(0);
-        if (podnosilacPrijave.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
-            this.podnosilacPrijave = new FizickoLice(podnosilacPrijave);
+        this.podnosilac_zahteva = null;
+        Node podnosilac_zahteva = document.getElementsByTagName("podnosilac_zahteva").item(0).getChildNodes().item(0);
+        if (podnosilac_zahteva.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
+            this.podnosilac_zahteva = new FizickoLice(podnosilac_zahteva);
         } else {
-            this.podnosilacPrijave = new PravnoLice(podnosilacPrijave);
+            this.podnosilac_zahteva = new PravnoLice(podnosilac_zahteva);
         }
 
-
-//        this.ostaliPodnosioci = dto.getOstaliPodnosioci();
-        this.pronalazac = new FizickoLice(document.getElementsByTagName("pronalazac").item(0));
-//        this.ostaliPronalazaci = dto.getOstaliPronalazaci();
-        this.pronalazacZeliBitiNaveden = Boolean.valueOf(document.getElementsByTagName("zeliBitiNaveden").item(0).getTextContent());
-        this.vrstaPosrednika = document.getElementsByTagName("vrstaPosrednika").item(0).getTextContent();
-
-        this.posrednik = null;
-        Node posrednik = document.getElementsByTagName("posrednik").item(0);
-        if (posrednik.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
-            this.podnosilacPrijave = new FizickoLice(posrednik);
+        this.punomocnik = null;
+        Node punomocnik = document.getElementsByTagName("punomocnik").item(0).getChildNodes().item(0);
+        if (punomocnik.getAttributes().item(1).getTextContent().equals("proj:TFizickoLice")) {
+            this.punomocnik = new FizickoLice(punomocnik);
         } else {
-            this.podnosilacPrijave = new PravnoLice(posrednik);
+            this.punomocnik = new PravnoLice(punomocnik);
         }
-        this.adresaZaDostavljanje = new Address(document.getElementsByTagName("adresaZaDostavljanje").item(0).getChildNodes().item(0));
-        this.nacinDostavljanja = document.getElementsByTagName("nacinDostavljanja").item(0).getTextContent();
-        this.vrstaPrijave = document.getElementsByTagName("vrstaPrijave").item(0).getTextContent();
-        this.brojPrvobitnePrijave = document.getElementsByTagName("brojPrvobitnePrijave").item(0).getTextContent();
-        this.datumPodnosenjaPrvobitnePrijave = document.getElementsByTagName("datumPodnosenjaPrvobitnePrijave").item(0).getTextContent();
 
-        NodeList prijave = document.getElementsByTagName("ranijaPrijava");
-        for (int idx = 0; idx < prijave.getLength(); idx++) {
-            Node prijava = prijave.item(idx);
-            NodeList podaciRanijePrijave = prijava.getChildNodes();
-
+        this.autori = new ArrayList<>();
+        NodeList podaci_o_autoru = document.getElementsByTagName("podaci_o_autoru").item(0).getChildNodes();
+        for (int i = 0; i < podaci_o_autoru.getLength(); i++) {
+            Node autor = podaci_o_autoru.item(i);
+            autori.add(new Autor(autor));
         }
-        this.imaDodatnogLista = Boolean.valueOf(document.getElementsByTagName("podaciOOstalimPravimaNaListu2").item(0).getTextContent());
-        this.dodatniList = document.getElementsByTagName("dodatniList2").item(0).getTextContent();
+
+        this.podaci_o_naslovu_izvonog_dela_autori = new ArrayList<>();
+        NodeList izvorno_delo_autori = document.getElementsByTagName("podaci_o_naslovu_izvonog_dela").item(0).getChildNodes();
+        for (int i=1; i < izvorno_delo_autori.getLength(); i++) {
+            Node autor = izvorno_delo_autori.item(i);
+            podaci_o_naslovu_izvonog_dela_autori.add(new Autor(autor));
+        }
     }
 
     private String generateBrojPrijave() {
@@ -139,8 +143,6 @@ public class A1Zahtev {
         return dateString;
     }
 
-    public String getNameForCollection() {
-        return "A-" + brojPrijave.substring(2, 6) + "-" + brojPrijave.substring(7, 11);
-    }
+
 
 }

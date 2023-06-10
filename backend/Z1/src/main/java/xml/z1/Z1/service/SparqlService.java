@@ -22,11 +22,11 @@ public class SparqlService {
     @Autowired
     FusekiReader fusekiReader;
 
-    public void saveRDF(String xml, String output_rdf) throws IOException, TransformerException {
+    public void saveRDF(String xml, String output_rdf, String name) throws IOException, TransformerException {
         InputStream fis = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
         FileOutputStream fos = new FileOutputStream(output_rdf);
         metadataExtractor.extractMetadata(fis, fos);
-        FusekiWriter.saveRDF(output_rdf);
+        FusekiWriter.saveRDF(output_rdf, name);
     }
 
     public String loadRDF(String rdf_name) throws IOException {

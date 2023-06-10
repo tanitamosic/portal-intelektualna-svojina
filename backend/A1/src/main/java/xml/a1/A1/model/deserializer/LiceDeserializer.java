@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import xml.a1.A1.model.Autor;
 import xml.a1.A1.model.deljeniTipovi.*;
 
 import java.io.IOException;
@@ -22,6 +23,15 @@ public class LiceDeserializer extends JsonDeserializer<Lice> {
         String kontakt = node.get("kontakt").toString();
         Address address = objectMapper.readValue(adresa, Address.class);
         Kontakt contact = objectMapper.readValue(kontakt, Kontakt.class);
+
+        JsonNode godinaSmrti = node.get("godina_smrti");
+        if (godinaSmrti != null) {
+            int godina_smrti = Integer.parseInt(godinaSmrti.asText());
+            String ime = node.get("ime").asText();
+            String prezime = node.get("prezime").asText();
+
+            return new Autor(address, contact, ime, prezime, godina_smrti);
+        }
 
         // Check if the node contains the "naziv_preduzeca" field
         JsonNode nazivNode = node.get("naziv_preduzeca");

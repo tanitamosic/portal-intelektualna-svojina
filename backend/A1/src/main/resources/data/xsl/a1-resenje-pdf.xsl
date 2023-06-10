@@ -37,10 +37,10 @@
                         <fo:table-body>
                             <fo:table-row border="1px solid black">
                                 <fo:table-cell padding="3px">
-                                    <fo:block>Broj prijave</fo:block>
+                                    <fo:block>Sifra zahteva</fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell padding="3px">
-                                    <fo:block><xsl:value-of select="resenje_zahteva/broj_prijave"/></fo:block>
+                                    <fo:block><xsl:value-of select="resenje_zahteva/sifra"/></fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
                             <fo:table-row border="1px solid black">
@@ -54,7 +54,7 @@
                             <fo:table-row>
                                 <fo:table-cell padding="3px" number-columns-spanned="2">
                                     <fo:block>
-                                        <fo:basic-link external-destination="http://localhost:8083/download/pdf/{resenje_zahteva/broj_prijave}">Referenca na zahtev</fo:basic-link>
+                                        <fo:basic-link external-destination="http://localhost:8083/download/pdf/{resenje_zahteva/sifra}">Referenca na zahtev</fo:basic-link>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>

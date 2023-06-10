@@ -18,7 +18,7 @@ export class UserhomeComponent {
   requestType: string = 'A1';
   requestsAndResolutions: any[] = [];
   advSearchMetadataTypes: { [key: string]: string[] } = {
-    'A1': [],  // TODO: ovde dodajete svoj metadatatype enume
+    'A1': ['PSEUDONIM', 'VRSTA_DELA', 'FORMA_DELA', 'EMAIL_PODNOSIOCA'],
     'P1': ['VRSTA_PRIJAVE', 'EMAIL_PRONALAZACA', 'EMAIL_PODNOSIOCA', 'EMAIL_POSREDNIKA'],  // Ovo je moj MetadataType enum na backendu
     'Z1': []  // TODO: ovde dodajete svoj metadatatype enume
   }
