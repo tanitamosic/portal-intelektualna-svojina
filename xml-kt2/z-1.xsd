@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://localhost:3030/z1" xmlns:proj="http://localhost:3030/tipovi"
+    xmlns:z1="http://localhost:3030/z1">
+    <xs:import namespace="http://localhost:3030/tipovi" schemaLocation="deljeni_tipovi.xsd"/>
+    <xs:element name="zahtev">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="podnosilac" type="proj:TLice"/>
+                <xs:element name="punomocnik" type="proj:TLice" minOccurs="0"/>
+                <xs:element name="zajednicki_predstavnik" type="proj:TLice" minOccurs="0"/>
+                <xs:element name="podaci_o_zigu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="vrsta_ziga">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="z1:TVrstaZiga">
+                                            <xs:attribute fixed="4" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="format_ziga">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="z1:TFormatZiga">
+                                            <xs:attribute fixed="4" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="izgled_ziga">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="4" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="boja">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="5" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="transliteracija">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="6" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="prevod">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="7" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="opis">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="8" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element maxOccurs="45" name="klasa">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="z1:TKlasa">
+                                            <xs:attribute fixed="9" name="redni_broj" type="xs:int"
+                                            />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="pravo_prvenstva">
+                                <xs:complexType>
+                                    <xs:attribute fixed="10" name="redni_broj" type="xs:int"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="takse">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="osnovna_taksa" type="xs:float"/>
+                            <xs:element name="za_klase" type="xs:float"/>
+                            <xs:element name="za_graficko_resenje" type="xs:float"/>
+                        </xs:sequence>
+                        <xs:attribute fixed="11" name="redni_broj" type="xs:int"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="zavod">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="1" name="prilozi">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="7" name="prilog" type="z1:TPrilozi"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="broj_prijave">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:length value="11"/>
+                                        <xs:pattern value="[ŽžжЖ] 2[0-9]{3}/[0-9]{4}"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="datum_podnosenja" type="proj:TDatum"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="TVrstaZiga">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Individualni"/>
+            <xs:enumeration value="Kolektivni"/>
+            <xs:enumeration value="Garantni"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TFormatZiga">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Verbalni"/>
+            <xs:enumeration value="Grafički"/>
+            <xs:enumeration value="Kombinovani"/>
+            <xs:enumeration value="Trodimenzionalni"/>
+            <xs:enumeration value="Drugo"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TKlasa">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="45"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TPrilozi">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Primerak znaka"/>
+            <xs:enumeration value="Spisak robe i usluga"/>
+            <xs:enumeration value="Punomoćje"/>
+            <xs:enumeration value="Generalno punomoćje ranije priloženo"/>
+            <xs:enumeration value="Punomoćje će biti naknadno dostavljeno"/>
+            <xs:enumeration value="Opšti akt o kolektivnom žigu/žigu garancije"/>
+            <xs:enumeration value="Dokaz o pravu prvenstva"/>
+            <xs:enumeration value="Dokaz o uplati takse"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

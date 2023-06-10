@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:proj="http://localhost:3030/tipovi" xmlns:a-1="https://localhost:3030/a-1">
+    <xs:import namespace="http://localhost:3030/tipovi" schemaLocation="deljeni_tipovi.xsd"/>
+    <xs:complexType name="Autor">
+        <xs:complexContent>
+            <xs:extension base="proj:TFizickoLice">
+                <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="0" name="godina_smrti" type="xs:gYear"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="zahtev">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="podnosilac_zahteva">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="lice" type="proj:TLice"/>
+                        </xs:sequence>
+                        <xs:attribute fixed="1" name="redni_broj" type="xs:int" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="pseudonim_podnosioca">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute fixed="2" name="redni_broj" type="xs:int"
+                                    use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="1" minOccurs="0" name="punomocnik">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="lice" type="proj:TFizickoLice"/>
+                        </xs:sequence>
+                        <xs:attribute fixed="3" name="redni_broj" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="naslov_dela">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute fixed="4" name="redni_broj" type="xs:int"
+                                    use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="podaci_o_naslovu_izvonog_dela">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="naslov" type="xs:string"/>
+                            <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                                <xs:element name="autor" type="Autor"/>
+                            </xs:sequence>
+                        </xs:sequence>
+                        <xs:attribute fixed="5" name="redni_broj" type="xs:int"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="vrsta_dela">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute fixed="6" name="redni_broj" type="xs:int"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="forma_dela">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute fixed="7" name="redni_broj" type="xs:int"
+                                    use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="podaci_o_autoru">
+                    <xs:complexType>
+                        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                            <xs:element name="autor" type="Autor"/>
+                        </xs:sequence>
+                        <xs:attribute fixed="8" name="redni_broj" type="xs:int" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="delo_stvoreno_u_radnom_odnosu">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:boolean">
+                                <xs:attribute fixed="9" name="redni_broj" type="xs:int"
+                                    use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="nacin_koriscenja_dela">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute fixed="10" name="redni_broj" type="xs:int"
+                                    use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="prilozi_uz_zahtev">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="opis_dela" type="xs:string" minOccurs="0"/>
+                            <xs:element name="format_primera" type="xs:string" minOccurs="0"/>
+                            <xs:element minOccurs="0" name="naziv_fajla" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute fixed="12" name="redni_broj" type="xs:int" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="datum_podnosenja_zahteva" type="proj:TDatum"/>
+            </xs:sequence>
+            <xs:attribute name="sifra" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

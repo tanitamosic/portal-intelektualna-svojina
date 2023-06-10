@@ -1,0 +1,9 @@
+PREFIX pred: <http://www.xmlsux.com/predicate/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT (xsd:string(?brojPrijave) AS ?prijave)
+FROM <http://localhost:8081/fuseki/Metadata/data/Z1/Metadata>
+WHERE {
+   <pred:zavod> pred:brojPrijave ?brojPrijave .
+   <pred:podnosilac> pred:email "<%param>"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral> .
+}

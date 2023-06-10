@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
+<zahtev xmlns:proj="http://localhost:3030/tipovi"
+ xmlns:a-1="https://localhost:3030/a-1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:pred="http://www.xmlsux.com/predicate/"
+ xsi:noNamespaceSchemaLocation="file:./a-1.xsd" sifra="A-0001" about="pred:zahtev">
+    <podnosilac_zahteva redni_broj="1" about="pred:podnosilac_zahteva" rel="pred:is_podnosilac">
+        <lice xsi:type="proj:TPravnoLice">
+            <proj:adresa>
+                <proj:mesto property="pred:mesto" datatype="xs:string">Jupiter</proj:mesto>
+                <proj:postanski_broj>24000</proj:postanski_broj>
+                <proj:ulica>Great Red Spot</proj:ulica>
+                <proj:broj>42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:email>contact@cabbage.corp</proj:email>
+            </proj:kontakt>
+            <proj:naziv_preduzeca property="pred:naziv_preduzeca" datatype="xs:string">Cabbage Corp Ltd.</proj:naziv_preduzeca>
+            <proj:pib property="pred:pib">999999999</proj:pib>
+        </lice>
+    </podnosilac_zahteva>
+    <pseudonim_podnosioca redni_broj="2" property="pred:pseudonim_podnosioca">21 Cabbage</pseudonim_podnosioca>
+    <punomocnik redni_broj="3">
+        <lice xsi:type="proj:TFizickoLice" about="pred:punomocnik" rel="pred:is_punomocnik">
+            <proj:adresa>
+                <proj:mesto property="pred:mesto">Novi Sad</proj:mesto>
+                <proj:postanski_broj>21000</proj:postanski_broj>
+                <proj:ulica>Kraljevica Marka</proj:ulica>
+                <proj:broj>12/42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:telefon property="pred:telefon">+381656524299</proj:telefon>
+                <proj:email property="pred:email">petar.kupusarevic@gmail.com</proj:email>
+            </proj:kontakt>
+            <proj:ime property="pred:ime">Petar</proj:ime>
+            <proj:prezime property="pred:prezime">Kupusarevic</proj:prezime>
+        </lice>
+    </punomocnik>
+    <naslov_dela redni_broj="4" property="pred:naziv_dela">How to scam people</naslov_dela>
+    <vrsta_dela redni_broj="6" property="pred:vrsta_dela">Informaciono</vrsta_dela>
+    <forma_dela redni_broj="7" property="pred:forma_dela">Knjiga</forma_dela>
+    <podaci_o_autoru redni_broj="8">
+        <autor about="pred:autor1">
+            <proj:adresa>
+                <proj:mesto property="pred:mesto">Novi Sad</proj:mesto>
+                <proj:postanski_broj>21000</proj:postanski_broj>
+                <proj:ulica>Kraljevica Marka</proj:ulica>
+                <proj:broj>12/42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:telefon property="pred:telefon">+381656524299</proj:telefon>
+                <proj:email property="pred:email">petar.kupusarevic@gmail.com</proj:email>
+            </proj:kontakt>
+            <proj:ime property="pred:ime">Petar</proj:ime>
+            <proj:prezime property="pred:prezime">Kupusarevic</proj:prezime>
+        </autor>
+        <autor about="pred:autor2">
+            <proj:adresa>
+                <proj:mesto property="pred:mesto">Novi Sad</proj:mesto>
+                <proj:postanski_broj>21000</proj:postanski_broj>
+                <proj:ulica>Kraljevica Marka</proj:ulica>
+                <proj:broj>12/42</proj:broj>
+            </proj:adresa>
+            <proj:kontakt>
+                <proj:email property="pred:email">petrov_drug_pauk@gmail.com</proj:email>
+            </proj:kontakt>
+            <proj:ime property="pred:ime">Pauk</proj:ime>
+            <proj:prezime property="pred:ime" >Kupusarevic</proj:prezime>
+            <godina_smrti>2022</godina_smrti>
+        </autor>
+    </podaci_o_autoru>
+    <nacin_koriscenja_dela redni_broj="10">Citati.... naravno..</nacin_koriscenja_dela>
+    <datum_podnosenja_zahteva property="pred:datum" datatype="xs:date">11.12.2022.</datum_podnosenja_zahteva>
+</zahtev>

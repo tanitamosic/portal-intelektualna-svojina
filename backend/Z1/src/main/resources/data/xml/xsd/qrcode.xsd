@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://barcode.com/jasperreports/qrcode"
+        xmlns:jr="http://jasperreports.sourceforge.net/jasperreports"
+        elementFormDefault="qualified">
+
+    <import namespace="http://jasperreports.sourceforge.net/jasperreports"/>
+
+    <element name="QRCode" substitutionGroup="jr:component">
+        <complexType>
+            <complexContent>
+                <extension base="jr:componentType">
+                    <sequence>
+                        <!--  value to be encoded in the barcode -->
+                        <element name="codeExpression">
+                            <complexType mixed="true"/>
+                        </element>
+
+                    </sequence>
+                    <!-- left and top margin in pixels -->
+                    <attribute name="bcMargin" type="integer" use="optional" default="0"/>
+                    <!-- background color -->
+                    <attribute name="backColor" type="string" use="optional" default="#FFFFFF"/>
+                    <!-- bars color -->
+                    <attribute name="foreColor" type="string" use="optional" default="#000000" />
+                    <attribute name="evaluationTime" type="jr:basicEvaluationTime" use="optional" default="Now"/>
+                    <attribute name="evaluationGroup" type="string" use="optional"/>
+                    <!-- size in pixels of the barcode modules -->
+                    <attribute name="moduleSize" type="integer" use="optional" default="2"/>
+                    <!-- allow processing of the tilde character, see PDF documentation -->
+                    <attribute name="processTilde" type="boolean" use="optional" default="false"/>
+                    <!-- allow automatic selection of the barcode size if the data does not fit in the selected format -->
+                    <attribute name="autoConfigurate" type="boolean" use="optional" default="true"/>
+                    <attribute name="ECI" type="integer" use="optional" default="-1"/>
+                    <!-- set it to true to activate structured append -->
+                    <attribute name="StructuredAppend" type="boolean" use="optional" default="false"/>
+                    <!--  number of segments in the structured barcode -->
+                    <attribute name="StructuredAppendCounter" type="integer" use="optional" default="-1"/>
+                    <!--  possition of the segment in the  structured  barcode -->
+                    <attribute name="StructuredAppendIndex" type="integer" use="optional" default="-1"/>
+
+                    <attribute name="Fnc1Mode" use="optional" default="0">
+                        <simpleType>
+                            <restriction base="integer">
+                                <enumeration value="0">
+                                    <annotation>
+                                        <documentation>NO</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="1">
+                                    <annotation>
+                                        <documentation>MODE FIRST</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="2">
+                                    <annotation>
+                                        <documentation>MODE SECOND</documentation>
+                                    </annotation>
+                                </enumeration>
+                            </restriction>
+                        </simpleType>
+                    </attribute>
+
+
+
+                    <attribute name="errorCorrectionLevel"  use="optional"  default="0">
+                        <annotation>
+                            <documentation>Error Correction Level</documentation>
+                        </annotation>
+                        <simpleType>
+                            <restriction base="integer">
+                                <enumeration value="0">
+                                    <annotation>
+                                        <documentation>level L</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="1">
+                                    <annotation>
+                                        <documentation>level M</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="2">
+                                    <annotation>
+                                        <documentation>level Q</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="3">
+                                    <annotation>
+                                        <documentation>level H</documentation>
+                                    </annotation>
+                                </enumeration>
+                            </restriction>
+                        </simpleType>
+                    </attribute>
+
+
+                    <attribute name="encoding" use="optional"  default="4">
+                        <annotation>
+                            <documentation>Bar code encoding</documentation>
+                        </annotation>
+                        <simpleType>
+                            <restriction base="integer">
+                                <enumeration value="0">
+                                    <annotation>
+                                        <documentation>ALPHA</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="1">
+                                    <annotation>
+                                        <documentation>BYTE</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="2">
+                                    <annotation>
+                                        <documentation>NUMERIC</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="3">
+                                    <annotation>
+                                        <documentation>KANJI</documentation>
+                                    </annotation>
+                                </enumeration>
+                                <enumeration value="4">
+                                    <annotation>
+                                        <documentation>AUTO</documentation>
+                                    </annotation>
+                                </enumeration>
+                            </restriction>
+                        </simpleType>
+                    </attribute>
+
+                    <attribute name="preferredVersion"  use="optional"  default="1">
+                        <annotation>
+                            <documentation>Preferred version</documentation>
+                        </annotation>
+                        <simpleType>
+                            <restriction base="integer">
+                                <minInclusive value="1"/>
+                                <maxInclusive value="40"/>
+                            </restriction>
+                        </simpleType>
+                    </attribute>
+
+
+                </extension>
+            </complexContent>
+        </complexType>
+    </element>
+
+
+
+</schema>
