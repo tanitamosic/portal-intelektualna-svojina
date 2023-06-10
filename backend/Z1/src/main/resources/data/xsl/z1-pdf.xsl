@@ -145,7 +145,7 @@
                                         <xsl:variable name="qrLink" select="zavod/brojPrijave" />
                                         <xsl:variable name="qrCodeUrl" select="concat('http://localhost:8085/z1/download/pdf/', $qrLink)" />
                                         <fo:instream-foreign-object >
-                                            <j4lbarcode xmlns="http://java4less.com/j4lbarcode/fop" mode="inline"> <!--xmlns="http://java4less.com/j4lbarcode/fop"  -->
+                                            <qr:j4lbarcode mode="inline"> <!--xmlns="http://java4less.com/j4lbarcode/fop"  -->
                                                 <qrcode>
                                                     <code><xsl:value-of select="$qrCodeUrl"/></code>
                                                     <moduleSize>2</moduleSize>
@@ -155,7 +155,7 @@
                                                     <encoding>AUTO</encoding>
                                                     <configuration>1</configuration>
                                                 </qrcode>
-                                            </j4lbarcode>
+                                            </qr:j4lbarcode>
 
                                         </fo:instream-foreign-object>
 
