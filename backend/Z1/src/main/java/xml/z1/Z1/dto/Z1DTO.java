@@ -34,13 +34,15 @@ public class Z1DTO {
     private Double takseZaKlase;
     private Double takseZaGrafRes;
 
-    private Boolean primerakZnaka;
-    private Boolean spisak; // spisak robe i usluga
-    private Boolean punomocje;
-    private Boolean ranije; // generalno punomocje ranije prilozeno
-    private Boolean naknadno; // punomocje ce biti naknadno dosavljeno
-    private Boolean opstiAkt; // opsti akto o kolektivnom zigu/zigu garancije
-    private Boolean dokazPrvenstvo; // dokaz o pravu prvenstva
-    private Boolean dokazTaksa; // dokaz o uplati takse
+    private String prilozi;
+//
+//    private Boolean primerakZnaka;
+//    private Boolean spisak; // spisak robe i usluga
+//    private Boolean punomocje;
+//    private Boolean ranije; // generalno punomocje ranije prilozeno
+//    private Boolean naknadno; // punomocje ce biti naknadno dosavljeno
+//    private Boolean opstiAkt; // opsti akto o kolektivnom zigu/zigu garancije
+//    private Boolean dokazPrvenstvo; // dokaz o pravu prvenstva
+//    private Boolean dokazTaksa; // dokaz o uplati takse
 
 }

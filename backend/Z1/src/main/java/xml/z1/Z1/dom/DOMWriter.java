@@ -12,12 +12,8 @@ import xml.z1.Z1.model.deljeniTipovi.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringWriter;
 
 @Component
 public class DOMWriter {
@@ -95,46 +91,52 @@ public class DOMWriter {
         Element prilozi = document.createElement("prilozi");
         zavod.appendChild(prilozi);
 
-        if(z1.getPrimerakZnaka()){
+        for(String p : z1.getPrilozi().split(",")){
             Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Primerak znaka"));
+            prilog.appendChild(document.createTextNode(p));
             prilozi.appendChild(prilog);
         }
-        if(z1.getSpisak()){
-            Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Spisak robe i usluga"));
-            prilozi.appendChild(prilog);
-        }
-        if(z1.getPunomocje()){
-            Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Punomocje"));
-            prilozi.appendChild(prilog);
-        }
-        if(z1.getRanije()){
-            Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Generalno punomocje ranije prilozeno"));
-            prilozi.appendChild(prilog);
-        }
-        if(z1.getNaknadno()){
-            Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Punomocje ce biti naknadno dostavljeno"));
-            prilozi.appendChild(prilog);
-        }
-        if(z1.getOpstiAkt()){
-            Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Opsti akt o kolektivnom zigu/zigu garancije"));
-            prilozi.appendChild(prilog);
-        }
-        if(z1.getDokazPrvenstvo()){
-            Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Dokaz o pravu prvenstva"));
-            prilozi.appendChild(prilog);
-        }
-        if(z1.getDokazTaksa()){
-            Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode("Dokaz o uplati takse"));
-            prilozi.appendChild(prilog);
-        }
+
+//        if(z1.getPrimerakZnaka()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Primerak znaka"));
+//            prilozi.appendChild(prilog);
+//        }
+//        if(z1.getSpisak()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Spisak robe i usluga"));
+//            prilozi.appendChild(prilog);
+//        }
+//        if(z1.getPunomocje()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Punomocje"));
+//            prilozi.appendChild(prilog);
+//        }
+//        if(z1.getRanije()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Generalno punomocje ranije prilozeno"));
+//            prilozi.appendChild(prilog);
+//        }
+//        if(z1.getNaknadno()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Punomocje ce biti naknadno dostavljeno"));
+//            prilozi.appendChild(prilog);
+//        }
+//        if(z1.getOpstiAkt()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Opsti akt o kolektivnom zigu/zigu garancije"));
+//            prilozi.appendChild(prilog);
+//        }
+//        if(z1.getDokazPrvenstvo()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Dokaz o pravu prvenstva"));
+//            prilozi.appendChild(prilog);
+//        }
+//        if(z1.getDokazTaksa()){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode("Dokaz o uplati takse"));
+//            prilozi.appendChild(prilog);
+//        }
 
         // PODNOSILAC
 
@@ -260,7 +262,7 @@ public class DOMWriter {
         addContact(punomocnik, z1.getPodnosilac().getKontakt());
 
         // ZAJEDNICKI PREDSTAVNIK
-        Lice zPredstavnikObj = z1.getZajednickiPredstavnik();
+        Lice zPredstavnikObj = z1.getPredstavnik();
         Element zajednickiPredstavnik = document.createElement( "zajednickiPredstavnik");
         zajednickiPredstavnik.setAttribute("about", "pred:zajednickiPredstavnik");
         zahtev.appendChild(zajednickiPredstavnik);
@@ -296,8 +298,8 @@ public class DOMWriter {
             zajednickiPredstavnik.appendChild(pibPosrednika);
             zajednickiPredstavnik.appendChild(naziv_preduzecaPosrednika);
         }
-        addAddress(zajednickiPredstavnik, z1.getZajednickiPredstavnik().getAdresa());
-        addContact(zajednickiPredstavnik, z1.getZajednickiPredstavnik().getKontakt());
+        addAddress(zajednickiPredstavnik, z1.getPredstavnik().getAdresa());
+        addContact(zajednickiPredstavnik, z1.getPredstavnik().getKontakt());
         Element vrstaPosrednika = document.createElement( "vrstaPosrednika");
         vrstaPosrednika.setAttribute("property","pred:vrstaPosrednika");
 

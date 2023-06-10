@@ -74,14 +74,14 @@ public class Z1Controller {
         return new ResponseEntity<>(z1Service.conductTextBasedSearch(searchParam), HttpStatus.OK);
     }
 
-    @PostMapping("/upload-image")
-    public ResponseEntity<String> uploadImage(@RequestPart MultipartFile file) {
+    @PostMapping("/upload-image/{brojPrijave}")
+    public ResponseEntity<String> uploadImage(@RequestPart MultipartFile file, @PathVariable String brojPrijave) {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("File is empty");
         }
 
         String fileName = generateRandomFileName(file.getOriginalFilename());
-        String filePath = IMAGE_UPLOAD_DIR + "/" + fileName;
+        String filePath = IMAGE_UPLOAD_DIR + "/" + brojPrijave;
 
         try {
             saveFile(file, filePath);
@@ -97,7 +97,6 @@ public class Z1Controller {
         String randomName = UUID.randomUUID().toString();
         return randomName + "." + extension;
     }
-
     private void saveFile(MultipartFile file, String filePath) throws IOException {
         Path directory = Path.of(IMAGE_UPLOAD_DIR);
         if (!Files.exists(directory)) {
