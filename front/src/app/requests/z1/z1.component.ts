@@ -7,7 +7,7 @@ import { Z1Service } from 'src/app/services/z1.service';
 @Component({
   selector: 'app-z1',
   templateUrl: './z1.component.html',
-  styleUrls: ['./z1.component.sass']
+  styleUrls: ['./z1.component.scss']
 })
 export class Z1Component implements OnInit  {
   zahtevDTO: ZahtevZ1DTO = new ZahtevZ1DTO();
@@ -139,8 +139,26 @@ export class Z1Component implements OnInit  {
     return this.concatenate(this.izabraneBoje);
   }
 
-  concatenateNeededPrilogs(){
-    return this.concatenate(this.neededPrilogs);
+  markAttachments(){
+    
+    if(!this.prilogPRIMERAK_ZNAKA.empty){
+      this.zahtevDTO.primerakZnaka=true;
+    }
+    if(!this.prilogSPISAK_ROBE_I_USLUGA.empty){
+      this.zahtevDTO.spisak=true;
+    }
+    if(!this.prilogDOKAZ_O_UPLATI_TAKSE.empty){
+      this.zahtevDTO.dokazTaksa=true;
+    }
+    if(!this.prilogOPSTI_AKT_O_ZIGU.empty){
+      this.zahtevDTO.opstiAkt=true;
+    }
+    if(!this.prilogDOKAZ_O_PRAVU_PRVENSTVA.empty){
+      this.zahtevDTO.dokazPrvenstvo=true;
+    }
+    if(!this.prilogPUNOMOCJE.empty){
+      this.zahtevDTO.punomocje=true;
+    }
   }
 
   concatenate(elemsToConcatenate:string[]){
@@ -162,19 +180,12 @@ export class Z1Component implements OnInit  {
 
     // let zahtev = this.servis.createTestZahtev();
     let zahtev = this.zahtevDTO;
-    this.addAlwaysNeededPrilogTypes();
-    console.log("Valid filled: " +  this.isValid(zahtev));
+    // this.addAlwaysNeededPrilogTypes();
+    
+    //zahtev.prilozi = this.concatenateNeededPrilogs();
+    //zahtev.boje = this.concatenateBoje();
 
-    if (! this.servis.isValidFilled(zahtev)){
-      return;
-    }
-    console.log("???")
-
-    zahtev.klase = this.concatenateKlase();
-    zahtev.prilozi = this.concatenateNeededPrilogs();
-    zahtev.boje = this.concatenateBoje();
-
-    console.log(zahtev.prilozi)
+    this.markAttachments();
 
     this.servis.postZahtev(zahtev).subscribe(data => {
       let brojPrijaveZiga = data.getElementsByTagName("brojPrijaveZiga")[0].textContent;
@@ -184,15 +195,7 @@ export class Z1Component implements OnInit  {
     });
   }
 
-  isValid(zahtev:ZahtevZ1DTO){
-    this.servis.isValidConsoleLog(zahtev);
-    let valid = this.servis.isValidFilled(zahtev);
-    valid &&= this.chosenKlasas.length > 0;
-    valid &&= zahtev.statusPrilogPunomocje !== null && zahtev.statusPrilogPunomocje !== undefined && zahtev.statusPrilogPunomocje !== "";
-
-    return valid;
-  }
-
+  
   uploadPrilogsForkJoin(brojPrijaveZiga:string){
     forkJoin(
       this.uploadPunomocje(brojPrijaveZiga),
@@ -210,12 +213,12 @@ export class Z1Component implements OnInit  {
   }
 
   uploadPunomocje(brojPrijaveZiga:string){
-    let isStatusOkay:boolean = this.zahtevDTO.statusPrilogPunomocje === "NIJE_PREDATO";
+    let isStatusOkay:boolean = this.statusPunomocja === "NIJE_PREDATO";
     return this.uploadPrilogNoSub("PUNOMOCJE", brojPrijaveZiga, isStatusOkay, this.prilogPUNOMOCJE);
   }
 
   uploadOpstiAkt(brojPrijaveZiga:string){
-    let isStatusOkay:boolean = this.zahtevDTO.statusPrilogPunomocje === "KOLEKTIVNI_ZIG" || this.zahtevDTO.statusPrilogPunomocje === "ZIG_GARANCIJE";
+    let isStatusOkay:boolean = this.statusPunomocja === "KOLEKTIVNI_ZIG" || this.statusPunomocja === "ZIG_GARANCIJE";
     return  this.uploadPrilogNoSub("OPSTI_AKT_O_ZIGU", brojPrijaveZiga, isStatusOkay, this.prilogOPSTI_AKT_O_ZIGU);
   }
 

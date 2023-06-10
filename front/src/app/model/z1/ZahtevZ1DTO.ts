@@ -27,8 +27,17 @@ export class ZahtevZ1DTO {
   takseZaKlase: number = 0;
   takseZaGrafRes: number = 0;
 
-  statusPrilogPunomocje = "";
-  prilozi = "";
+  primerakZnaka: boolean = false;
+  spisak: boolean = false;
+  punomocje: boolean = false;
+  ranije: boolean = false;
+  naknadno: boolean = false;
+  opstiAkt: boolean = false;
+  dokazPrvenstvo: boolean = false;
+  dokazTaksa: boolean = false;
+
+  //statusPrilogPunomocje = "";
+  //prilozi = "";
 
   public ZahtevZaPriznanjeZigaDTO(){
     this.podnosilac = new Lice();
@@ -44,8 +53,16 @@ export class ZahtevZ1DTO {
     this.transliteracija = "";
 
     this.pravoPrvenstva = "";
-    this.statusPrilogPunomocje = "";
+        
+    this.primerakZnaka= false;
+    this.spisak= false;
+    this.punomocje= false;
+    this.ranije= false;
+    this.naknadno= false;
+    this.opstiAkt= false;
+    this.dokazPrvenstvo= false;
+    this.dokazTaksa= false;
     this.klase = "";
-    this.prilozi = "";
+    //this.prilozi = "";
   }
 }

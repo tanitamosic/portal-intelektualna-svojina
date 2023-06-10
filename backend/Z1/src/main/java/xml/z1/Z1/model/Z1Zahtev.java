@@ -41,16 +41,16 @@ public class Z1Zahtev {
     private Double takseZaKlase;
     private Double takseZaGrafRes;
 
-    private String prilozi;
+//    private String prilozi;
 
-//    private Boolean primerakZnaka;
-//    private Boolean spisak; // spisak robe i usluga
-//    private Boolean punomocje;
-//    private Boolean ranije; // generalno punomocje ranije prilozeno
-//    private Boolean naknadno; // punomocje ce biti naknadno dosavljeno
-//    private Boolean opstiAkt; // opsti akto o kolektivnom zigu/zigu garancije
-//    private Boolean dokazPrvenstvo; // dokaz o pravu prvenstva
-//    private Boolean dokazTaksa; // dokaz o uplati takse
+    private Boolean primerakZnaka;
+    private Boolean spisak; // spisak robe i usluga
+    private Boolean punomocje;
+    private Boolean ranije; // generalno punomocje ranije prilozeno
+    private Boolean naknadno; // punomocje ce biti naknadno dosavljeno
+    private Boolean opstiAkt; // opsti akto o kolektivnom zigu/zigu garancije
+    private Boolean dokazPrvenstvo; // dokaz o pravu prvenstva
+    private Boolean dokazTaksa; // dokaz o uplati takse
 
     public Z1Zahtev(Z1DTO dto){
         this.brojPrijave = generateBrojPrijave();
@@ -72,16 +72,16 @@ public class Z1Zahtev {
         this.osnovnaTaksa = dto.getOsnovnaTaksa();
         this.takseZaKlase = dto.getTakseZaKlase();
         this.takseZaGrafRes = dto.getTakseZaGrafRes();
-        this.prilozi = dto.getPrilozi();
+        //this.prilozi = dto.getPrilozi();
 
-//        this.primerakZnaka = dto.getPrimerakZnaka();
-//        this.spisak = dto.getSpisak();  // spisak robe i usluga
-//        this.punomocje = dto.getPunomocje();
-//        this.ranije = dto.getRanije();  // generalno punomocje ranije prilozeno
-//        this.naknadno = dto.getNaknadno();  // punomocje ce biti naknadno dosavljeno
-//        this.opstiAkt = dto.getOpstiAkt();  // opsti akto o kolektivnom zigu/zigu garancije
-//        this.dokazPrvenstvo = dto.getDokazPrvenstvo();  // dokaz o pravu prvenstva
-//        this.dokazTaksa = dto.getDokazTaksa();  // dokaz o uplati takse
+        this.primerakZnaka = dto.getPrimerakZnaka();
+        this.spisak = dto.getSpisak();  // spisak robe i usluga
+        this.punomocje = dto.getPunomocje();
+        this.ranije = dto.getRanije();  // generalno punomocje ranije prilozeno
+        this.naknadno = dto.getNaknadno();  // punomocje ce biti naknadno dosavljeno
+        this.opstiAkt = dto.getOpstiAkt();  // opsti akto o kolektivnom zigu/zigu garancije
+        this.dokazPrvenstvo = dto.getDokazPrvenstvo();  // dokaz o pravu prvenstva
+        this.dokazTaksa = dto.getDokazTaksa();  // dokaz o uplati takse
     }
 
     public Z1Zahtev(DeferredElementNSImpl document) {

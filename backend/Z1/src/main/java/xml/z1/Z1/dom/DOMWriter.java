@@ -90,53 +90,53 @@ public class DOMWriter {
         // ZAVOD -> PRILOZI
         Element prilozi = document.createElement("prilozi");
         zavod.appendChild(prilozi);
+//
+//        for(String p : z1.getPrilozi().split(",")){
+//            Element prilog = document.createElement("prilog");
+//            prilog.appendChild(document.createTextNode(p));
+//            prilozi.appendChild(prilog);
+//        }
 
-        for(String p : z1.getPrilozi().split(",")){
+        if(z1.getPrimerakZnaka()){
             Element prilog = document.createElement("prilog");
-            prilog.appendChild(document.createTextNode(p));
+            prilog.appendChild(document.createTextNode("Primerak znaka"));
             prilozi.appendChild(prilog);
         }
-
-//        if(z1.getPrimerakZnaka()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Primerak znaka"));
-//            prilozi.appendChild(prilog);
-//        }
-//        if(z1.getSpisak()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Spisak robe i usluga"));
-//            prilozi.appendChild(prilog);
-//        }
-//        if(z1.getPunomocje()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Punomocje"));
-//            prilozi.appendChild(prilog);
-//        }
-//        if(z1.getRanije()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Generalno punomocje ranije prilozeno"));
-//            prilozi.appendChild(prilog);
-//        }
-//        if(z1.getNaknadno()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Punomocje ce biti naknadno dostavljeno"));
-//            prilozi.appendChild(prilog);
-//        }
-//        if(z1.getOpstiAkt()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Opsti akt o kolektivnom zigu/zigu garancije"));
-//            prilozi.appendChild(prilog);
-//        }
-//        if(z1.getDokazPrvenstvo()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Dokaz o pravu prvenstva"));
-//            prilozi.appendChild(prilog);
-//        }
-//        if(z1.getDokazTaksa()){
-//            Element prilog = document.createElement("prilog");
-//            prilog.appendChild(document.createTextNode("Dokaz o uplati takse"));
-//            prilozi.appendChild(prilog);
-//        }
+        if(z1.getSpisak()){
+            Element prilog = document.createElement("prilog");
+            prilog.appendChild(document.createTextNode("Spisak robe i usluga"));
+            prilozi.appendChild(prilog);
+        }
+        if(z1.getPunomocje()){
+            Element prilog = document.createElement("prilog");
+            prilog.appendChild(document.createTextNode("Punomocje"));
+            prilozi.appendChild(prilog);
+        }
+        if(z1.getRanije()){
+            Element prilog = document.createElement("prilog");
+            prilog.appendChild(document.createTextNode("Generalno punomocje ranije prilozeno"));
+            prilozi.appendChild(prilog);
+        }
+        if(z1.getNaknadno()){
+            Element prilog = document.createElement("prilog");
+            prilog.appendChild(document.createTextNode("Punomocje ce biti naknadno dostavljeno"));
+            prilozi.appendChild(prilog);
+        }
+        if(z1.getOpstiAkt()){
+            Element prilog = document.createElement("prilog");
+            prilog.appendChild(document.createTextNode("Opsti akt o kolektivnom zigu/zigu garancije"));
+            prilozi.appendChild(prilog);
+        }
+        if(z1.getDokazPrvenstvo()){
+            Element prilog = document.createElement("prilog");
+            prilog.appendChild(document.createTextNode("Dokaz o pravu prvenstva"));
+            prilozi.appendChild(prilog);
+        }
+        if(z1.getDokazTaksa()){
+            Element prilog = document.createElement("prilog");
+            prilog.appendChild(document.createTextNode("Dokaz o uplati takse"));
+            prilozi.appendChild(prilog);
+        }
 
         // PODNOSILAC
 
@@ -228,41 +228,44 @@ public class DOMWriter {
         Element punomocnik = document.createElement( "punomocnik");
         punomocnik.setAttribute("about", "pred:punomocnik");
         zahtev.appendChild(punomocnik);
+        Lice punomocnikObj = z1.getPunomocnik();
+        if (punomocnikObj!=null) {
+            if (punomocnikObj instanceof FizickoLice) {
+                punomocnik.setAttribute("xsi:type", "proj:TFizickoLice");
 
-        if (z1.getPodnosilac() instanceof FizickoLice) {
-            punomocnik.setAttribute("xsi:type", "proj:TFizickoLice");
+                FizickoLice fizickiPodnosilac = (FizickoLice) z1.getPodnosilac();
+                Element imePodnosioca = document.createElement("proj:ime");
+                imePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getIme()));
+                imePodnosioca.setAttribute("property", "pred:ime");
+                Element prezimePodnosioca = document.createElement("proj:prezime");
+                prezimePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getPrezime()));
+                prezimePodnosioca.setAttribute("property", "pred:prezime");
 
-            FizickoLice fizickiPodnosilac = (FizickoLice) z1.getPodnosilac();
-            Element imePodnosioca = document.createElement("proj:ime");
-            imePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getIme()));
-            imePodnosioca.setAttribute("property", "pred:ime");
-            Element prezimePodnosioca = document.createElement("proj:prezime");
-            prezimePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getPrezime()));
-            prezimePodnosioca.setAttribute("property", "pred:prezime");
+                punomocnik.appendChild(imePodnosioca);
+                punomocnik.appendChild(prezimePodnosioca);
+            } else {
+                punomocnik.setAttribute("xsi:type", "proj:TPravnoLice");
 
-            punomocnik.appendChild(imePodnosioca);
-            punomocnik.appendChild(prezimePodnosioca);
-        } else {
-            punomocnik.setAttribute("xsi:type", "proj:TPravnoLice");
+                Element pibPodnosioca = document.createElement("proj:pib");
+                pibPodnosioca.setAttribute("property", "pred:pib");
+                Element naziv_preduzecaPodnosioca = document.createElement("proj:naziv_preduzeca");
+                naziv_preduzecaPodnosioca.setAttribute("property", "pred:naziv_preduzeca");
 
-            Element pibPodnosioca = document.createElement("proj:pib");
-            pibPodnosioca.setAttribute("property", "pred:pib");
-            Element naziv_preduzecaPodnosioca = document.createElement("proj:naziv_preduzeca");
-            naziv_preduzecaPodnosioca.setAttribute("property", "pred:naziv_preduzeca");
+                PravnoLice pl = (PravnoLice) z1.getPodnosilac();
+                pibPodnosioca.appendChild(document.createTextNode(pl.getPib()));
+                naziv_preduzecaPodnosioca.appendChild(document.createTextNode(pl.getNaziv_preduzeca()));
 
-            PravnoLice pl = (PravnoLice) z1.getPodnosilac();
-            pibPodnosioca.appendChild(document.createTextNode(pl.getPib()));
-            naziv_preduzecaPodnosioca.appendChild(document.createTextNode(pl.getNaziv_preduzeca()));
+                punomocnik.appendChild(pibPodnosioca);
+                punomocnik.appendChild(naziv_preduzecaPodnosioca);
+            }
 
-            punomocnik.appendChild(pibPodnosioca);
-            punomocnik.appendChild(naziv_preduzecaPodnosioca);
+            addAddress(punomocnik, z1.getPodnosilac().getAdresa());
+            addContact(punomocnik, z1.getPodnosilac().getKontakt());
         }
-
-        addAddress(punomocnik, z1.getPodnosilac().getAdresa());
-        addContact(punomocnik, z1.getPodnosilac().getKontakt());
 
         // ZAJEDNICKI PREDSTAVNIK
         Lice zPredstavnikObj = z1.getPredstavnik();
+        if(zPredstavnikObj!=null){
         Element zajednickiPredstavnik = document.createElement( "zajednickiPredstavnik");
         zajednickiPredstavnik.setAttribute("about", "pred:zajednickiPredstavnik");
         zahtev.appendChild(zajednickiPredstavnik);
@@ -302,6 +305,7 @@ public class DOMWriter {
         addContact(zajednickiPredstavnik, z1.getPredstavnik().getKontakt());
         Element vrstaPosrednika = document.createElement( "vrstaPosrednika");
         vrstaPosrednika.setAttribute("property","pred:vrstaPosrednika");
+        }
 
         // TAKSE
         Element takse  = document.createElement("takse");

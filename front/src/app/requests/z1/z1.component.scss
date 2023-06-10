@@ -1,0 +1,34 @@
+.gray-background {
+  text-align: center;
+  padding: 40px;
+}
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+
+label{
+  margin-right: 5px;
+}
+
+input{
+  margin-right: 10px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+mat-divider {
+  margin-bottom: 5px;
+}
+
+button:focus {
+  outline: none;
+}
+
+mat-selection-list {
+  max-height: 200px;
+  flex-grow: 1;
+  overflow: auto;
+}

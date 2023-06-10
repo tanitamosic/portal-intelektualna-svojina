@@ -20,27 +20,27 @@ export class Z1Service {
   email = /.+\@.+\..+/;
 
   constructor(private http: HttpClient) {
-    this.zigUrl = 'http://localhost:8085/z1/';
+    this.zigUrl = '/z1/post-z1';
   }
 
   public postZahtev(zahtev: any): Observable<any> {
     const xmlZahtev = JsonToXML.parse("zahtev", zahtev);
     console.log(xmlZahtev)
     console.log("evo saljem zahtev")
-    return this.http.post<any>(this.zigUrl, xmlZahtev, this.getXmlHttpOptions());
+    return this.http.post<any>(this.zigUrl, xmlZahtev, this.getOptions());
   }
 
   public getZahtev(brojPrijave: string): Observable<any> {
     const xmlZahtev = JsonToXML.parse("NazivPrijaveDTO", brojPrijave);
     console.log(xmlZahtev)
-    return this.http.get<any>(this.zigUrl + "/" + brojPrijave, this.getXmlHttpOptions());
+    return this.http.get<any>(this.zigUrl + "/" + brojPrijave, this.getOptions());
   }
 
-  public getXmlHttpOptions() {
+  private getOptions() {
     return {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
-        'Authorization': localStorage.getItem('token') || 'authkey',
+        'Accept': 'application/xml',
         'Content-Type': 'application/xml',
       }),
       responseType: 'document' as 'json'
@@ -51,7 +51,7 @@ export class Z1Service {
     let valid = true;
     valid &&= this.isValidLice(zahtev.podnosilac);
     valid &&= this.isValidLice(zahtev.punomocnik);
-    valid &&= zahtev.statusPrilogPunomocje != "";
+
     valid &&= this.isValidLice(zahtev.predstavnik);
 
     // valid &&= this.isValidKlasa();
@@ -62,7 +62,7 @@ export class Z1Service {
   isValidConsoleLog(zahtev: ZahtevZ1DTO) {
     console.log(this.isValidLice(zahtev.podnosilac));
     console.log(this.isValidLice(zahtev.punomocnik));
-    console.log(zahtev.statusPrilogPunomocje != "");
+    
     console.log(this.isValidLice(zahtev.predstavnik));
   }
 
@@ -119,7 +119,7 @@ export class Z1Service {
     zahtev.punomocnik = this.createTestLice();
     zahtev.predstavnik = this.createTestLice();
 
-    zahtev.statusPrilogPunomocje = "NIJE_PREDATO";
+
     zahtev.klase = "1 - Oruzje|2 - Malkarasa";
     // zahtev.neededPrilogsConcatenated = "PRIMERAK_ZNAKA|SPISAK_ROBE_I_USLUGA|DOKAZ_O_UPLATI_TAKSE"
     zahtev.pravoPrvenstva = "SAJAMSKO";
@@ -168,14 +168,4 @@ export class Z1Service {
     return this.http.get<Object>(this.zigUrl + "/empty", this.getOptions());
   }
 
-  private getOptions() {
-    return {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Accept': 'application/xml',
-        'Content-Type': 'application/xml',
-      }),
-      responseType: 'document' as 'json'
-    };
-  }
 }
