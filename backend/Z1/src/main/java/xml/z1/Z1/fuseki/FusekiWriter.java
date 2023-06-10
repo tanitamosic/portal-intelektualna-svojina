@@ -14,7 +14,7 @@ public class FusekiWriter {
 
     private static final String GRAPH_URI="Z1/Metadata";
 
-    public static void saveRDF(String rdf_data) throws IOException {
+    public static void saveRDF(String rdf_data, String name) throws IOException {
         AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties();
 
         Model model = ModelFactory.createDefaultModel();
@@ -27,7 +27,7 @@ public class FusekiWriter {
         UpdateRequest request = UpdateFactory.create();
         UpdateProcessor processor = UpdateExecutionFactory.createRemote(request, conn.updateEndpoint);
         processor.execute();
-        String sparqlUpdate = SparqlUtil.replaceData(conn.dataEndpoint+"/"+GRAPH_URI, out.toString());
+        String sparqlUpdate = SparqlUtil.replaceData(conn.dataEndpoint+"/"+GRAPH_URI+"/"+name, out.toString());
         System.out.println(sparqlUpdate);
 
         UpdateRequest update = UpdateFactory.create(sparqlUpdate);

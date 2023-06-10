@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:proj="http://localhost:3030/tipovi"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     exclude-result-prefixes="xs" version="2.0">
     <xsl:output method="xml" />
     <xsl:template match="/">
@@ -10,24 +11,19 @@
                 <title>Zahtev za unošenje u evidenciju i deponovanje autorskih prava</title>
                 <style type="text/css">
                     table {
-                    margin: 10px;
-                    width: 100%;
-                    border:0px;
+                        width: 60%;
+                        border: 4px;
+                        border-collapse: collapse;
+                        margin-left: auto;
+                        margin-right: auto;
                     }
                     th, td {
-                    text-align: left;
-                    padding: 3px;
-                    border:0px;
-                    border-bottom-width:1px solid black;
-                    border-right-width:1px solid black;
+                        text-align: left;
+                        padding: 3px;
+                        border: 4px solid black;
                     }
-
-                    tr{
-                    border:0px;
-                    }
-
-                    body { 
-                        font-family: sans-serif; 
+                    body {
+                        font-family: sans-serif;
                     }
 
                 </style>
@@ -57,7 +53,7 @@
                 <br/>
                 <table>
                     <tr>
-                        <td style="border-left-width:1px;">
+                        <td>
                             1) Podnosilac - ime, prezime, adresa i drzavljanstvo autora ili drugog nosioca autorskog
                             prava ako je podnosilac fizicko lice, odnosno poslovno ime i sediste nosioca autorskog prava
                             ako je podnosilac pravno lice:
@@ -82,9 +78,9 @@
                 </table>
                 <br/>
 
-                <table style="margin: 5px">
+                <table>
                     <tr>
-                        <td style="border-left-width:1px;">
+                        <td>
                             telefon: <xsl:value-of select="zahtev/podnosilac_zahteva/lice/proj:kontakt/proj:telefon"/>
                         </td>
                         <td>
@@ -95,7 +91,7 @@
                 <br/>
                 <table>
                     <tr>
-                        <td style="border-left-width:1px;">
+                        <td >
                             2) Pseudonim ili znak autora, (ako ga ima):
                             <br/>
                             <br/>
@@ -183,6 +179,7 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </xsl:for-each>
+                            <br/>
                             9) Podatak da li je u pitanju autorsko delo stvoreno u radnom odnosu:
                             <br/>
                             <br/>
@@ -230,7 +227,7 @@
                                     </tr>
                                     <tr>
                                         <td style="font-size: 22px; font-weight: bold; padding:10px">
-                                            <xsl:value-of select="/zahtev/@sifra"/>
+                                            <xsl:value-of select="zahtev/sifra"/>
                                         </td>
                                     </tr>
                                     <tr>

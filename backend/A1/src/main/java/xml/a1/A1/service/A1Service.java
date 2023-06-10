@@ -44,13 +44,13 @@ public class A1Service {
             throws TransformerException, IOException, SAXException, XMLDBException, ClassNotFoundException,
             InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         A1Zahtev zahtev = new A1Zahtev(dto);
-        String title = zahtev.getNameForCollection();
+        String title = zahtev.getSifra();
         Document document = converter.generateA1(zahtev);
         String xml = converter.documentToString(document);
 
         String rdf_path = "src/main/resources/data/rdf/" + title + ".rdf";
         String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
-        sparqlService.saveRDF(xml, rdf_path);
+        sparqlService.saveRDF(xml, rdf_path, title);
         saveJsonLD(rdf_path, json_path);
         existManager.storeFromText("db/a1", title, xml);
 
@@ -89,9 +89,8 @@ public class A1Service {
             List<XMLResource> resources = existManager.searchForText(rawText);
             List<String> zahtevi = new ArrayList<>();
             for (XMLResource xml: resources) {
-                DeferredElementNSImpl document = (DeferredElementNSImpl) xml.getContentAsDOM();
-                A1Zahtev zahtev = new A1Zahtev(document);
-                zahtevi.add(zahtev.getBrojPrijave());
+                String sifra = ((DeferredElementNSImpl) xml.getContentAsDOM()).getElementsByTagName("sifra").item(0).getTextContent();
+                zahtevi.add(sifra);
             }
             return zahtevi;
         } catch(Exception e) {

@@ -50,7 +50,7 @@ public class P1Service {
 
         String rdf_path = "src/main/resources/data/rdf/" + title + ".rdf";
         String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
-        sparqlService.saveRDF(xml, rdf_path);
+        sparqlService.saveRDF(xml, rdf_path, title);
         saveJsonLD(rdf_path, json_path);
         existManager.storeFromText("db/p1", title, xml);
 

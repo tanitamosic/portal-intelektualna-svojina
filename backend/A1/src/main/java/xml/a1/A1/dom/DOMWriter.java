@@ -5,6 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import xml.a1.A1.model.A1Resenje;
 import xml.a1.A1.model.A1Zahtev;
+import xml.a1.A1.model.Autor;
 import xml.a1.A1.model.deljeniTipovi.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -50,251 +51,206 @@ public class DOMWriter {
         }
     }
 
-    public Document generateA1(A1Zahtev p1) {
+    public Document generateA1(A1Zahtev a1) {
         createDocument();
 
         Element zahtev = document.createElement("zahtev");
         document.appendChild(zahtev);
         zahtev.setAttribute("xmlns:proj", IMPORT_NAMESPACE);
-        zahtev.setAttribute("xmlns:p-1", A1_NAMESPACE);
+        zahtev.setAttribute("xmlns:a-1", A1_NAMESPACE);
         zahtev.setAttribute("xmlns:xsi", XSI_NAMESPACE);
         zahtev.setAttribute("xmlns:pred", "http://www.xmlsux.com/predicate/");
-        zahtev.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/p-1.xsd");
-
-        // ZAVOD
-        Element zavod = document.createElement("zavod");
-        zavod.setAttribute("about", "pred:zavod");
-        zahtev.appendChild(zavod);
-
-        // // FORMA ZA ZAVOD
-        Element formaZaZavod = document.createElement("formaZaZavod");
-        formaZaZavod.setAttribute("about", "pred:formaZaZavod");
-        zavod.appendChild(formaZaZavod);
-
-        Element brojPrijave = document.createElement("brojPrijave");
-        brojPrijave.setAttribute("property", "pred:brojPrijave");
-        formaZaZavod.appendChild(brojPrijave);
-        brojPrijave.appendChild(document.createTextNode(p1.getBrojPrijave()));
-        Element datumPrijema = document.createElement("datumPrijema");
-        datumPrijema.setAttribute("property", "pred:datumPrijema");
-        formaZaZavod.appendChild(datumPrijema);
-        datumPrijema.appendChild(document.createTextNode(p1.getDatumPrijema()));
-        Element datumPodnosenja = document.createElement("datumPodnosenja");
-        datumPodnosenja.setAttribute("property", "pred:datumPodnosenja");
-        formaZaZavod.appendChild(datumPodnosenja);
-        datumPodnosenja.appendChild(document.createTextNode(p1.getDatumPodnosenja()));
-
-        // // PODACI O ZAVODU
-        Element podaciOZavodu = document.createElement( "podaciOZavodu");
-        podaciOZavodu.setAttribute("about", "pred:podaciOZavodu");
-        zavod.appendChild(podaciOZavodu);
-
-        Element institucija = document.createElement( "institucija");
-        podaciOZavodu.appendChild(institucija);
-        institucija.appendChild(document.createTextNode("Zavod za intelektualnu svojinu"));
-
-        addAddress(podaciOZavodu, new Address("Beograd", "5", "Knjeginje Ljubice", "11000"));
-
-        // FORMA PODNOSIOCA
-        Element formaPodnosioca = document.createElement( "formaPodnosioca");
-        formaPodnosioca.setAttribute("about", "pred:formaPodnosioca");
-        zahtev.appendChild(formaPodnosioca);
-
-        // // NAZIV PRONALASKA
-        Element nazivPronalaska = document.createElement( "nazivPronalaska");
-        nazivPronalaska.setAttribute("about", "pred:nazivPronalaska");
-        formaPodnosioca.appendChild(nazivPronalaska);
-        Element srpski = document.createElement( "srpski");
-        srpski.setAttribute("property", "pred:srpski");
-        nazivPronalaska.appendChild(srpski);
-        srpski.appendChild(document.createTextNode(p1.getSrpskiNazivPronalaska()));
-        Element engleski = document.createElement( "engleski");
-        engleski.setAttribute("property", "pred:engleski");
-        nazivPronalaska.appendChild(engleski);
-        engleski.appendChild(document.createTextNode(p1.getEngleskiNazivPronalaska()));
-
-        // // PODNOSILAC PRIJAVE
-
-        Element podnosilacPrijave = document.createElement( "podnosilacPrijave");
-        podnosilacPrijave.setAttribute("about", "pred:podnosilacPrijave");
-        if (p1.getPodnosilacPrijave() instanceof FizickoLice) {
-            podnosilacPrijave.setAttribute("xsi:type", "proj:TFizickoLice");
-
-            FizickoLice fizickiPodnosilac = (FizickoLice) p1.getPodnosilacPrijave();
-            Element imePodnosioca = document.createElement("proj:ime");
-            imePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getIme()));
-            imePodnosioca.setAttribute("property", "pred:ime");
-            Element prezimePodnosioca = document.createElement("proj:prezime");
-            prezimePodnosioca.appendChild(document.createTextNode(fizickiPodnosilac.getPrezime()));
-            prezimePodnosioca.setAttribute("property", "pred:prezime");
-
-            podnosilacPrijave.appendChild(imePodnosioca);
-            podnosilacPrijave.appendChild(prezimePodnosioca);
-        } else {
-            podnosilacPrijave.setAttribute("xsi:type", "proj:TPravnoLice");
-
-            Element pibPodnosioca = document.createElement("proj:pib");
-            pibPodnosioca.setAttribute("property", "pred:pib");
-            Element naziv_preduzecaPodnosioca = document.createElement("proj:naziv_preduzeca");
-            naziv_preduzecaPodnosioca.setAttribute("property", "pred:naziv_preduzeca");
-
-            PravnoLice pl = (PravnoLice) p1.getPodnosilacPrijave();
-            pibPodnosioca.appendChild(document.createTextNode(pl.getPib()));
-            naziv_preduzecaPodnosioca.appendChild(document.createTextNode(pl.getNaziv_preduzeca()));
-
-            podnosilacPrijave.appendChild(pibPodnosioca);
-            podnosilacPrijave.appendChild(naziv_preduzecaPodnosioca);
+        zahtev.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/a-1.xsd");
+        zahtev.setAttribute("about", "pred:zahtev");
+        Element podnosilac_zahteva = document.createElement("podnosilac_zahteva");
+        podnosilac_zahteva.setAttribute("about", "pred:podnosilac");
+        zahtev.setAttribute("redni_broj","1");
+        Element podnosilac_zahteva_lice = document.createElement("lice");
+        if (a1.getPodnosilac_zahteva() instanceof FizickoLice ){
+            podnosilac_zahteva_lice.setAttribute("xsi:type","proj:FizickoLice");
+        }
+        else{
+            podnosilac_zahteva_lice.setAttribute("xsi:type","proj:PravnoLice");
         }
 
-        addAddress(podnosilacPrijave, p1.getPodnosilacPrijave().getAdresa());
-        addContact(podnosilacPrijave, p1.getPodnosilacPrijave().getKontakt());
-        Element jePronalazac = document.createElement( "jePronalazac");
+        addAddress(podnosilac_zahteva_lice, a1.getPodnosilac_zahteva().getAdresa());
+        addContact(podnosilac_zahteva_lice, a1.getPodnosilac_zahteva().getKontakt());
 
-        jePronalazac.setAttribute("property", "pred:jePronalazac");
-        jePronalazac.appendChild(document.createTextNode(p1.getPodnosilacJePronalazac().toString()));
-        podnosilacPrijave.appendChild(jePronalazac);
+        if (a1.getPodnosilac_zahteva() instanceof FizickoLice ){
+            Element ime = document.createElement("proj:ime");
+            ime.setAttribute("property","pred:ime");
+            ime.appendChild(document.createTextNode(((FizickoLice) a1.getPodnosilac_zahteva()).getIme()));
+            Element prezime = document.createElement("proj:prezime");
+            prezime.setAttribute("property","pred:prezime");
+            prezime.appendChild(document.createTextNode(((FizickoLice) a1.getPodnosilac_zahteva()).getPrezime()));
+            podnosilac_zahteva_lice.appendChild(ime);
+            podnosilac_zahteva_lice.appendChild(prezime);
+        }
+        else{
+            podnosilac_zahteva_lice.setAttribute("xsi:type","proj:PravnoLice");
+            Element naziv_preduzeca = document.createElement("naziv_preduzeca");
+            naziv_preduzeca.setAttribute("property","pred:naziv");
+            naziv_preduzeca.appendChild(document.createTextNode(((PravnoLice) a1.getPodnosilac_zahteva()).getNaziv_preduzeca()));
+            Element pib = document.createElement("pib");
+            pib.appendChild(document.createTextNode(((PravnoLice) a1.getPodnosilac_zahteva()).getPib()));
+            podnosilac_zahteva_lice.appendChild(naziv_preduzeca);
+            podnosilac_zahteva_lice.appendChild(pib);
+        }
+        podnosilac_zahteva.appendChild(podnosilac_zahteva_lice);
+        zahtev.appendChild(podnosilac_zahteva);
 
-        formaPodnosioca.appendChild(podnosilacPrijave);
+        Element pseudonim_podnosioca = document.createElement("pseudonim_podnosioca");
+        pseudonim_podnosioca.setAttribute("property","pred:pseudonim");
+        pseudonim_podnosioca.setAttribute("redni_broj","2");
+        pseudonim_podnosioca.appendChild(document.createTextNode(a1.getPseudonim_podnosioca()));
+        zahtev.appendChild(pseudonim_podnosioca);
 
-        // // PRONALAZAC - pronalazac je sigurno fizicko lice (ne moze biti pravno)
-        FizickoLice Pronalazac = (FizickoLice) p1.getPronalazac();
-        Element pronalazac = document.createElement( "pronalazac");
-        pronalazac.setAttribute("xsi:type", "proj:TFizickoLice");
-        pronalazac.setAttribute("about", "pred:pronalazac");
+        Element punomocnik = document.createElement("punomocnik");
+        punomocnik.setAttribute("about", "pred:punomocnik");
+        punomocnik.setAttribute("redni_broj","3");
+        Element punomocnik_lice = document.createElement("lice");
+        if (a1.getPunomocnik() instanceof FizickoLice ){
+            punomocnik_lice.setAttribute("xsi:type","proj:FizickoLice");
+        }
+        else{
+            punomocnik_lice.setAttribute("xsi:type","proj:PravnoLice");
+        }
+        addAddress(punomocnik_lice, a1.getPunomocnik().getAdresa());
+        addContact(punomocnik_lice, a1.getPunomocnik().getKontakt());
 
-        if (p1.getPronalazacZeliBitiNaveden()) {
-            Element imePronalazaca = document.createElement( "proj:ime");
-            imePronalazaca.setAttribute("property", "pred:ime");
-            Element prezimePronalazaca = document.createElement( "proj:prezime");
-            prezimePronalazaca.setAttribute("property", "pred:prezime");
+        if (a1.getPunomocnik() instanceof FizickoLice ){
+            Element ime = document.createElement("proj:ime");
+            ime.setAttribute("property","pred:ime");
+            ime.appendChild(document.createTextNode(((FizickoLice) a1.getPunomocnik()).getIme()));
+            Element prezime = document.createElement("proj:prezime");
+            prezime.setAttribute("property","pred:prezime");
+            prezime.appendChild(document.createTextNode(((FizickoLice) a1.getPunomocnik()).getPrezime()));
+            punomocnik_lice.appendChild(ime);
+            punomocnik_lice.appendChild(prezime);
+        }
+        else {
+            punomocnik_lice.setAttribute("xsi:type", "proj:PravnoLice");
+            Element naziv_preduzeca = document.createElement("naziv_preduzeca");
+            naziv_preduzeca.setAttribute("property", "pred:naziv");
+            naziv_preduzeca.appendChild(document.createTextNode(((PravnoLice) a1.getPunomocnik()).getNaziv_preduzeca()));
+            Element pib = document.createElement("pib");
+            pib.appendChild(document.createTextNode(((PravnoLice) a1.getPunomocnik()).getPib()));
+            punomocnik_lice.appendChild(naziv_preduzeca);
+            punomocnik_lice.appendChild(pib);
+        }
+        punomocnik.appendChild(punomocnik_lice);
+        zahtev.appendChild(punomocnik);
 
-            imePronalazaca.appendChild(document.createTextNode(Pronalazac.getIme()));
-            prezimePronalazaca.appendChild(document.createTextNode(Pronalazac.getPrezime()));
+        Element naslov_dela = document.createElement("naslov_dela");
+        naslov_dela.setAttribute("property","pred:naslov");
+        naslov_dela.setAttribute("redni_broj","4");
+        naslov_dela.appendChild(document.createTextNode(a1.getNaslov_dela()));
+        zahtev.appendChild(naslov_dela);
 
-            pronalazac.appendChild(imePronalazaca);
-            pronalazac.appendChild(prezimePronalazaca);
-            addAddress(pronalazac, p1.getPronalazac().getAdresa());
-            addContact(pronalazac, p1.getPronalazac().getKontakt());
+        Element podaci_o_naslovu_izvornog_dela = document.createElement("podaci_o_naslovu_izvornog_dela");
+        podaci_o_naslovu_izvornog_dela.setAttribute("redni_broj","5");
+        Element podaci_o_naslovu_izvornog_dela_naslov = document.createElement("naslov");
+        podaci_o_naslovu_izvornog_dela_naslov.appendChild(document.createTextNode(a1.getPodaci_o_naslovu_izvonog_dela_naslov()));
+        podaci_o_naslovu_izvornog_dela.appendChild(podaci_o_naslovu_izvornog_dela_naslov);
+        for(Autor a: a1.getPodaci_o_naslovu_izvonog_dela_autori()){
+            Element autor = document.createElement("autor");
+            autor.setAttribute("about","pred:autor");
+            addAddress(autor, a.getAdresa());
+            addContact(autor, a.getKontakt());
+            Element ime = document.createElement("proj:ime");
+            ime.setAttribute("property","pred:ime");
+            ime.appendChild(document.createTextNode(a.getIme()));
+            Element prezime = document.createElement("proj:prezime");
+            prezime.setAttribute("property","pred:prezime");
+            prezime.appendChild(document.createTextNode(a.getPrezime()));
+            autor.appendChild(ime);
+            autor.appendChild(prezime);
+            Element godina_smrti = document.createElement("proj:godina_smrti");
+            godina_smrti.appendChild(document.createTextNode(a.getGodina_smrti().toString()));
+            autor.appendChild(godina_smrti);
+            podaci_o_naslovu_izvornog_dela.appendChild(autor);
 
         }
-        Element zeliBitiNaveden = document.createElement( "zeliBitiNaveden");
-        zeliBitiNaveden.setAttribute("property", "pred:zeliBitiNaveden");
-        zeliBitiNaveden.appendChild(document.createTextNode(p1.getPronalazacZeliBitiNaveden().toString()));
-        pronalazac.appendChild(zeliBitiNaveden);
-        formaPodnosioca.appendChild(pronalazac);
+        zahtev.appendChild(podaci_o_naslovu_izvornog_dela);
 
 
-        // // POSREDNIK
-        Lice PosrednikOBJ = p1.getPosrednik();
-        Element posrednik = document.createElement( "posrednik");
-        posrednik.setAttribute("about", "pred:posrednik");
-        if (PosrednikOBJ instanceof FizickoLice) {
-            posrednik.setAttribute("xsi:type", "proj:TFizickoLice");
-        } else {
-            posrednik.setAttribute("xsi:type", "proj:TPravnoLice");
+
+        Element vrsta_dela = document.createElement("vrsta_dela");
+        vrsta_dela.setAttribute("property","pred:vrsta_dela");
+        vrsta_dela.setAttribute("redni_broj","6");
+        vrsta_dela.appendChild(document.createTextNode(a1.getVrsta_dela()));
+        zahtev.appendChild(vrsta_dela);
+
+        Element forma_dela = document.createElement("forma_dela");
+        forma_dela.setAttribute("property","pred:forma_dela");
+        forma_dela.setAttribute("redni_broj","7");
+        forma_dela.appendChild(document.createTextNode(a1.getForma_dela()));
+        zahtev.appendChild(forma_dela);
+
+        Element podaci_o_autoru = document.createElement("podaci_o_autoru");
+        podaci_o_autoru.setAttribute("redni_broj","8");
+        for(Autor a :a1.getAutori()){
+            Element autor = document.createElement("autor");
+            autor.setAttribute("about","pred:autor");
+            addAddress(autor, a.getAdresa());
+            addContact(autor, a.getKontakt());
+            Element ime = document.createElement("proj:ime");
+            ime.setAttribute("property","pred:ime");
+            ime.appendChild(document.createTextNode(a.getIme()));
+            Element prezime = document.createElement("proj:prezime");
+            prezime.setAttribute("property","pred:prezime");
+            prezime.appendChild(document.createTextNode(a.getPrezime()));
+            autor.appendChild(ime);
+            autor.appendChild(prezime);
+            Element godina_smrti = document.createElement("proj:godina_smrti");
+            godina_smrti.appendChild(document.createTextNode(a.getGodina_smrti().toString()));
+            autor.appendChild(godina_smrti);
+            podaci_o_autoru.appendChild(autor);
+
         }
-        formaPodnosioca.appendChild(posrednik);
+        zahtev.appendChild(podaci_o_autoru);
+
+        Element delo_stvoreno_u_radnom_odnosu = document.createElement("delo_stvoreno_u_radnom_odnosu");
+        delo_stvoreno_u_radnom_odnosu.setAttribute("property","pred:delo_stvoreno_u_radnom_odnosu");
+        delo_stvoreno_u_radnom_odnosu.setAttribute("redni_broj","9");
+        delo_stvoreno_u_radnom_odnosu.appendChild(document.createTextNode(a1.getDelo_stvoreno_u_radnom_odnosu().toString()));
+        zahtev.appendChild(delo_stvoreno_u_radnom_odnosu);
+
+        Element nacin_koriscenja_dela = document.createElement("nacin_koriscenja_dela");
+        nacin_koriscenja_dela.setAttribute("property","pred:nacin_koriscenja_dela");
+        nacin_koriscenja_dela.setAttribute("redni_broj","10");
+        nacin_koriscenja_dela.appendChild(document.createTextNode(a1.getNacin_koriscenja_dela()));
+        zahtev.appendChild(nacin_koriscenja_dela);
+
+        Element prilozi_uz_zahtev = document.createElement("prilozi_uz_zahtev");
+        prilozi_uz_zahtev.setAttribute("about","pred:prilozi_uz_zahtev");
+        prilozi_uz_zahtev.setAttribute("redni_broj","12");
+        Element opis_dela = document.createElement("opis_dela");
+        opis_dela.setAttribute("property","pred:opis_dela");
+        opis_dela.appendChild(document.createTextNode(a1.getPrilozi_uz_zahtev_opis_dela()));
+        prilozi_uz_zahtev.appendChild(opis_dela);
+        Element format_primera = document.createElement("format_primera");
+        format_primera.setAttribute("property","pred:format_primera");
+        format_primera.appendChild(document.createTextNode(a1.getPrilozi_uz_zahtev_format_primera()));
+        prilozi_uz_zahtev.appendChild(format_primera);
+        Element naziv_fajla = document.createElement("naziv_fajla");
+        naziv_fajla.setAttribute("property","pred:naziv_fajla");
+        naziv_fajla.appendChild(document.createTextNode(a1.getPrilozi_uz_zahtev_naziv_fajla()));
+        prilozi_uz_zahtev.appendChild(naziv_fajla);
+        zahtev.appendChild(prilozi_uz_zahtev);
+
+        Element datum_podnosenja_zahteva = document.createElement("datum_podnosenja_zahteva");
+        datum_podnosenja_zahteva.setAttribute("property","pred:datum");
+        datum_podnosenja_zahteva.appendChild(document.createTextNode(a1.getDatum_podnosenja_zahteva()));
+        zahtev.appendChild(datum_podnosenja_zahteva);
+
+        Element sifra = document.createElement("sifra");
+        sifra.setAttribute("property", "pred:sifra");
+        sifra.appendChild(document.createTextNode(a1.getSifra()));
+        zahtev.appendChild(sifra);
 
 
-        if (PosrednikOBJ instanceof FizickoLice) {
-            Element imePosrednika = document.createElement("proj:ime");
-            imePosrednika.setAttribute("property", "pred:ime");
-            Element prezimePosrednika = document.createElement("proj:prezime");
-            prezimePosrednika.setAttribute("property", "pred:prezime");
 
-            FizickoLice fl = (FizickoLice) PosrednikOBJ;
-            imePosrednika.appendChild(document.createTextNode(fl.getIme()));
-            prezimePosrednika.appendChild(document.createTextNode(fl.getPrezime()));
-
-            posrednik.appendChild(imePosrednika);
-            posrednik.appendChild(prezimePosrednika);
-
-        } else {
-            Element pibPosrednika = document.createElement("proj:pib");
-            pibPosrednika.setAttribute("property", "pred:pib");
-            Element naziv_preduzecaPosrednika = document.createElement("proj:naziv_preduzeca");
-            naziv_preduzecaPosrednika.setAttribute("property", "pred:naziv_preduzeca");
-
-            PravnoLice pl = (PravnoLice) PosrednikOBJ;
-            pibPosrednika.appendChild(document.createTextNode(pl.getPib()));
-            naziv_preduzecaPosrednika.appendChild(document.createTextNode(pl.getNaziv_preduzeca()));
-
-            posrednik.appendChild(pibPosrednika);
-            posrednik.appendChild(naziv_preduzecaPosrednika);
-        }
-        addAddress(posrednik, p1.getPosrednik().getAdresa());
-        addContact(posrednik, p1.getPosrednik().getKontakt());
-        Element vrstaPosrednika = document.createElement( "vrstaPosrednika");
-        vrstaPosrednika.setAttribute("property","pred:vrstaPosrednika");
-        vrstaPosrednika.appendChild(document.createTextNode(p1.getVrstaPosrednika()));
-        posrednik.appendChild(vrstaPosrednika);
-
-        // // ADRESA ZA DOSTAVLJANJE
-        Element adresaZaDostavljanje = document.createElement( "adresaZaDostavljanje");
-        adresaZaDostavljanje.setAttribute("about", "pred:adresaZaDostavljanje");
-        formaPodnosioca.appendChild(adresaZaDostavljanje);
-        addAddress(adresaZaDostavljanje, p1.getAdresaZaDostavljanje());
-
-        // // NACIN DOSTAVLJANJA
-        Element nacinDostavljanja = document.createElement( "nacinDostavljanja");
-        nacinDostavljanja.setAttribute("property", "pred:nacinDostavljanja");
-        formaPodnosioca.appendChild(nacinDostavljanja);
-        nacinDostavljanja.appendChild(document.createTextNode(p1.getNacinDostavljanja()));
-
-        // // PRIJAVA
-        Element prijava = document.createElement( "prijava");
-        formaPodnosioca.appendChild(prijava);
-        Element vrstaPrijave = document.createElement( "vrstaPrijave");
-        vrstaPrijave.setAttribute("property", "pred:vrstaPrijave");
-        prijava.appendChild(vrstaPrijave);
-        vrstaPrijave.appendChild(document.createTextNode(p1.getVrstaPrijave()));
-        Element brojPrvobitnePrijave = document.createElement( "brojPrvobitnePrijave");
-        brojPrvobitnePrijave.setAttribute("property", "pred:brojPrvobitnePrijave");
-        prijava.appendChild(brojPrvobitnePrijave);
-        brojPrvobitnePrijave.appendChild(document.createTextNode(p1.getBrojPrvobitnePrijave()));
-        Element datumPodnosenjaPrvobitnePrijave = document.createElement( "datumPodnosenjaPrvobitnePrijave");
-        datumPodnosenjaPrvobitnePrijave.setAttribute("property", "pred:datumPodnosenjaPrvobitnePrijave");
-        prijava.appendChild(datumPodnosenjaPrvobitnePrijave);
-        datumPodnosenjaPrvobitnePrijave.appendChild(document.createTextNode(p1.getDatumPodnosenjaPrvobitnePrijave()));
-
-        // // ZAHTEV ZA PRIZNANJE PRAVA
-        Element zahtevZaPriznanjePrava = document.createElement( "zahtevZaPriznanjePrava");
-        zahtevZaPriznanjePrava.setAttribute("about", "pred:zahtevZaPriznanjePrava");
-        formaPodnosioca.appendChild(zahtevZaPriznanjePrava);
-        Element prijave = document.createElement( "prijave");
-        zahtevZaPriznanjePrava.appendChild(prijave);
-
-        for (int i = 0; i < p1.getRanijePrijave().size(); i++) {
-
-
-            Element ranijaPrijava1 = document.createElement( "ranijaPrijava");
-            ranijaPrijava1.setAttribute("broj", String.valueOf(i+1));
-            ranijaPrijava1.setAttribute("about", "pred:ranijaPrijava".concat(String.valueOf(i+1)));
-            prijave.appendChild(ranijaPrijava1);
-            Element datum1 = document.createElement("datum");
-            datum1.setAttribute("about", " pred:datum");
-            datum1.setAttribute("datatype", "xs:date");
-            Element brojPrijave1 = document.createElement( "brojPrijave");
-            brojPrijave1.setAttribute("about", " pred:brojPrijave");
-            Element drzavaOrg1 = document.createElement( "drzavaIliOrganizacija");
-            drzavaOrg1.setAttribute("about", " pred:drzavaIliOrganizacija");
-
-            ranijaPrijava1.appendChild(datum1);
-            ranijaPrijava1.appendChild(brojPrijave1);
-            ranijaPrijava1.appendChild(drzavaOrg1);
-        }
-
-        Element podaciOOstalimPravimaNaListu2 = document.createElement( "podaciOOstalimPravimaNaListu2");
-        podaciOOstalimPravimaNaListu2.setAttribute("about", " pred:podaciOOstalimPravimaNaListu2");
-        podaciOOstalimPravimaNaListu2.appendChild(document.createTextNode(p1.getImaDodatnogLista().toString()));
-        zahtevZaPriznanjePrava.appendChild(podaciOOstalimPravimaNaListu2);
-
-        if (p1.getImaDodatnogLista()) {
-            Element dodatniList = document.createElement( "dodatniList2");
-            dodatniList.setAttribute("property", "pred:dodatniList2");
-            dodatniList.appendChild(document.createTextNode(p1.getDodatniList()));
-            formaPodnosioca.appendChild(dodatniList);
-        }
         return document;
     }
 
@@ -310,7 +266,7 @@ public class DOMWriter {
         Element postanskiBroj = document.createElement("proj:postanski_broj");
         postanskiBroj.setAttribute("property", "pred:postanski_broj");
         adresa.appendChild(postanskiBroj);
-        postanskiBroj.appendChild(document.createTextNode(a.getPostanskiBroj()));
+        postanskiBroj.appendChild(document.createTextNode(a.getPostanski_broj()));
 
         Element ulica = document.createElement("proj:ulica");
         ulica.setAttribute("property", "pred:ulica");
@@ -353,12 +309,12 @@ public class DOMWriter {
         Element resenje = document.createElement("resenje_zahteva");
         document.appendChild(resenje);
         resenje.setAttribute("xmlns:proj", IMPORT_NAMESPACE);
-        resenje.setAttribute("xmlns:p-1-r", "http://localhost:3030/resenje_za_priznanje_patenta");
+        resenje.setAttribute("xmlns:a-1-r", "http://localhost:3030/a-1");
         resenje.setAttribute("xmlns:xsi", XSI_NAMESPACE);
         resenje.setAttribute("xmlns:pred", "http://www.xmlsux.com/predicate/");
         resenje.setAttribute("xsi:noNamespaceSchemaLocation", "file:./xsd/p1-resenje.xsd");
 
-        Element broj_prijave = document.createElement("broj_prijave");
+        Element broj_prijave = document.createElement("sifra");
         broj_prijave.appendChild(document.createTextNode(dto.getBrojPrijave()));
         Element datum_obrade = document.createElement("datum_obrade");
         datum_obrade.appendChild(document.createTextNode(dto.getDatumObrade()));

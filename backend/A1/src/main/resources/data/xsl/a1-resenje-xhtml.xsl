@@ -36,9 +36,9 @@
 
                 <table>
                     <tr>
-                        <td>Broj prijave</td>
+                        <td>Sifra zahteva</td>
                         <td>
-                            <xsl:value-of select="resenje_zahteva/broj_prijave"/>
+                            <xsl:value-of select="resenje_zahteva/sifra"/>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@
                         <td colspan="2">
                             <xsl:element name="a">
                                 <xsl:attribute name="href">
-                                    http://localhost:8083/download/pdf/<xsl:value-of select="resenje_zahteva/broj_prijave"/>
+                                    http://localhost:8084/download/pdf/<xsl:value-of select="resenje_zahteva/sifra"/>
                                 </xsl:attribute>
                                 Referenca na zahtev
                             </xsl:element>
