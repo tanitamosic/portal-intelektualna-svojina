@@ -155,7 +155,7 @@ export class Z1Service {
     let brojPrijaveZigaParts: string[] = brojPrijaveZiga.split("/");
     formData.append("file", file);
 
-    return this.http.post<Object>(this.zigUrl + "/upload-image/" + brojPrijaveZiga + "-" + tipPrilog, formData, this.getOptions());
+    return this.http.post<Object>(this.zigUrl + "/upload-file/" + brojPrijaveZiga + "-" + tipPrilog, formData, this.getOptions());
   }
 
   public saveAfterPrilogAddition(brojPrijaveZiga: string) {
