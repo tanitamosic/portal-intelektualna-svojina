@@ -20,14 +20,14 @@ export class Z1Service {
   email = /.+\@.+\..+/;
 
   constructor(private http: HttpClient) {
-    this.zigUrl = '/z1/post-z1';
+    this.zigUrl = '/z1';
   }
 
   public postZahtev(zahtev: any): Observable<any> {
     const xmlZahtev = JsonToXML.parse("zahtev", zahtev);
     console.log(xmlZahtev)
     console.log("evo saljem zahtev")
-    return this.http.post<any>(this.zigUrl, xmlZahtev, this.getOptions());
+    return this.http.post<any>(this.zigUrl+"/post-z1", xmlZahtev, this.getOptions());
   }
 
   public getZahtev(brojPrijave: string): Observable<any> {
@@ -148,14 +148,14 @@ export class Z1Service {
     let brojPrijaveZigaParts: string[] = brojPrijaveZiga.split("/");
     formData.append("file", file);
 
-    return this.http.post<Object>(this.zigUrl + "/file-upload/" + brojPrijaveZiga, formData, this.getOptions());
+    return this.http.post<Object>(this.zigUrl + "/upload-image/" + brojPrijaveZiga, formData, this.getOptions());
   }
   public postPrilog(brojPrijaveZiga: string, tipPrilog: string, file: any) {
     let formData = new FormData();
     let brojPrijaveZigaParts: string[] = brojPrijaveZiga.split("/");
     formData.append("file", file);
 
-    return this.http.post<Object>(this.zigUrl + "/file-upload/" + brojPrijaveZigaParts[0] + "-" + brojPrijaveZigaParts[1] + "-" + tipPrilog, formData, this.getOptions());
+    return this.http.post<Object>(this.zigUrl + "/upload-image/" + brojPrijaveZiga + "-" + tipPrilog, formData, this.getOptions());
   }
 
   public saveAfterPrilogAddition(brojPrijaveZiga: string) {

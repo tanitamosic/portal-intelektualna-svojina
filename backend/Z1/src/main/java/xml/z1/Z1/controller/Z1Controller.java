@@ -32,6 +32,7 @@ public class Z1Controller {
     SparqlService sparqlService;
 
     private static final String IMAGE_UPLOAD_DIR = "src/main/resources/static/img";
+    private static final String FILE_UPLOAD_DIR = "src/main/resources/static/files";
 
     @PostMapping(value="/post-z1", consumes="application/xml", produces="application/xml")
     public ResponseEntity<String> postZ1zahtev(@RequestBody Z1DTO dto) {
@@ -74,14 +75,14 @@ public class Z1Controller {
         return new ResponseEntity<>(z1Service.conductTextBasedSearch(searchParam), HttpStatus.OK);
     }
 
-    @PostMapping("/upload-image/{brojPrijave}")
-    public ResponseEntity<String> uploadImage(@RequestPart MultipartFile file, @PathVariable String brojPrijave) {
+    @PostMapping("/upload-image/")
+    public ResponseEntity<String> uploadImage(@RequestPart MultipartFile file) {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("File is empty");
         }
 
         String fileName = generateRandomFileName(file.getOriginalFilename());
-        String filePath = IMAGE_UPLOAD_DIR + "/" + brojPrijave;
+        String filePath = IMAGE_UPLOAD_DIR + "/" + fileName;
 
         try {
             saveFile(file, filePath);
@@ -89,6 +90,23 @@ public class Z1Controller {
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload image");
+        }
+    }
+
+    @PostMapping("/upload-file/{fileName}")
+    public ResponseEntity<String> uploadFile(@RequestPart MultipartFile file, @PathVariable String fileName) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("File is empty");
+        }
+
+        String filePath = FILE_UPLOAD_DIR + "/" + fileName;
+
+        try {
+            saveFile(file, filePath);
+            return ResponseEntity.ok().body(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload file");
         }
     }
 

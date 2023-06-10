@@ -192,6 +192,7 @@ export class Z1Component implements OnInit  {
       console.log(brojPrijaveZiga);
       console.log(this.prilogPUNOMOCJE);
       this.uploadPrilogsForkJoin(brojPrijaveZiga);
+      
     });
   }
 
@@ -210,6 +211,10 @@ export class Z1Component implements OnInit  {
         console.log("sacuvali smo");
       });
     });
+  }
+
+  uploadIzgled(brojPrijaveZiga:string){
+
   }
 
   uploadPunomocje(brojPrijaveZiga:string){
