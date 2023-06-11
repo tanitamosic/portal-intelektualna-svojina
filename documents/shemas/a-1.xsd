@@ -120,7 +120,6 @@
                 </xs:element>
                 <xs:element name="datum_podnosenja_zahteva" type="proj:TDatum"/>
             </xs:sequence>
-            <xs:attribute name="sifra" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

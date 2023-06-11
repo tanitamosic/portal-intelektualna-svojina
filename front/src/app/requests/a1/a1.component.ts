@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {RequestService} from "../../services/request.service";
+import { Component } from '@angular/core';
+import { RequestService } from "../../services/request.service";
 // import * as Xonomy from 'xonomy'
 declare const Xonomy: any;
 
@@ -19,70 +19,82 @@ export class A1Component {
 
   initializeXonomy(): void {
     const xmlData = `<zahtev>
-    <srpskiNazivPronalaska></srpskiNazivPronalaska>
-    <engleskiNazivPronalaska></engleskiNazivPronalaska>
-    <podnosilacJePronalazac></podnosilacJePronalazac>
-    <podnosilacPrijave>
-        <kontakt>
-            <email></email>
-            <telefon></telefon>
-            <faks></faks>
-        </kontakt>
+    <brojPrijave></brojPrijave>
+    <podaci_o_naslovu_izvonog_dela_naslov></podaci_o_naslovu_izvonog_dela_naslov>
+    <podaci_o_naslovu_izvonog_dela_autori>
+<!--        <autor>-->
+<!--            <adresa>-->
+<!--                <mesto></mesto>-->
+<!--                <postanski_broj></postanski_broj>-->
+<!--                <ulica></ulica>-->
+<!--                <broj></broj>-->
+<!--            </adresa>-->
+<!--            <kontakt>-->
+<!--                <telefon></telefon>-->
+<!--                <email></email>-->
+<!--            </kontakt>-->
+<!--            <ime></ime>-->
+<!--            <prezime></prezime>-->
+<!--            <godina_smrti></godina_smrti>-->
+<!--        </autor>-->
+    </podaci_o_naslovu_izvonog_dela_autori>
+    <podnosilac_zahteva>
         <adresa>
+            <mesto></mesto>
+            <postanski_broj></postanski_broj>
             <ulica></ulica>
             <broj></broj>
-            <mesto></mesto>
-            <postanskiBroj></postanskiBroj>
         </adresa>
-    </podnosilacPrijave>
-    <pronalazac>
         <kontakt>
             <email></email>
-            <telefon></telefon>
-            <faks></faks>
         </kontakt>
+        <naziv_preduzeca></naziv_preduzeca>
+        <pib></pib>
+    </podnosilac_zahteva>
+    <pseudonim_podnosioca></pseudonim_podnosioca>
+    <punomocnik>
         <adresa>
+            <mesto></mesto>
+            <postanski_broj></postanski_broj>
             <ulica></ulica>
             <broj></broj>
-            <mesto></mesto>
-            <postanskiBroj></postanskiBroj>
         </adresa>
-    </pronalazac>
-    <pronalazacZeliBitiNaveden></pronalazacZeliBitiNaveden>
-    <vrstaPosrednika></vrstaPosrednika>
-    <posrednik>
         <kontakt>
-            <email></email>
             <telefon></telefon>
-            <faks></faks>
+            <email></email>
         </kontakt>
-        <adresa>
-            <ulica></ulica>
-            <broj></broj>
-            <mesto></mesto>
-            <postanskiBroj></postanskiBroj>
-        </adresa>
-    </posrednik>
-    <adresaZaDostavljanje>
-        <ulica></ulica>
-        <broj></broj>
-        <mesto></mesto>
-        <postanskiBroj></postanskiBroj>
-    </adresaZaDostavljanje>
-    <nacinDostavljanja></nacinDostavljanja>
-    <vrstaPrijave></vrstaPrijave>
-    <brojPrvobitnePrijave></brojPrvobitnePrijave>
-    <datumPodnosenjaPrvobitnePrijave></datumPodnosenjaPrvobitnePrijave>
-    <ranijePrijave>
-<!--        <ranijaPrijava>-->
-<!--            <datum></datum>-->
-<!--            <brojPrijave></brojPrijave>-->
-<!--            <drzavaIliOrganizacija></drzavaIliOrganizacija>-->
-<!--        </ranijaPrijava>-->
-    </ranijePrijave>
-    <imaDodatnogLista></imaDodatnogLista>
-    <dodatniList></dodatniList>
-</zahtev>`;
+        <ime></ime>
+        <prezime></prezime>
+    </punomocnik>
+    <naslov_dela></naslov_dela>
+    <vrsta_dela></vrsta_dela>
+    <forma_dela></forma_dela>
+    <autori>
+<!--        <autor>-->
+<!--            <adresa>-->
+<!--                <mesto></mesto>-->
+<!--                <postanski_broj></postanski_broj>-->
+<!--                <ulica></ulica>-->
+<!--                <broj></broj>-->
+<!--            </adresa>-->
+<!--            <kontakt>-->
+<!--                <telefon></telefon>-->
+<!--                <email></email>-->
+<!--            </kontakt>-->
+<!--            <ime></ime>-->
+<!--            <prezime></prezime>-->
+<!--            <godina_smrti></godina_smrti>-->
+<!--        </autor>-->
+    </autori>
+    <nacin_koriscenja_dela></nacin_koriscenja_dela>
+    <delo_stvoreno_u_radnom_odnosu></delo_stvoreno_u_radnom_odnosu>
+    <prilozi_uz_zahtev_opis_dela></prilozi_uz_zahtev_opis_dela>
+    <prilozi_uz_zahtev_format_primera></prilozi_uz_zahtev_format_primera>
+    <prilozi_uz_zahtev_naziv_fajla></prilozi_uz_zahtev_naziv_fajla>
+    <datum_podnosenja_zahteva></datum_podnosenja_zahteva>
+</zahtev>
+    
+    `;
     let docSpec = {
       validate: function (jsElement: any) {
         for (let i = 0; i < jsElement.children.length; i++) {
@@ -92,9 +104,9 @@ export class A1Component {
           } else if (jsChild.type == "text") {
             if (jsChild.value == "") {
               Xonomy.warnings.push({
-                  // htmlID: jsAttribute.htmlID,
-                  text: "This attribute must not be empty."
-                }
+                // htmlID: jsAttribute.htmlID,
+                text: "This attribute must not be empty."
+              }
               );
 
             }
@@ -140,184 +152,7 @@ export class A1Component {
           oneliner: true,
           asker: Xonomy.askString
         },
-
-        "srpskiNazivPronalaska": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askString
-        },
-        "engleskiNazivPronalaska": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askString
-        },
-        "podnosilacJePronalazac": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askPicklist,
-          askerParameter: ["true", "false"],
-        },
-        "podnosilacPrijave": {
-          menu: [
-            {
-              caption: "Postavi na <TFizickoLice>",
-              action: function (jsElement: any) {
-                let xml = "<ime></ime>";
-                let xml2 = "<prezime></prezime>"
-                Xonomy.newElementChild(jsElement, xml);
-                Xonomy.newElementChild(jsElement, xml2);
-                Xonomy.refresh();
-              },
-              hideIf: function (jsElement: any) {
-                return jsElement.hasChildElement("ime") || jsElement.hasChildElement("prezime");
-              },
-            },
-            {
-              caption: "Postavi na <TPravnoLice>",
-              action: function (jsElement: any) {
-                let xml = "<naziv_preduzeca></naziv_preduzeca>";
-                let xml2 = "<pib></pib>"
-                Xonomy.newElementChild(jsElement, xml);
-                Xonomy.newElementChild(jsElement, xml2);
-                Xonomy.refresh();
-              },
-              hideIf: function (jsElement: any) {
-                return jsElement.hasChildElement("naziv_preduzeca") || jsElement.hasChildElement("pib");
-              }
-            },
-          ]
-        },
-        "pronalazac": {
-          menu: [{
-            caption: "Postavi na <TFizickoLice>",
-            action: function (jsElement: any) {
-              let xml = "<ime></ime>";
-              let xml2 = "<prezime></prezime>"
-              Xonomy.newElementChild(jsElement, xml);
-              Xonomy.newElementChild(jsElement, xml2);
-              Xonomy.refresh();
-            },
-            hideIf: function (jsElement: any) {
-              return jsElement.hasChildElement("ime") || jsElement.hasChildElement("prezime");
-            }
-          },
-            {
-              caption: "Postavi na <TPravnoLice>",
-              action: function (jsElement: any) {
-                let xml = "<naziv_preduzeca></naziv_preduzeca>";
-                let xml2 = "<pib></pib>"
-                Xonomy.newElementChild(jsElement, xml);
-                Xonomy.newElementChild(jsElement, xml2);
-                Xonomy.refresh();
-              },
-              hideIf: function (jsElement: any) {
-                return jsElement.hasChildElement("naziv_preduzeca") || jsElement.hasChildElement("pib");
-              }
-            },
-          ]
-        },
-        "pronalazacZeliBitiNaveden": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askPicklist,
-          askerParameter: ["true", "false"],
-        },
-        "vrstaPosrednika": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askPicklist,
-          askerParameter: ["Punomocnik za zastupanje", "Punomocnik za prijem pismena", "Zajednicki predstavnik"],
-        },
-        "posrednik": {
-          menu: [
-            {
-              caption: "Postavi na <TFizickoLice>",
-              action: function (jsElement: any) {
-                let xml = "<ime></ime>";
-                let xml2 = "<prezime></prezime>"
-                Xonomy.newElementChild(jsElement, xml);
-                Xonomy.newElementChild(jsElement, xml2);
-                Xonomy.refresh();
-              },
-              hideIf: function (jsElement: any) {
-                return jsElement.hasChildElement("ime") || jsElement.hasChildElement("prezime");
-              },
-            },
-            {
-              caption: "Postavi na <TPravnoLice>",
-              action: function (jsElement: any) {
-                let xml = "<naziv_preduzeca></naziv_preduzeca>";
-                let xml2 = "<pib></pib>"
-                Xonomy.newElementChild(jsElement, xml);
-                Xonomy.newElementChild(jsElement, xml2);
-                Xonomy.refresh();
-              },
-              hideIf: function (jsElement: any) {
-                return jsElement.hasChildElement("naziv_preduzeca") || jsElement.hasChildElement("pib");
-              }
-            },
-          ]
-        },
-        "adresaZaDostavljanje": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askString
-        },
-        "nacinDostavljanja": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askPicklist,
-          askerParameter: ["Iskljucivo elektronskim putem u formi elektronskog dokumenta", "U papirnoj formi"],
-        },
-        "vrstaPrijave": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askPicklist,
-          askerParameter: ["Dopunska prijava", "Izdvojena prijava"],
-        },
-        "brojPrvobitnePrijave": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askString
-        },
-        "datumPodnosenjaPrvobitnePrijave": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askString
-        },
-        "imaDodatnogLista": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askPicklist,
-          askerParameter: ["true", "false"],
-        },
-        "dodatniList": {
-          hasText: true,
-          oneliner: false,
-          asker: Xonomy.askString,
-          isReadOnly: function (jsElement: any) {
-            // Determine if the second tag should be read-only based on the value of the first tag
-            let firstTagValue = jsElement.parent().getChildElements('imaDodatnogLista')[0].text;
-            if (firstTagValue === 'false') {
-              jsElement.children = []; // Clear the text content
-            }
-            return firstTagValue === 'true' || firstTagValue === 'false';
-          },
-
-        }, "ranijePrijave": {
-          menu: [{
-            caption: "Dodaj <ranijaPrijava/>",
-            action: Xonomy.newElementChild,
-            actionParameter: "<ranijaPrijava><brojPrijave></brojPrijave><datum></datum><drzavaIliOrganizacija></drzavaIliOrganizacija></ranijaPrijava>",
-          }]
-        }, "ranijaPrijava": {
-          menu: [{
-            caption: "Ukloni <ranijaPrijava>",
-            action: Xonomy.deleteElement,
-            actionParameter: "<ranijaPrijava/>",
-          }
-          ]
-        }, "brojPrijave": {
+        "brojPrijave": {
           hasText: true,
           oneliner: true,
           asker: Xonomy.askString
@@ -325,12 +160,7 @@ export class A1Component {
           hasText: true,
           oneliner: true,
           asker: Xonomy.askString
-        }, "drzavaIliOrganizacija": {
-          hasText: true,
-          oneliner: true,
-          asker: Xonomy.askString
-        },
-        "ime": {
+        }, "ime": {
           hasText: true,
           oneliner: true,
           asker: Xonomy.askString
@@ -339,18 +169,145 @@ export class A1Component {
           oneliner: true,
           asker: Xonomy.askString
         },
-      "naziv_preduzeca": {
-        hasText: true,
-        oneliner: true,
-        asker: Xonomy.askString
-      }, "pib": {
-        hasText: true,
-        oneliner: true,
-        asker: Xonomy.askString
-      },
+        "naziv_preduzeca": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "pib": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        },
+        "podaci_o_naslovu_izvonog_dela_naslov": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        },
+        "pseudonim_podnosioca": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "naslov_dela": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "vrsta_dela": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "forma_dela": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "nacin_koriscenja_dela": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "datum_podnosenja_zahteva": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "delo_stvoreno_u_radnom_odnosu": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askPicklist,
+          askerParameter: ["True", "False"]
+        }, "prilozi_uz_zahtev_opis_dela": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "prilozi_uz_zahtev_format_primera": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "prilozi_uz_zahtev_naziv_fajla": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "podnosilac_zahteva": {
+          menu: [
+            {
+              caption: "Postavi na <TFizickoLice>",
+              action: function (jsElement: any) {
+                let xml = "<ime></ime>";
+                let xml2 = "<prezime></prezime>"
+                Xonomy.newElementChild(jsElement, xml);
+                Xonomy.newElementChild(jsElement, xml2);
+                Xonomy.refresh();
+              },
+              hideIf: function (jsElement: any) {
+                return jsElement.hasChildElement("ime") || jsElement.hasChildElement("prezime");
+              },
+            },
+            {
+              caption: "Postavi na <TPravnoLice>",
+              action: function (jsElement: any) {
+                let xml = "<naziv_preduzeca></naziv_preduzeca>";
+                let xml2 = "<pib></pib>"
+                Xonomy.newElementChild(jsElement, xml);
+                Xonomy.newElementChild(jsElement, xml2);
+                Xonomy.refresh();
+              },
+              hideIf: function (jsElement: any) {
+                return jsElement.hasChildElement("naziv_preduzeca") || jsElement.hasChildElement("pib");
+              }
+            },
+          ]
+        }, "punomocnik": {
+          menu: [
+            {
+              caption: "Postavi na <TFizickoLice>",
+              action: function (jsElement: any) {
+                let xml = "<ime></ime>";
+                let xml2 = "<prezime></prezime>"
+                Xonomy.newElementChild(jsElement, xml);
+                Xonomy.newElementChild(jsElement, xml2);
+                Xonomy.refresh();
+              },
+              hideIf: function (jsElement: any) {
+                return jsElement.hasChildElement("ime") || jsElement.hasChildElement("prezime");
+              },
+            },
+            {
+              caption: "Postavi na <TPravnoLice>",
+              action: function (jsElement: any) {
+                let xml = "<naziv_preduzeca></naziv_preduzeca>";
+                let xml2 = "<pib></pib>"
+                Xonomy.newElementChild(jsElement, xml);
+                Xonomy.newElementChild(jsElement, xml2);
+                Xonomy.refresh();
+              },
+              hideIf: function (jsElement: any) {
+                return jsElement.hasChildElement("naziv_preduzeca") || jsElement.hasChildElement("pib");
+              }
+            },
+          ]
+        }, "podaci_o_naslovu_izvonog_dela_autori": {
+          menu: [{
+            caption: "Dodaj <autor/>",
+            action: Xonomy.newElementChild,
+            actionParameter: "<autor><adresa>mesto></mesto><postanski_broj></postanski_broj><ulica></ulica><broj></broj</adresa><kontakt><email></email></kontakt><ime></ime><prezime></prezime><godina_smrti></godina_smrti></autor>",
+          }]
+        }, "autor": {
+          menu: [{
+            caption: "Ukloni <autor>",
+            action: Xonomy.deleteElement,
+            actionParameter: "<autor/>",
+          }
+          ]
+        }, "godina_smrti": {
+          hasText: true,
+          oneliner: true,
+          asker: Xonomy.askString
+        }, "autori": {
+          menu: [{
+            caption: "Dodaj <autor/>",
+            action: Xonomy.newElementChild,
+            actionParameter: "<autor><adresa>mesto></mesto><postanski_broj></postanski_broj><ulica></ulica><broj></broj</adresa><kontakt><email></email></kontakt><ime></ime><prezime></prezime><godina_smrti></godina_smrti></autor>",
+          }]
+        }
       }
-    }
-
+    };
     const editorElement = document.getElementById('xml-editor');
     Xonomy.render(xmlData, editorElement, docSpec);
   }

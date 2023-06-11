@@ -1,7 +1,6 @@
 -Dodati Enum-e i sparql upite	*back
 	-adminhome.component dodati Enume	*front
 	-userhome.component dodati Enume	*front
--DTO	*back
--DOMWriter	*back
--A1Zahtev	*back
 -requests/a1	*front
+
+
