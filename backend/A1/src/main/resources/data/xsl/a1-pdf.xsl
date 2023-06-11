@@ -275,7 +275,7 @@
                                                 <fo:table-cell border="1px solid black">
                                                     <fo:block linefeed-treatment="preserve">
                                                         Broj prijave:
-                                                        <xsl:value-of select="/zahtev/@sifra"/>
+                                                        <xsl:value-of select="zahtev/sifra"/>
                                                     </fo:block>
                                                 </fo:table-cell>
                                             </fo:table-row>

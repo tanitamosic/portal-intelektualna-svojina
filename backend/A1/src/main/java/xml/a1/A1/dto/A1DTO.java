@@ -46,9 +46,9 @@ public class A1DTO {
 
     private String prilozi_uz_zahtev_naziv_fajla;
 
-    private String datum_podnosenja_zahteva;
+//    private String datum_podnosenja_zahteva;
 
-    private String sifra;
+//    private String sifra;
 
 
 }

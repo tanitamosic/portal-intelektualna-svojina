@@ -20,7 +20,7 @@ export class UserhomeComponent {
   advSearchMetadataTypes: { [key: string]: string[] } = {
     'A1': ['PSEUDONIM', 'VRSTA_DELA', 'FORMA_DELA', 'EMAIL_PODNOSIOCA'],
     'P1': ['VRSTA_PRIJAVE', 'EMAIL_PRONALAZACA', 'EMAIL_PODNOSIOCA', 'EMAIL_POSREDNIKA'],  // Ovo je moj MetadataType enum na backendu
-    'Z1': []  // TODO: ovde dodajete svoj metadatatype enume
+    'Z1': ['EMAIL_ZAJEDNICKOG_PREDSTAVNIKA', 'EMAIL_PODNOSIOCA', 'EMAIL_PUNOMOCNIKA']  // TODO: ovde dodajete svoj metadatatype enume
   }
   metadataParamType1: string = '';
   metadataParamType2: string = '';
@@ -99,7 +99,9 @@ export class UserhomeComponent {
 
   createRequest() {
     switch (this.requestType) {
-      case 'A1': break;
+      case 'A1':
+        this.route.navigateByUrl('/create-a1-request').then(r => {})
+        break;
       case 'P1': {
         this.route.navigateByUrl('/create-p1-request').then(r => {})
         break;
@@ -107,7 +109,7 @@ export class UserhomeComponent {
       case 'Z1': {
         this.route.navigateByUrl('/create-z1-request').then(r => {})
         break;
-      };
+      }
     }
   }
 

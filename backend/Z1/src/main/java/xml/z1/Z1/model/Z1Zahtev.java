@@ -6,6 +6,8 @@ import xml.z1.Z1.dto.Z1DTO;
 import xml.z1.Z1.model.deljeniTipovi.Lice;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 
@@ -67,6 +69,8 @@ public class Z1Zahtev {
         this.transliteracija = dto.getTransliteracija();
         this.klase = dto.getKlase();
         this.pravoPrvenstva = dto.getPravoPrvenstva();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+        this.datumPodnosenja = LocalDate.now().format(format);
 
 
         this.osnovnaTaksa = dto.getOsnovnaTaksa();

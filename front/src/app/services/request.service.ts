@@ -9,7 +9,7 @@ import {isObject} from "js2xmlparser/lib/utils";
 export class RequestService {
 
   postEndpoint: { [key: string]: string } = {
-    'A1': '/a1/', // TODO: DODAJ TVOJU PUTANJU
+    'A1': '/a1/post-a1',
     'P1': '/p1/post-p1',
     'Z1': '/z1/post-z1'
   }

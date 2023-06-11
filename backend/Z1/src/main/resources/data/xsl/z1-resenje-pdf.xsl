@@ -54,7 +54,7 @@
                             <fo:table-row>
                                 <fo:table-cell padding="3px" number-columns-spanned="2">
                                     <fo:block>
-                                        <fo:basic-link external-destination="http://localhost:8083/download/pdf/{resenje_zahteva/broj_prijave}">Referenca na zahtev</fo:basic-link>
+                                        <fo:basic-link external-destination="http://localhost:8085/z1/download/pdf/{resenje_zahteva/broj_prijave}">Referenca na zahtev</fo:basic-link>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>

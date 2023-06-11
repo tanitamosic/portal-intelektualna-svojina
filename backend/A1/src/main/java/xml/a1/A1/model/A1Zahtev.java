@@ -74,8 +74,8 @@ public class A1Zahtev {
         this.prilozi_uz_zahtev_opis_dela = dto.getPrilozi_uz_zahtev_opis_dela();
         this.prilozi_uz_zahtev_format_primera = dto.getPrilozi_uz_zahtev_format_primera();
         this.prilozi_uz_zahtev_naziv_fajla = dto.getPrilozi_uz_zahtev_naziv_fajla();
-        this.datum_podnosenja_zahteva = dto.getDatum_podnosenja_zahteva();
-        this.sifra = dto.getSifra();
+        this.datum_podnosenja_zahteva = extractDate(new Date());
+        this.sifra = generateBrojPrijave();
     }
 
     public A1Zahtev(DeferredElementNSImpl document) {

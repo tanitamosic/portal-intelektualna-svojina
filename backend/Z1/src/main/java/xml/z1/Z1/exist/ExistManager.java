@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -242,6 +243,24 @@ public class ExistManager {
 //        for (String word : words)
 //            xpath = xpath.concat(" | //pat:Naziv_pronalaska[contains(@Naziv, '" + word + "')]");
         return xpath;
+    }
+
+    public Boolean searchForDocument(String name) throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        createConnection();
+        String uri = authManager.getUri() + "db/z1";
+        Collection col = DatabaseManager.getCollection(uri, authManager.getUsername(), authManager.getPassword());
+        List<String> documents = Arrays.stream(col.listResources()).toList();
+        return documents.contains(name);
+    }
+
+    public List<String> getAllDocuments() throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, UnsupportedEncodingException {
+        createConnection();
+        List<XMLResource> resources = new ArrayList<>();
+        String uri = authManager.getUri() + "db/z1";
+
+        Collection col = DatabaseManager.getCollection(uri, authManager.getUsername(), authManager.getPassword());
+
+        return Arrays.stream(col.listResources()).toList();
     }
 
 }

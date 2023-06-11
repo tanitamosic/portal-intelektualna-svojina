@@ -48,7 +48,7 @@ public class Z1Controller {
         }
     }
 
-    @PostMapping(value="/resi-z1", consumes="application/xml", produces="application/xml")
+    @PostMapping(value="/resi", consumes="application/xml", produces="application/xml")
     public ResponseEntity<String> postZ1resenje(@RequestBody Z1Resenje resenje) {
         try {
             z1Service.createZ1Resenje(resenje);
@@ -58,6 +58,17 @@ public class Z1Controller {
             return new ResponseEntity<>("nije uspelo", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>("uspelo", HttpStatus.OK);
+    }
+
+    @GetMapping(value="/resenje-postoji/{broj}", produces="application/xml")
+    public ResponseEntity<Boolean> doesDecisionExist(@PathVariable String broj) {
+        try {
+            return new ResponseEntity<>(z1Service.doesDecisionExist(broj), HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping(value="/advanced-search", consumes="application/xml", produces="application/xml")
@@ -133,6 +144,15 @@ public class Z1Controller {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
+    @GetMapping(value="all-requests", produces="application/xml")
+    public ResponseEntity<List<String>> getAll() {
+        try {
+            return new ResponseEntity<>(z1Service.getAllRequests(), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -50,22 +50,22 @@ public class Z1Service {
         Document document = converter.generateZ1(zahtev);
         String xml = converter.documentToString(document);
 
-//        String rdf_path = "src/main/resources/data/rdf/" + title + ".rdf";
-//        String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
-//        sparqlService.saveRDF(xml, rdf_path, title);
-//        saveJsonLD(rdf_path, json_path);
-//        existManager.storeFromText("db/z1", title, xml);
-//
-//        String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
-//        converter.writeDocumentToPath(xml, xmlLocation);
-//
-//
-//        String outputPDFLocation = "src/main/resources/static/pdf/" + title + ".pdf";
-//        XmlTransformer.convertToPdf(PDF_XSL, xmlLocation, outputPDFLocation);
-//
-//        String outputXHTMLLocation = "src/main/resources/static/xhtml/" + title + ".xhtml";
-//        XmlTransformer.convertToXhtml(XHTML_XSL, xmlLocation, outputXHTMLLocation);
-        return zahtev.getNameForCollection();
+        String rdf_path = "src/main/resources/data/rdf/" + title + ".rdf";
+        String json_path = "src/main/resources/data/rdf/json/" + title + ".json";
+       sparqlService.saveRDF(xml, rdf_path, title);
+       saveJsonLD(rdf_path, json_path);
+       existManager.storeFromText("db/z1", title, xml);
+
+        String xmlLocation = "src/main/resources/data/xml/" + title + ".xml";
+        converter.writeDocumentToPath(xml, xmlLocation);
+
+
+        String outputPDFLocation = "src/main/resources/static/pdf/" + title + ".pdf";
+        XmlTransformer.convertToPdf(PDF_XSL, xmlLocation, outputPDFLocation);
+
+        String outputXHTMLLocation = "src/main/resources/static/xhtml/" + title + ".xhtml";
+        XmlTransformer.convertToXhtml(XHTML_XSL, xmlLocation, outputXHTMLLocation);
+        return title;
     }
 
     public void createZ1Resenje(Z1Resenje resenje) throws TransformerException, XMLDBException, ClassNotFoundException,
@@ -119,5 +119,13 @@ public class Z1Service {
         inputStream.close();
         outputStream.flush();
         outputStream.close();
+    }
+
+    public Boolean doesDecisionExist(String broj) throws XMLDBException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        return existManager.searchForDocument(broj);
+    }
+
+    public List<String> getAllRequests() throws XMLDBException, UnsupportedEncodingException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        return existManager.getAllDocuments();
     }
 }

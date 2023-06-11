@@ -1,0 +1,84 @@
+{
+  "@graph" : [ {
+    "@id" : "pred:podaciOZavodu",
+    "broj" : "5",
+    "mesto" : "Beograd",
+    "postanski_broj" : "11000",
+    "ulica" : "Knjeginje Ljubice"
+  }, {
+    "@id" : "pred:podnosilac",
+    "broj" : "123",
+    "email" : "email@email.com",
+    "faks" : "12321",
+    "ime" : "fjas",
+    "mesto" : "casfdasd",
+    "postanski_broj" : "4123",
+    "prezime" : "akfnssja",
+    "telefon" : "4123214",
+    "ulica" : "fasd"
+  }, {
+    "@id" : "pred:punomocnik",
+    "broj" : "123",
+    "email" : "email@email.com",
+    "faks" : "12321",
+    "ime" : "fjas",
+    "mesto" : "casfdasd",
+    "postanski_broj" : "4123",
+    "prezime" : "akfnssja",
+    "telefon" : "4123214",
+    "ulica" : "fasd"
+  }, {
+    "@id" : "pred:zavod",
+    "brojPrijave" : "Z-2023-8769",
+    "datumPodnosenja" : "11.06.2023."
+  } ],
+  "@context" : {
+    "faks" : {
+      "@id" : "http://www.xmlsux.com/predicate/faks",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "telefon" : {
+      "@id" : "http://www.xmlsux.com/predicate/telefon",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "email" : {
+      "@id" : "http://www.xmlsux.com/predicate/email",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "broj" : {
+      "@id" : "http://www.xmlsux.com/predicate/broj",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "ulica" : {
+      "@id" : "http://www.xmlsux.com/predicate/ulica",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "postanski_broj" : {
+      "@id" : "http://www.xmlsux.com/predicate/postanski_broj",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "mesto" : {
+      "@id" : "http://www.xmlsux.com/predicate/mesto",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "prezime" : {
+      "@id" : "http://www.xmlsux.com/predicate/prezime",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "ime" : {
+      "@id" : "http://www.xmlsux.com/predicate/ime",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "datumPodnosenja" : {
+      "@id" : "http://www.xmlsux.com/predicate/datumPodnosenja",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "brojPrijave" : {
+      "@id" : "http://www.xmlsux.com/predicate/brojPrijave",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
+    },
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "pred" : "http://www.xmlsux.com/predicate/",
+    "h" : "http://www.w3.org/1999/xhtml"
+  }
+}

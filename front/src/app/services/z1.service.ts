@@ -3,11 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
 //import {AuthService} from "./auth.service";
 import * as JsonToXML from "js2xmlparser";
-import {ZahtevZ1DTO} from "../model/z1/ZahtevZ1DTO";
-import {Lice} from "../model/z1/Lice";
-import {Adresa} from "../model/z1/Adresa";
-import {Kontakt} from "../model/z1/Kontakt";
-
 
 @Injectable({
   providedIn: 'root'

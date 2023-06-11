@@ -140,7 +140,7 @@ export class Z1Component implements OnInit  {
   }
 
   markAttachments(){
-    
+
     if(!this.prilogPRIMERAK_ZNAKA.empty){
       this.zahtevDTO.primerakZnaka=true;
     }
@@ -181,7 +181,7 @@ export class Z1Component implements OnInit  {
     // let zahtev = this.servis.createTestZahtev();
     let zahtev = this.zahtevDTO;
     // this.addAlwaysNeededPrilogTypes();
-    
+
     //zahtev.prilozi = this.concatenateNeededPrilogs();
     //zahtev.boje = this.concatenateBoje();
 
@@ -192,11 +192,11 @@ export class Z1Component implements OnInit  {
       console.log(brojPrijaveZiga);
       console.log(this.prilogPUNOMOCJE);
       this.uploadPrilogsForkJoin(brojPrijaveZiga);
-      
+
     });
   }
 
-  
+
   uploadPrilogsForkJoin(brojPrijaveZiga:string){
     forkJoin(
       this.uploadPunomocje(brojPrijaveZiga),

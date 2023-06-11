@@ -19,7 +19,7 @@ export class A1Component {
 
   initializeXonomy(): void {
     const xmlData = `<zahtev>
-    <brojPrijave></brojPrijave>
+<!--    <brojPrijave></brojPrijave>-->
     <podaci_o_naslovu_izvonog_dela_naslov></podaci_o_naslovu_izvonog_dela_naslov>
     <podaci_o_naslovu_izvonog_dela_autori>
 <!--        <autor>-->
@@ -46,7 +46,9 @@ export class A1Component {
             <broj></broj>
         </adresa>
         <kontakt>
+            <telefon></telefon>
             <email></email>
+            <faks></faks>
         </kontakt>
         <naziv_preduzeca></naziv_preduzeca>
         <pib></pib>
@@ -62,6 +64,7 @@ export class A1Component {
         <kontakt>
             <telefon></telefon>
             <email></email>
+            <faks></faks>
         </kontakt>
         <ime></ime>
         <prezime></prezime>
@@ -91,9 +94,9 @@ export class A1Component {
     <prilozi_uz_zahtev_opis_dela></prilozi_uz_zahtev_opis_dela>
     <prilozi_uz_zahtev_format_primera></prilozi_uz_zahtev_format_primera>
     <prilozi_uz_zahtev_naziv_fajla></prilozi_uz_zahtev_naziv_fajla>
-    <datum_podnosenja_zahteva></datum_podnosenja_zahteva>
+<!--    <datum_podnosenja_zahteva></datum_podnosenja_zahteva>-->
 </zahtev>
-    
+
     `;
     let docSpec = {
       validate: function (jsElement: any) {
@@ -130,7 +133,7 @@ export class A1Component {
           oneliner: true,
           asker: Xonomy.askString
         },
-        "postanskiBroj": {
+        "postanski_broj": {
           hasText: true,
           oneliner: true,
           asker: Xonomy.askString
@@ -211,7 +214,7 @@ export class A1Component {
           hasText: true,
           oneliner: true,
           asker: Xonomy.askPicklist,
-          askerParameter: ["True", "False"]
+          askerParameter: ["true", "false"]
         }, "prilozi_uz_zahtev_opis_dela": {
           hasText: true,
           oneliner: true,
@@ -286,7 +289,7 @@ export class A1Component {
           menu: [{
             caption: "Dodaj <autor/>",
             action: Xonomy.newElementChild,
-            actionParameter: "<autor><adresa>mesto></mesto><postanski_broj></postanski_broj><ulica></ulica><broj></broj</adresa><kontakt><email></email></kontakt><ime></ime><prezime></prezime><godina_smrti></godina_smrti></autor>",
+            actionParameter: "<autor><adresa><mesto></mesto><postanski_broj></postanski_broj><ulica></ulica><broj></broj></adresa><kontakt><telefon></telefon><email></email><faks></faks></kontakt><ime></ime><prezime></prezime><godina_smrti></godina_smrti></autor>",
           }]
         }, "autor": {
           menu: [{
@@ -303,7 +306,7 @@ export class A1Component {
           menu: [{
             caption: "Dodaj <autor/>",
             action: Xonomy.newElementChild,
-            actionParameter: "<autor><adresa>mesto></mesto><postanski_broj></postanski_broj><ulica></ulica><broj></broj</adresa><kontakt><email></email></kontakt><ime></ime><prezime></prezime><godina_smrti></godina_smrti></autor>",
+            actionParameter: "<autor><adresa><mesto></mesto><postanski_broj></postanski_broj><ulica></ulica><broj></broj></adresa><kontakt><telefon></telefon><email></email><faks></faks></kontakt><ime></ime><prezime></prezime><godina_smrti></godina_smrti></autor>",
           }]
         }
       }

@@ -160,7 +160,7 @@
                                         </fo:instream-foreign-object>
 
                                         <fo:block>
-                                            <fo:external-graphic src="url('classpath:static/img/{podaci_o_zigu/izgled_ziga}')" content-width="100pt" content-height="100pt" />
+                                            <fo:external-graphic src="url('classpath:static/files/{zavod/brojPrijave}-PRIMER_ZNAKA.png')" content-width="100pt" content-height="100pt" />
                                         </fo:block>
 
                                     </fo:block>
