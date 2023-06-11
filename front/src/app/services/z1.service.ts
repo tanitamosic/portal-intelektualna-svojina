@@ -47,101 +47,15 @@ export class Z1Service {
     };
   }
 
-  isValidFilled(zahtev: ZahtevZ1DTO) {
-    let valid = true;
-    valid &&= this.isValidLice(zahtev.podnosilac);
-    valid &&= this.isValidLice(zahtev.punomocnik);
-
-    valid &&= this.isValidLice(zahtev.predstavnik);
-
-    // valid &&= this.isValidKlasa();
-
-    return valid;
+  private getFileOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+      }),
+      responseType: 'document' as 'json'
+    };
   }
 
-  isValidConsoleLog(zahtev: ZahtevZ1DTO) {
-    console.log(this.isValidLice(zahtev.podnosilac));
-    console.log(this.isValidLice(zahtev.punomocnik));
-    
-    console.log(this.isValidLice(zahtev.predstavnik));
-  }
-
-  isValidLice(lice: Lice) {
-    let valid = true;
-    valid &&= this.isValidName(lice);
-    valid &&= this.isValidAdresa(lice.adresa);
-    valid &&= this.isValidKontakt(lice.kontakt);
-
-    return valid;
-  }
-
-  isValidName(lice: Lice) {
-    if (lice.tipLica === "fizickoLice") {
-      return (this.doesContainOnlyLetters(lice.ime) && this.doesContainOnlyLetters(lice.prezime));
-    } else {
-      return this.doesContainOnlyLetters(lice.poslovnoIme);
-    }
-  }
-
-  isValidAdresa(adresa: Adresa) {
-    let valid = true;
-    valid &&= this.doesContainOnlyLetters(adresa.ulica);
-    // valid &&= adresa.postanskiBroj > 9999 && adresa.postanskiBroj < 100000;
-    valid &&= this.doesContainOnlyLetters(adresa.mesto);
-
-
-    return valid;
-  }
-
-  isValidKontakt(kontakt: Kontakt) {
-    let valid = true;
-    valid &&= this.phonenumber.test(kontakt.telefon);
-    valid &&= this.email.test(kontakt.email);
-    valid &&= this.phonenumber.test(kontakt.faks);
-
-    return valid;
-  }
-
-  isValidKlasa(chosenKlasas: string[]) {
-    let valid = chosenKlasas.length > 0;
-
-    return valid;
-  }
-
-  doesContainOnlyLetters(word: string): boolean {
-    word = word.trim();
-    return this.letters.test(word);
-  }
-
-  createTestZahtev() {
-    let zahtev = new ZahtevZ1DTO();
-    zahtev.podnosilac = this.createTestLice();
-    zahtev.punomocnik = this.createTestLice();
-    zahtev.predstavnik = this.createTestLice();
-
-
-    zahtev.klase = "1 - Oruzje|2 - Malkarasa";
-    // zahtev.neededPrilogsConcatenated = "PRIMERAK_ZNAKA|SPISAK_ROBE_I_USLUGA|DOKAZ_O_UPLATI_TAKSE"
-    zahtev.pravoPrvenstva = "SAJAMSKO";
-
-    return zahtev;
-  }
-
-  createTestLice() {
-    let lice = new Lice();
-    lice.tipLica = "fizickoLice";
-    lice.ime = "Ime";
-    lice.prezime = "Prezime";
-    lice.kontakt.faks = "12345";
-    lice.kontakt.telefon = "12345";
-    lice.kontakt.email = "12345@emal.com";
-    lice.adresa.ulica = "Ulica";
-    lice.adresa.broj = "23";
-    lice.adresa.postanskiBroj = "11000";
-    lice.adresa.mesto = "Mesto";
-
-    return lice;
-  }
 
   public postImage(brojPrijaveZiga: string, file: any){
     let formData = new FormData();
@@ -155,13 +69,13 @@ export class Z1Service {
     let brojPrijaveZigaParts: string[] = brojPrijaveZiga.split("/");
     formData.append("file", file);
 
-    return this.http.post<Object>(this.zigUrl + "/upload-file/" + brojPrijaveZiga + "-" + tipPrilog, formData, this.getOptions());
+    return this.http.post<Object>(this.zigUrl + "/upload-file/" + brojPrijaveZiga + "-" + tipPrilog, formData, this.getFileOptions());
   }
 
   public saveAfterPrilogAddition(brojPrijaveZiga: string) {
     let brojPrijaveZigaParts: string[] = brojPrijaveZiga.split("/");
 
-    return this.http.get<Object>(this.zigUrl + "/save/" + brojPrijaveZigaParts[0] + "-" + brojPrijaveZigaParts[1],this.getOptions());
+    return this.http.get<Object>(this.zigUrl + "/save/" + brojPrijaveZigaParts[0] + "-" + brojPrijaveZigaParts[1],this.getFileOptions());
   }
 
   public empty() {
